@@ -1,0 +1,117 @@
+---
+import DarkThemeToggle from "@/components/DarkThemeToggle.svelte";
+import Nav from "@/components/links/Nav.svelte";
+
+let currentPage = Astro.url.pathname;
+---
+
+<header id="main-header" class="full-bleed flex-layout align-center gap">
+  <a class="branded-title link-wrapper" href="/">
+    <span class="highlight">Ahmed </span>
+    <span>Alshair</span>
+  </a>
+
+  <Nav
+    client:load
+    className="main-nav"
+    links={["Works", "About", "Contact"]}
+    currentPage={currentPage?.slice(1)}
+  />
+
+  <div class="wrapper toggle-wrapper">
+    <DarkThemeToggle client:idle />
+  </div>
+</header>
+
+<style>
+  header {
+    padding-block-start: var(--space-sm);
+    padding-block-end: var(--space-sm);
+    position: sticky;
+    top: 0;
+    background-color: var(--surface-0);
+    z-index: var(--z-sticky);
+    transition:
+      transform var(--transition-default),
+      background-color var(--transition-default),
+      color var(--transition-default);
+    will-change: transform;
+
+    &.header-hidden {
+      transform: translateY(-100%);
+    }
+  }
+
+  @keyframes hideHeader {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-100%);
+    }
+  }
+
+  .branded-title {
+    margin-inline-end: auto;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    font-family: var(--font-headings);
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-regular);
+    letter-spacing: var(--ls-headings);
+    color: var(--text-primary);
+    text-decoration: none;
+    cursor: pointer;
+
+    .highlight {
+      font-weight: var(--font-weight-semibold);
+      transition: color var(--transition-default);
+
+      .branded-title:hover & {
+        color: var(--accent);
+      }
+    }
+  }
+</style>
+
+<script>
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+  const header = document.getElementById("main-header");
+
+  if (header) {
+    const delta = header.clientHeight / 2; // Minimum scroll distance before hiding
+    const hideOffset = header.clientHeight; // When to hide
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const currentScrollY = window.scrollY;
+
+            if (Math.abs(currentScrollY - lastScrollY) <= delta) {
+              ticking = false;
+              return;
+            }
+
+            if (currentScrollY > lastScrollY && currentScrollY > hideOffset) {
+              header.classList.add("header-hidden");
+            }
+            // Show on Scroll Up
+            else {
+              header.classList.remove("header-hidden");
+            }
+
+            lastScrollY = currentScrollY;
+            ticking = false;
+          });
+
+          ticking = true;
+        }
+      },
+      { passive: true },
+    );
+  }
+</script>

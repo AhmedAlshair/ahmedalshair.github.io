@@ -1,0 +1,125 @@
+---
+import ContactMeForm from "@/components/page-sections/ContactMeForm.svelte";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import LinkedinIcon from "@assets/icons/linkedin.svg";
+import BehanceIcon from "@assets/icons/behance.svg";
+import DribbbleIcon from "@assets/icons/dribbble.svg";
+import GithubIcon from "@assets/icons/github.svg";
+import YoutubeIcon from "@assets/icons/youtube.svg";
+---
+
+<BaseLayout
+  title="Contact Me | Ahmed Alshair"
+  description="Get in touch with me for any inquiries or collaborations."
+>
+  <section id="social" class="on-social flex-layout column gap gap-lg">
+    <h3>Find me on:</h3>
+
+    <ul class="grid-layout three-cols gap">
+      <li>
+        <a
+          class="social-link"
+          href="https://www.linkedin.com/in/ahmedalshair"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+        >
+          <LinkedinIcon />
+          <span>LinkedIn</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="social-link"
+          href="https://www.behance.net/AhmedAlshair"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Behance"
+        >
+          <BehanceIcon />
+          <span>Behance</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="social-link"
+          href="https://dribbble.com/AhmedAlshair"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Dribbble"
+        >
+          <DribbbleIcon />
+          <span>Dribbble</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="social-link"
+          href="https://github.com/ahmedalshair"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Github"
+        >
+          <GithubIcon />
+          <span>GitHub</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="social-link"
+          href="https://youtube.com/playlist?list=PL0IMwc8ci4wU288dToUAPFYN19ucJ_Xkx&si=H4NODJGT_wrMu1Fp"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube"
+        >
+          <YoutubeIcon />
+          <span>YouTube - UX/UI</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="social-link"
+          href="https://www.youtube.com/playlist?list=PL0IMwc8ci4wVxy4bl74Kt3BuoX5HJmfr-"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube"
+        >
+          <YoutubeIcon />
+          <span>YouTube - Animation</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section id="form" class="contact-form flex-layout column gap gap-lg">
+    <h3>Send me a message:</h3>
+    <ContactMeForm formId="xqeknyvp" client:load />
+  </section>
+</BaseLayout>
+
+<style>
+  .on-social {
+    margin: var(--space-xl) 0 var(--space-2xl);
+
+    .social-link {
+      height: 100%;
+      padding: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      font-size: var(--font-size-h5);
+      border: var(--stroke-width-thin) solid var(--border-color);
+
+      svg {
+        width: 1em;
+        height: 1em;
+        aspect-ratio: 1;
+        fill: currentColor;
+      }
+    }
+  }
+
+  .contact-form {
+    margin-block-end: var(--space-2xl);
+  }
+</style>

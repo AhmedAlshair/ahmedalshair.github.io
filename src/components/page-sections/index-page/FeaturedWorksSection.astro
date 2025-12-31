@@ -1,0 +1,42 @@
+---
+import Link from "@/components/links/Link.astro";
+
+interface Props {
+  className?: string;
+}
+
+let { className } = Astro.props;
+---
+
+<section
+  class:list={["featured-works container flex-layout column", className]}
+>
+  <h3>Work Highlights</h3>
+
+  <slot />
+
+  <div class="more-works flex-layout column gap gap-lg justify-start">
+    <p>Want to see more? Take a look at my other projects and case studies:</p>
+
+    <div class="actions flex-layout gap wrap">
+      <Link
+        variant="secondary"
+        href="/works"
+        class="case-studies-link"
+        text="More Case Studies"
+      />
+
+      <slot name="actions" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .featured-works {
+    gap: 15lvh;
+  }
+
+  .more-works {
+    min-height: 25lvh;
+  }
+</style>

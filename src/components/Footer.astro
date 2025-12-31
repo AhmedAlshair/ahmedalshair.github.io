@@ -1,0 +1,28 @@
+---
+import Social from "@/components/links/Social.astro";
+
+let year = new Date().getFullYear();
+---
+
+<footer
+  class="main-footer container padded flex-layout gap align-center space-between wrap"
+>
+  <Social />
+
+  <p class="copyrights meta-label flex-layout align-baseline">
+    <span>&#9400;</span>
+    <span>{year}</span>
+    <span>Ahmed Alshair</span>
+  </p>
+</footer>
+
+<style>
+  footer {
+    padding-block-start: var(--space-lg);
+    padding-block-end: var(--space-lg);
+  }
+
+  .copyrights {
+    gap: 1ch;
+  }
+</style>

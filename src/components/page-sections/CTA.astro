@@ -1,0 +1,31 @@
+---
+import Link from "@/components/links/Link.astro";
+---
+
+<section
+  id="contact"
+  class="cta full-bleed flex-layout column gap justify-center align-start"
+>
+  <h3>Let's build something intentional</h3>
+  <p class="subtitle">
+    Always open to exploring new ideas, solving complex problems and strategic
+    collaborations.
+  </p>
+  <Link
+    variant="primary"
+    href="/contact#form"
+    text="Get in touch"
+    class="contact-link"
+  />
+</section>
+
+<style>
+  .cta {
+    min-height: 45lvh;
+    background-color: var(--surface-2);
+
+    .contact-link {
+      margin-block-start: var(--space-md);
+    }
+  }
+</style>

@@ -1,0 +1,91 @@
+---
+import Icon from "@/components/Icon.svelte";
+
+interface Props {
+  href: string;
+  text: string;
+  variant?: "primary" | "secondary";
+  icon?: string;
+  class?: string;
+}
+
+let {
+  href,
+  text,
+  variant = "primary",
+  icon = "keyboard_arrow_right",
+  class: className,
+} = Astro.props;
+---
+
+<a href={href} class:list={["link", variant, className]}>
+  <span class="link-text">{text}</span>
+  {icon && <Icon icon={icon} className="icon link-icon" />}
+</a>
+
+<style>
+  a.link {
+    position: relative;
+    padding: var(--space-sm);
+    font-family: var(--font-headings);
+    font-size: var(--font-size-h5);
+    font-weight: var(--font-weight-medium);
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xs);
+    transition: all var(--transition-fast);
+
+    &.primary {
+      background-color: var(--action-default);
+      color: var(--text-inverse);
+    }
+
+    &.secondary {
+      color: var(--action-default);
+      border: 1px solid var(--action-default);
+    }
+
+    &:hover {
+      &.primary {
+        background-color: var(--action-hover);
+        color: var(--text-inverse);
+      }
+
+      &.secondary {
+        color: var(--action-hover);
+        border-color: var(--action-hover);
+        background-color: var(--surface-hover);
+      }
+
+      .link-icon {
+        transform: translateX(0.2ch);
+      }
+    }
+
+    &:active {
+      &.primary {
+        background-color: var(--action-active);
+      }
+
+      &.secondary {
+        color: var(--action-active);
+        border-color: var(--action-active);
+      }
+    }
+
+    .link-text {
+      display: inline-block;
+
+      &:not(:only-child) {
+        margin-inline-start: var(--space-xs);
+      }
+    }
+
+    .link-icon {
+      aspect-ratio: 1;
+      flex-shrink: 0;
+      transition: all var(--transition-fast);
+    }
+  }
+</style>

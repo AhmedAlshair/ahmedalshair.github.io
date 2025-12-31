@@ -1,14 +1,16 @@
 {
   "name": "ahmed-alshair-website",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "typecheck": "astro check",
     "format": "prettier --write .",
-    "astro": "astro"
+    "lint": "astro check && prettier --check .",
+    "astro": "astro",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
@@ -18,7 +20,9 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "husky": "^9.1.7",
     "prettier": "3.7.4",
-    "prettier-plugin-astro": "0.14.1"
+    "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-svelte": "^3.4.1"
   }
 }

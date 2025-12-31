@@ -1,0 +1,109 @@
+---
+import Link from "@/components/links/Link.astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  title: string;
+  description?: string;
+  image: ImageMetadata;
+  imageAlt: string;
+  linkUrl?: string;
+  linkText?: string;
+  reverse?: boolean;
+  className?: string;
+}
+
+let {
+  title,
+  description,
+  image,
+  imageAlt,
+  linkUrl,
+  linkText,
+  reverse,
+  className,
+} = Astro.props;
+---
+
+<div class:list={["featured-work flex-layout", { reverse }, className]}>
+  <div class="work-content flex-layout column gap">
+    <div class="work-title flex-layout align-center justify-start">
+      <span class="slash mask-before"></span>
+      <h4>{title}</h4>
+    </div>
+
+    {description && <p class="description">{description}</p>}
+
+    {
+      linkUrl && linkText && (
+        <Link href={linkUrl} text={linkText} class="work-link" />
+      )
+    }
+  </div>
+
+  <div class="work-image flex-layout align-end justify-end">
+    <Image src={image} alt={imageAlt} />
+  </div>
+</div>
+
+<style>
+  .featured-work {
+    min-height: 70lvh;
+    max-width: 100%;
+    flex-wrap: wrap;
+    overflow: hidden;
+
+    &.reverse {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .work-content {
+    flex: 1 1 33.3333%;
+    align-self: center;
+    padding: var(--space-xl);
+    background-color: var(--surface-1);
+    min-width: max(22rem, 20vw);
+
+    .work-title {
+      position: relative;
+      height: fit-content;
+
+      .slash {
+        height: fit-content;
+        width: fit-content;
+        min-height: 3.6em;
+        min-width: 1.6em;
+      }
+
+      h4 {
+        margin: 0 0 0 var(--space-md);
+      }
+    }
+
+    p {
+      margin-block-end: var(--space-md);
+    }
+  }
+
+  .work-image {
+    position: relative;
+    margin-inline-start: -20vw;
+    flex: 1 1 66.6666%;
+    justify-self: stretch;
+    background-color: var(--surface-2);
+    overflow: hidden;
+    z-index: -1;
+
+    .reverse & {
+      margin-inline-start: 0;
+      margin-inline-end: -20vw;
+    }
+
+    > img {
+      object-fit: cover;
+      min-height: 100%;
+      min-width: 100%;
+    }
+  }
+</style>

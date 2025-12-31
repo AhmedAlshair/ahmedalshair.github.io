@@ -1,0 +1,60 @@
+---
+import LinkedinIcon from "@assets/icons/linkedin.svg";
+import BehanceIcon from "@assets/icons/behance.svg";
+import DribbbleIcon from "@assets/icons/dribbble.svg";
+import Icon from "@/components/Icon.svelte";
+---
+
+<nav class="social-links flex-layout gap">
+  <a
+    class="social-link"
+    href="https://www.linkedin.com/in/ahmedalshair"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn"
+  >
+    <LinkedinIcon />
+  </a>
+  <a
+    class="social-link"
+    href="https://www.behance.net/AhmedAlshair"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Behance"
+  >
+    <BehanceIcon />
+  </a>
+  <a
+    class="social-link"
+    href="https://dribbble.com/AhmedAlshair"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Dribbble"
+  >
+    <DribbbleIcon />
+  </a>
+  <a class="social-link" href="/contact" aria-label="More Links">
+    <Icon icon="more_horiz" className="icon" />
+  </a>
+</nav>
+
+<style>
+  .social-links {
+    width: fit-content;
+  }
+
+  .social-link {
+    padding: var(--space-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 1lh;
+      height: 1lh;
+      object-fit: contain;
+      margin: 0;
+      fill: currentColor;
+    }
+  }
+</style>

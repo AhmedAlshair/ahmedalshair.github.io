@@ -1,0 +1,97 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BehanceIcon from "@assets/icons/behance.svg";
+import DribbbleIcon from "@assets/icons/dribbble.svg";
+import YoutubeIcon from "@assets/icons/youtube.svg";
+---
+
+<BaseLayout
+  title="Works | Ahmed Alshair"
+  description="My latest projects and work experience."
+>
+  <section class="coming-soon flex-layout column gap gap-lg justify-center">
+    <h2>Coming Soon...</h2>
+    <p>
+      This page is currently work in progress! Until then, check out my
+      portfolios on:
+    </p>
+
+    <ul class="grid-layout two-cols gap">
+      <li>
+        <a
+          class="social-link"
+          href="https://www.behance.net/AhmedAlshair"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Behance"
+        >
+          <BehanceIcon />
+          <span>Behance</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="social-link"
+          href="https://dribbble.com/AhmedAlshair"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Dribbble"
+        >
+          <DribbbleIcon />
+          <span>Dribbble</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="social-link"
+          href="https://youtube.com/playlist?list=PL0IMwc8ci4wU288dToUAPFYN19ucJ_Xkx&si=H4NODJGT_wrMu1Fp"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube"
+        >
+          <YoutubeIcon />
+          <span>YouTube - UX/UI</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="social-link"
+          href="https://www.youtube.com/playlist?list=PL0IMwc8ci4wVxy4bl74Kt3BuoX5HJmfr-"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube"
+        >
+          <YoutubeIcon />
+          <span>YouTube - Animation</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .coming-soon {
+    min-height: 80lvh;
+
+    h2 {
+      color: var(--text-secondary);
+    }
+  }
+
+  .social-link {
+    height: 100%;
+    padding: var(--space-md);
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    font-size: var(--font-size-h5);
+    border: var(--stroke-width-thin) solid var(--border-color);
+
+    svg {
+      width: 1em;
+      height: 1em;
+      aspect-ratio: 1;
+      fill: currentColor;
+    }
+  }
+</style>

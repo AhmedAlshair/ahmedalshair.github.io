@@ -1,37 +1,300 @@
 ---
-import MainLayout from '@layouts/MainLayout.astro';
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Icon from "@/components/Icon.svelte";
+import Link from "@/components/links/Link.astro";
+// import FeaturedWorksSection from '@/components/page-sections/index-page/FeaturedWorksSection.astro';
+// import FeaturedWork from '@/components/page-sections/utils/FeaturedWork.astro';
+// import CometScreenshot from '@assets/works/comet/comet-screenshot-participant.png';
+import ProfessionalTimeline from "@/components/page-sections/index-page/ProfessionalTimeline.svelte";
+import CTA from "@/components/page-sections/CTA.astro";
 ---
 
-<style>
-  main {
-    text-align: center;
-    position: relative;
-    margin: 0 auto;
-    padding: var(--space-md);
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    width: 40%;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-md);
-    background-color: var(--surface-0);
-  }
-</style>
-
-<MainLayout
+<BaseLayout
   title="Ahmed Alshair - Product Designer & Frontend Developer"
   description="I'm not just a product strategist, I'm a hands-on builder. With 10+ years combining UX leadership with technical execution, I drive products from concept to code."
 >
-  <main>
-    <h1>Ahmed Alshair</h1>
-    <p class="subtitle">Product Designer & Frontend Developer</p>
-    <nav class="wrapper-flex gap">
-      <a href="https://www.linkedin.com/in/ahmedalshair" target="_blank"
-        >LinkedIn</a
-      >
-      <a href="https://www.behance.net/AhmedAlshair" target="_blank">Behance</a>
-      <a href="https://dribbble.com/AhmedAlshair" target="_blank">Dribbble</a>
-    </nav>
-  </main>
-</MainLayout>
+  <section id="hero" class="hero flex-layout column justify-center gap gap-lg">
+    <div class="hero-title">
+      <h2 class="title-1">Design-driven Problem Solving</h2>
+      <h2 class="title-2">Hands-on Code Level Craft</h2>
+      <span class="slash mask-before"></span>
+    </div>
+
+    <p class="subtitle">
+      10+ years leading product, UX/UI, and engineering efforts to turn
+      real-world problems into simple, impactful solutions. Currently leading at
+      <a
+        href="https://www.cometapp.net"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="emphasized">COMET</a
+      >.
+    </p>
+  </section>
+
+  <section
+    id="expertise"
+    class="expertise grid-layout horizontal three-cols gap gap-lg align-stretch"
+  >
+    <div class="exp product flex-layout column gap">
+      <div class="exp-title wrapper flex-layout gap align-center justify-start">
+        <Icon icon="category" className="exp-icon" />
+        <h4>Product Leadership</h4>
+      </div>
+      <p>
+        Defining vision, mapping business goals to technical scoped tasks, and
+        aligning cross-functional teams to deliver results.
+      </p>
+    </div>
+
+    <div class="exp ux flex-layout column gap">
+      <div class="exp-title wrapper flex-layout gap align-center justify-start">
+        <Icon icon="design_services" className="exp-icon" />
+        <h4>User Experience</h4>
+      </div>
+      <p>
+        Solving complex business problems through research-driven UIs,
+        prototyping, user testing and design systems.
+      </p>
+    </div>
+
+    <div class="exp frontend flex-layout column gap">
+      <div class="exp-title wrapper flex-layout gap align-center justify-start">
+        <Icon icon="code_blocks" className="exp-icon" />
+        <h4>Front-end Craft</h4>
+      </div>
+      <p>
+        Building performant web apps and services using modern frameworks like <span
+          class="meta-label">Astro</span
+        >, <span class="meta-label">Svelte</span> and <span class="meta-label"
+          >React</span
+        > among others.
+      </p>
+    </div>
+  </section>
+
+  <!-- <FeaturedWorksSection>
+    <FeaturedWork
+      title="COMET: Standalone to SaaS Evolution"
+      description="Led the 5-year strategic evolution of a complex simulation engine into a scalable SaaS product."
+      image={CometScreenshot}
+      imageAlt="Comet Screenshot"
+      linkUrl="/works/comet"
+      linkText="Read the Case Study"
+    />
+
+    <FeaturedWork
+      title="High-Impact Experiences for Pharma Leaders"
+      description="Led the 5-year strategic evolution of a complex simulation engine into a scalable SaaS product."
+      image={CometScreenshot}
+      imageAlt="Comet Screenshot"
+      linkUrl="/works/comet"
+      linkText="Read the Case Study"
+      reverse
+    />
+  </FeaturedWorksSection> -->
+
+  <ProfessionalTimeline client:load concise={true} id="career-timeline" />
+  <div class="timeline-learn-more">
+    <Link variant="secondary" href="/about" text="Learn more about me" />
+  </div>
+
+  <CTA />
+</BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 80lvh;
+    padding-block-start: 15vh;
+    padding-block-end: 15vh;
+    width: 100%;
+    gap: var(--space-md);
+
+    .hero-title {
+      position: relative;
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      overflow: hidden;
+      min-height: min-content;
+
+      > h2 {
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin: 0;
+        width: fit-content;
+        height: 100%;
+        padding: 0 clamp(3.5rem, 4.5vw, 5.5rem);
+        visibility: hidden;
+        animation-fill-mode: both;
+        will-change: transform, visibility;
+
+        display: flex;
+        align-items: center;
+
+        &.title-1 {
+          animation: slideInLeft var(--cycle) ease-in-out 0s infinite;
+        }
+
+        &.title-2 {
+          animation: slideInLeft var(--cycle) ease-in-out
+            calc(var(--stagger) * -1) infinite;
+        }
+      }
+
+      > .slash {
+        width: clamp(2rem, 3vw, 3.5rem);
+        height: clamp(6rem, 7vw, 8rem);
+        animation: slash-in 0.3s ease 0.3s backwards;
+        z-index: 1;
+      }
+    }
+
+    .subtitle {
+      text-wrap: balance;
+      hyphens: auto;
+    }
+
+    .actions {
+      padding: var(--space-md) 0;
+    }
+  }
+
+  .expertise {
+    min-height: 40lvh;
+    padding-bottom: 15vh;
+
+    @media (max-width: 600px) {
+      flex-wrap: wrap;
+    }
+
+    .exp {
+      padding: var(--space-md) var(--space-md) var(--space-lg);
+      background-color: var(--surface-1);
+    }
+
+    .exp-title {
+      @media (max-width: 768px) {
+        flex-wrap: wrap;
+      }
+
+      h4 {
+        margin: 0;
+      }
+
+      .exp-icon {
+        align-self: start;
+        padding: var(--space-xs);
+        background-color: var(--surface-0);
+        aspect-ratio: 1;
+        color: var(--accent);
+        font-size: var(--icon-lg);
+      }
+    }
+
+    p {
+      flex-grow: 1;
+      color: var(--text-muted);
+    }
+  }
+
+  @keyframes slash-in {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+
+  .timeline-learn-more {
+    min-height: 15lvh;
+  }
+</style>
+
+<script>
+  // Animation configuration (seconds)
+  const animationConfig = {
+    preDelay: 0.5, // time before title enters
+    enterDuration: 0.4, // enter animation duration
+    holdDuration: 5, // title stays visible
+    exitDuration: 0.4, // exit animation duration
+    postDelay: 0.2, // off-screen time after exit until next cycle
+  };
+
+  const activeDuration =
+    animationConfig.preDelay +
+    animationConfig.enterDuration +
+    animationConfig.holdDuration +
+    animationConfig.exitDuration;
+  const totalDuration = activeDuration * 2 + animationConfig.postDelay;
+
+  function generateDynamicKeyframes() {
+    const heroTitle = document.querySelector(".hero-title") as HTMLElement;
+    if (!heroTitle) return;
+
+    // Convert durations to percentages of total cycle
+    const preDelayPct = Math.round(
+      ((animationConfig.preDelay + animationConfig.postDelay) / totalDuration) *
+        100,
+    );
+    const enterEndPct = Math.round(
+      (animationConfig.enterDuration / totalDuration) * 100 + preDelayPct,
+    );
+    const holdEndPct = Math.round(
+      ((animationConfig.preDelay +
+        animationConfig.enterDuration +
+        animationConfig.holdDuration) /
+        totalDuration) *
+        100,
+    );
+    const exitEndPct = Math.round((activeDuration / totalDuration) * 100);
+
+    const keyframesCSS = `
+      @keyframes slideInLeft {
+        0% {
+          transform: translateX(-80%);
+          visibility: hidden;
+        }
+        ${preDelayPct}% {
+            transform: translateX(-80%);
+            visibility: hidden;
+        }
+        ${enterEndPct}% {
+          transform: translateX(0);
+          visibility: visible;
+        }
+        ${holdEndPct}% {
+          transform: translateX(0);
+          visibility: visible;
+        }
+        ${exitEndPct}% {
+          transform: translateX(-100%);
+          visibility: hidden;
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+    `;
+
+    let styleTag = document.getElementById("dynamic-keyframes");
+    if (!styleTag) {
+      styleTag = document.createElement("style");
+      styleTag.id = "dynamic-keyframes";
+      document.head.appendChild(styleTag);
+    }
+    styleTag.textContent = keyframesCSS;
+
+    // Apply animation durations to elements and compute stagger so the second
+    // title enters after the first has completed its exit (no overlap).
+    heroTitle.style.setProperty("--cycle", `${totalDuration}s`);
+    heroTitle.style.setProperty("--stagger", `${activeDuration}s`);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", generateDynamicKeyframes);
+  } else {
+    generateDynamicKeyframes();
+  }
+</script>
