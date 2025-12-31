@@ -2,7 +2,7 @@
 :root {
   /* --- Core Brand Colors --- */
   --brand-onyx: hsl(228, 10%, 10%);
-  --brand-navy: hsl(218, 55%, 20%);
+  --brand-navy: rgb(23, 44, 79);
   --brand-accent: hsl(211, 80%, 30%);
   --brand-silver: hsl(220, 50%, 95%);
 
