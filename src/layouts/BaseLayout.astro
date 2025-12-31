@@ -1,7 +1,12 @@
 ---
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
-import { ICONS } from "@/utils/Constants.astro";
+import {
+  ICONS,
+  JobTitle,
+  MetaDescription,
+  SitePublicUrl,
+} from "@/utils/Constants.astro";
 import "@styles/global.css";
 
 interface Props {
@@ -15,6 +20,37 @@ let sortedIcons = ICONS.sort().join(",");
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL("/assets/og-image.jpg", Astro.site);
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Ahmed Alshair",
+  jobTitle: JobTitle,
+  url: SitePublicUrl,
+  sameAs: [
+    "https://linkedin.com/in/ahmedalshair",
+    "https://behance.net/AhmedAlshair",
+    "https://dribbble.com/AhmedAlshair",
+    "https://github.com/ahmedalshair",
+    "https://twitter.com/ahmedalshair",
+  ],
+  description: MetaDescription,
+  knowsAbout: [
+    "Product Strategy",
+    "User Experience Design",
+    "User Interface Design",
+    "Frontend Development",
+    "React",
+    "Astro",
+    "Svelte",
+    "Typescript",
+    "Javascript",
+    "HTML",
+    "CSS",
+  ],
+  knowsLanguage: ["en", "ar"],
+  image: `${SitePublicUrl}/assets/ahmed-alshair-photo.jpg`,
+};
 ---
 
 <html lang="en">
@@ -25,7 +61,11 @@ const ogImageURL = new URL("/assets/og-image.jpg", Astro.site);
     <link rel="canonical" href={canonicalURL} />
 
     <title>{title}</title>
-    {description && <meta name="description" content={description} />}
+    {
+      description && (
+        <meta name="description" content={description || MetaDescription} />
+      )
+    }
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -33,10 +73,7 @@ const ogImageURL = new URL("/assets/og-image.jpg", Astro.site);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageURL} />
-    <meta
-      property="og:image:alt"
-      content="Ahmed Alshair | Senior Product Lead, UX Expert & Front-end Developer"
-    />
+    <meta property="og:image:alt" content=`Ahmed Alshair | ${JobTitle}` />
 
     <!-- Twitter / X -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -44,10 +81,7 @@ const ogImageURL = new URL("/assets/og-image.jpg", Astro.site);
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImageURL} />
-    <meta
-      property="twitter:image:alt"
-      content="Preview of Ahmed Alshair's Professional Portfolio"
-    />
+    <meta property="twitter:image:alt" content=`Ahmed Alshair | ${JobTitle}` />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#172c4f" />
@@ -91,3 +125,5 @@ const ogImageURL = new URL("/assets/og-image.jpg", Astro.site);
     min-height: 100%;
   }
 </style>
+
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />

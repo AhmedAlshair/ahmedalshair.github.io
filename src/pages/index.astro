@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { JobTitle, MetaDescription } from "@/utils/Constants.astro";
 import Icon from "@/components/Icon.svelte";
 import Link from "@/components/links/Link.astro";
 // import FeaturedWorksSection from '@/components/page-sections/index-page/FeaturedWorksSection.astro';
@@ -9,10 +10,7 @@ import ProfessionalTimeline from "@/components/page-sections/index-page/Professi
 import CTA from "@/components/page-sections/CTA.astro";
 ---
 
-<BaseLayout
-  title="Ahmed Alshair - Product Designer & Frontend Developer"
-  description="Senior Product Lead, UX Expert & Front-end Developer. With 10+ years combining UX leadership with technical execution, I drive products from concept to code."
->
+<BaseLayout title=`Ahmed Alshair | ${JobTitle}` description={MetaDescription}>
   <section id="hero" class="hero flex-layout column justify-center gap gap-lg">
     <div class="hero-title">
       <h2 class="title-1">Design-driven Problem Solving</h2>
@@ -106,8 +104,8 @@ import CTA from "@/components/page-sections/CTA.astro";
   .hero {
     position: relative;
     min-height: 80lvh;
-    padding-block-start: max(10vh, var(--space-xl));
-    padding-block-end: max(10vh, var(--space-xl));
+    padding-block-start: max(12vh, var(--space-xl));
+    padding-block-end: max(12vh, var(--space-xl));
     width: 100%;
     gap: var(--space-md);
 
