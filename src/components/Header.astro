@@ -17,7 +17,7 @@ if (currentPage.startsWith("/")) {
   </a>
 
   <Nav
-    client:only="svelte"
+    client:load
     className="main-nav"
     links={navLinks}
     currentPage={currentPage}
@@ -82,9 +82,9 @@ if (currentPage.startsWith("/")) {
   .toggle-wrapper {
     min-height: var(--input-height-sm);
     min-width: calc(var(--input-height-sm) * 2);
+    border-radius: var(--radius-pill);
 
     &:empty {
-      border-radius: var(--radius-pill);
       animation: skeleton-loading 1s ease-in-out infinite alternate;
     }
   }

@@ -1,6 +1,6 @@
 <script lang="ts">
   import Icon from "@/components/Icon.svelte";
-  import { toTitleCase } from "@/utils/Helpers.svelte";
+  import { normalizeUrlPath, toTitleCase } from "@/utils/Helpers.svelte";
 
   interface Props {
     links: string[];
@@ -9,8 +9,9 @@
   }
 
   let { links, currentPage, className }: Props = $props();
-
   let menuOpen = $state(false);
+
+  let activePage = $derived(normalizeUrlPath(currentPage));
 
   const toggleMenu = () => {
     menuOpen = !menuOpen;
@@ -32,12 +33,11 @@
     aria-expanded={menuOpen}
   >
     {#each links as link, index}
+      {@const normalizedPath = normalizeUrlPath(link)}
       <a
         id={`nav-link-${index}`}
-        href={currentPage === link.toLowerCase()
-          ? undefined
-          : `/${link.toLowerCase()}`}
-        class={["nav-link", currentPage === link.toLowerCase() && "active"]}
+        href={activePage === normalizedPath ? undefined : `/${normalizedPath}`}
+        class={["nav-link", activePage === normalizedPath && "active"]}
       >
         {toTitleCase(link)}
       </a>
