@@ -1,9 +1,9 @@
 ---
-import CTA from '@/components/page-sections/CTA.astro';
-import ProfessionalTimeline from '@/components/page-sections/index-page/ProfessionalTimeline.svelte';
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import MyPhoto from '@assets/ahmed-halftone.webp';
-import Image from 'astro/components/Image.astro';
+import CTA from "@/components/page-sections/CTA.astro";
+import ProfessionalTimeline from "@/components/page-sections/index-page/ProfessionalTimeline.svelte";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import MyPhoto from "@assets/ahmed-halftone.webp";
+import Image from "astro/components/Image.astro";
 ---
 
 <BaseLayout
@@ -209,7 +209,7 @@ import Image from 'astro/components/Image.astro';
       max-height: 100%;
       object-fit: contain;
 
-      [data-theme='dark'] & {
+      [data-theme="dark"] & {
         filter: brightness(0.85) saturate(0.9) contrast(1.1);
       }
     }
