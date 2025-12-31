@@ -485,19 +485,20 @@ p {
 /* Containers */
 
 .container {
+  --container-padding: var(--space-lg);
   width: 100%;
   max-width: var(--max-width);
   margin-inline: auto;
 
   &.padded {
-    padding-inline: var(--space-lg);
+    padding-inline: var(--container-padding);
 
     @media (min-width: 768px) {
-      padding-inline: var(--space-xl);
+      --container-padding: var(--space-xl);
     }
 
     @media (min-width: 1280px) {
-      padding-inline: var(--space-2xl);
+      --container-padding: var(--space-2xl);
     }
   }
 }

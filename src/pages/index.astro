@@ -1,12 +1,12 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import Icon from "@/components/Icon.svelte";
-import Link from "@/components/links/Link.astro";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Icon from '@/components/Icon.svelte';
+import Link from '@/components/links/Link.astro';
 // import FeaturedWorksSection from '@/components/page-sections/index-page/FeaturedWorksSection.astro';
 // import FeaturedWork from '@/components/page-sections/utils/FeaturedWork.astro';
 // import CometScreenshot from '@assets/works/comet/comet-screenshot-participant.png';
-import ProfessionalTimeline from "@/components/page-sections/index-page/ProfessionalTimeline.svelte";
-import CTA from "@/components/page-sections/CTA.astro";
+import ProfessionalTimeline from '@/components/page-sections/index-page/ProfessionalTimeline.svelte';
+import CTA from '@/components/page-sections/CTA.astro';
 ---
 
 <BaseLayout
@@ -106,18 +106,22 @@ import CTA from "@/components/page-sections/CTA.astro";
   .hero {
     position: relative;
     min-height: 80lvh;
-    padding-block-start: 15vh;
-    padding-block-end: 15vh;
+    padding-block-start: max(10vh, var(--space-xl));
+    padding-block-end: max(10vh, var(--space-xl));
     width: 100%;
     gap: var(--space-md);
+
+    @media (orientation: portrait) {
+      min-height: fit-content;
+    }
 
     .hero-title {
       position: relative;
       display: flex;
       align-items: center;
       flex-wrap: nowrap;
+      min-height: fit-content;
       overflow: hidden;
-      min-height: min-content;
 
       > h2 {
         position: absolute;
@@ -134,6 +138,18 @@ import CTA from "@/components/page-sections/CTA.astro";
         display: flex;
         align-items: center;
 
+        @media (max-width: 600px) {
+          font-size: var(--font-size-h2);
+        }
+
+        @media (max-width: 400px) {
+          font-size: var(--font-size-h3);
+        }
+
+        @media (max-width: 300px) {
+          font-size: var(--font-size-h4);
+        }
+
         &.title-1 {
           animation: slideInLeft var(--cycle) ease-in-out 0s infinite;
         }
@@ -145,8 +161,8 @@ import CTA from "@/components/page-sections/CTA.astro";
       }
 
       > .slash {
-        width: clamp(2rem, 3vw, 3.5rem);
-        height: clamp(6rem, 7vw, 8rem);
+        width: clamp(2.5rem, 3vw, 3.5rem);
+        height: clamp(6.5rem, 7vw, 8rem);
         animation: slash-in 0.3s ease 0.3s backwards;
         z-index: 1;
       }
@@ -164,7 +180,11 @@ import CTA from "@/components/page-sections/CTA.astro";
 
   .expertise {
     min-height: 40lvh;
-    padding-bottom: 15vh;
+    padding-bottom: max(10vh, var(--space-xl));
+
+    @media (orientation: portrait) {
+      min-height: fit-content;
+    }
 
     @media (max-width: 600px) {
       flex-wrap: wrap;
@@ -209,6 +229,11 @@ import CTA from "@/components/page-sections/CTA.astro";
 
   .timeline-learn-more {
     min-height: 15lvh;
+    padding-block-end: max(10vh, var(--space-xl));
+
+    @media (orientation: portrait) {
+      min-height: fit-content;
+    }
   }
 </style>
 
@@ -230,7 +255,7 @@ import CTA from "@/components/page-sections/CTA.astro";
   const totalDuration = activeDuration * 2 + animationConfig.postDelay;
 
   function generateDynamicKeyframes() {
-    const heroTitle = document.querySelector(".hero-title") as HTMLElement;
+    const heroTitle = document.querySelector('.hero-title') as HTMLElement;
     if (!heroTitle) return;
 
     // Convert durations to percentages of total cycle
@@ -278,22 +303,22 @@ import CTA from "@/components/page-sections/CTA.astro";
       }
     `;
 
-    let styleTag = document.getElementById("dynamic-keyframes");
+    let styleTag = document.getElementById('dynamic-keyframes');
     if (!styleTag) {
-      styleTag = document.createElement("style");
-      styleTag.id = "dynamic-keyframes";
+      styleTag = document.createElement('style');
+      styleTag.id = 'dynamic-keyframes';
       document.head.appendChild(styleTag);
     }
     styleTag.textContent = keyframesCSS;
 
     // Apply animation durations to elements and compute stagger so the second
     // title enters after the first has completed its exit (no overlap).
-    heroTitle.style.setProperty("--cycle", `${totalDuration}s`);
-    heroTitle.style.setProperty("--stagger", `${activeDuration}s`);
+    heroTitle.style.setProperty('--cycle', `${totalDuration}s`);
+    heroTitle.style.setProperty('--stagger', `${activeDuration}s`);
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", generateDynamicKeyframes);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', generateDynamicKeyframes);
   } else {
     generateDynamicKeyframes();
   }

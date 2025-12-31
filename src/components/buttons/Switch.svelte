@@ -10,8 +10,7 @@
     className?: string;
   }
 
-  let { onclick, checked, icon, loading, id, className, ...props }: Props =
-    $props();
+  let { onclick, checked, icon, loading, id, className }: Props = $props();
 </script>
 
 <button
@@ -28,7 +27,6 @@
     onclick && onclick();
   }}
   aria-label="Toggle theme"
-  {...props}
 >
   {#if icon}
     <Icon {icon} className="icon" />

@@ -1,8 +1,13 @@
 ---
-import DarkThemeToggle from "@/components/DarkThemeToggle.svelte";
-import Nav from "@/components/links/Nav.svelte";
+import DarkThemeToggle from '@/components/DarkThemeToggle.svelte';
+import Nav from '@/components/links/Nav.svelte';
 
+let navLinks = ['Works', 'About', 'Contact'];
 let currentPage = Astro.url.pathname;
+
+if (currentPage.startsWith('/')) {
+  currentPage = currentPage.slice(1);
+}
 ---
 
 <header id="main-header" class="full-bleed flex-layout align-center gap">
@@ -12,14 +17,14 @@ let currentPage = Astro.url.pathname;
   </a>
 
   <Nav
-    client:load
+    client:only="svelte"
     className="main-nav"
-    links={["Works", "About", "Contact"]}
-    currentPage={currentPage?.slice(1)}
+    links={navLinks}
+    currentPage={currentPage}
   />
 
   <div class="wrapper toggle-wrapper">
-    <DarkThemeToggle client:idle />
+    <DarkThemeToggle client:load />
   </div>
 </header>
 
@@ -78,14 +83,14 @@ let currentPage = Astro.url.pathname;
 <script>
   let lastScrollY = window.scrollY;
   let ticking = false;
-  const header = document.getElementById("main-header");
+  const header = document.getElementById('main-header');
 
   if (header) {
     const delta = header.clientHeight / 2; // Minimum scroll distance before hiding
     const hideOffset = header.clientHeight; // When to hide
 
     window.addEventListener(
-      "scroll",
+      'scroll',
       () => {
         if (!ticking) {
           window.requestAnimationFrame(() => {
@@ -97,11 +102,11 @@ let currentPage = Astro.url.pathname;
             }
 
             if (currentScrollY > lastScrollY && currentScrollY > hideOffset) {
-              header.classList.add("header-hidden");
+              header.classList.add('header-hidden');
             }
             // Show on Scroll Up
             else {
-              header.classList.remove("header-hidden");
+              header.classList.remove('header-hidden');
             }
 
             lastScrollY = currentScrollY;

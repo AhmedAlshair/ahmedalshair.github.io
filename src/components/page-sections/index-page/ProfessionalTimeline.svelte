@@ -179,8 +179,8 @@
 
 <style>
   .professional-timeline {
-    padding: var(--space-2xl) 0 max(5lvh, var(--space-xl));
-    gap: 8lvh;
+    padding: var(--space-2xl) 0 max(5lvh, var(--container-padding));
+    gap: min(8lvh, var(--space-2xl));
   }
 
   .timeline {
@@ -192,8 +192,8 @@
       mask-image: linear-gradient(
         to right,
         transparent 0,
-        black var(--space-xl),
-        black calc(100% - var(--space-xl)),
+        black var(--container-padding),
+        black calc(100% - var(--container-padding)),
         transparent
       );
       padding-inline-start: calc((100vw - 100%) / 2);
@@ -237,6 +237,9 @@
         flex: 1 1 0;
         display: block;
         background-color: var(--surface-3);
+        transition:
+          background-color var(--transition-default),
+          color var(--transition-default);
       }
 
       .vertical & {
@@ -266,6 +269,9 @@
       background-color: var(--surface-inverse);
       color: var(--surface-inverse);
       border: var(--space-2xs) solid var(--surface-0);
+      transition:
+        background-color var(--transition-default),
+        color var(--transition-default);
 
       .current & {
         background-color: var(--accent);
@@ -324,6 +330,10 @@
       justify-self: stretch;
       background-color: var(--surface-1);
       padding: var(--space-md);
+      color: var(--text-muted);
+      transition:
+        background-color var(--transition-default),
+        color var(--transition-default);
     }
 
     details {
@@ -395,6 +405,7 @@
       li {
         list-style-type: square;
         list-style-position: inside;
+        color: var(--text-muted);
       }
     }
   }
