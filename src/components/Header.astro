@@ -24,7 +24,7 @@ if (currentPage.startsWith("/")) {
   />
 
   <div class="wrapper toggle-wrapper">
-    <DarkThemeToggle client:load />
+    <DarkThemeToggle client:only="svelte" />
   </div>
 </header>
 
@@ -76,6 +76,16 @@ if (currentPage.startsWith("/")) {
       .branded-title:hover & {
         color: var(--accent);
       }
+    }
+  }
+
+  .toggle-wrapper {
+    min-height: var(--input-height-sm);
+    min-width: calc(var(--input-height-sm) * 2);
+
+    &:empty {
+      border-radius: var(--radius-pill);
+      animation: skeleton-loading 1s ease-in-out infinite alternate;
     }
   }
 </style>

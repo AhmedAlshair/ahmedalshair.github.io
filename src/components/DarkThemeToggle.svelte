@@ -7,17 +7,24 @@
     theme ? (theme === "dark" ? "dark_mode" : "light_mode") : null,
   );
 
-  $inspect("theme", theme);
-
   onMount(() => {
     try {
-      const saved = localStorage.getItem("theme");
-      if (saved && (saved === "light" || saved === "dark")) {
-        theme = saved;
-        document.documentElement.setAttribute("data-theme", theme);
+      let saved = localStorage.getItem("theme");
+
+      if (!saved || (saved !== "light" && saved !== "dark")) {
+        saved = document.documentElement.getAttribute("data-theme");
       }
+
+      if (!saved) {
+        saved = window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      }
+
+      theme = saved;
+      document.documentElement.setAttribute("data-theme", theme);
     } catch (e) {
-      // ignore restricted environments
+      theme = "light"; // Fallback
     }
   });
 
@@ -27,7 +34,7 @@
       localStorage.setItem("theme", theme);
       document.documentElement.setAttribute("data-theme", theme);
     } catch (e) {}
-    console.log("toggleTheme ->", theme);
+    $inspect("theme", theme);
   }
 </script>
 
