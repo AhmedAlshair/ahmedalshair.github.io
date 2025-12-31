@@ -1,23 +1,23 @@
 <script lang="ts">
-  import type { HTMLButtonAttributes } from "svelte/elements";
-  import type { Snippet } from "svelte";
-  import Icon from "@/components/Icon.svelte";
-  import Loader from "@/components/Loader.svelte";
+  import type { HTMLButtonAttributes } from 'svelte/elements';
+  import type { Snippet } from 'svelte';
+  import Icon from '@/components/Icon.svelte';
+  import Loader from '@/components/Loader.svelte';
 
   interface Props {
-    variant?: "primary" | "secondary";
+    variant?: 'primary' | 'secondary';
     onclick?: () => void;
     icon?: string;
     loading?: boolean;
     disabled?: boolean;
-    type?: HTMLButtonAttributes["type"];
+    type?: HTMLButtonAttributes['type'];
     id?: string;
     className?: string;
     children: Snippet;
   }
 
   let {
-    variant = "primary",
+    variant = 'primary',
     onclick,
     icon,
     loading,
@@ -31,7 +31,7 @@
 
 <button
   {id}
-  class={["button", variant, disabled, loading && "disabled", className]}
+  class={['button', variant, disabled, loading && 'disabled', className]}
   {onclick}
   {type}
   {disabled}

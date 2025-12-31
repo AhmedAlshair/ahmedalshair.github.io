@@ -1,12 +1,13 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import BehanceIcon from "@assets/icons/behance.svg";
-import DribbbleIcon from "@assets/icons/dribbble.svg";
-import YoutubeIcon from "@assets/icons/youtube.svg";
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SiteName } from '@/utils/Constants.astro';
+import BehanceIcon from '@assets/icons/behance.svg';
+import DribbbleIcon from '@assets/icons/dribbble.svg';
+import YoutubeIcon from '@assets/icons/youtube.svg';
 ---
 
 <BaseLayout
-  title="Works | Ahmed Alshair"
+  title=`Works | ${SiteName}`
   description="My latest projects and work experience."
 >
   <section class="coming-soon flex-layout column gap gap-lg justify-center">

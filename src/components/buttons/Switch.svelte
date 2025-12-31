@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Icon from "@components/Icon.svelte";
+  import Icon from '@components/Icon.svelte';
 
   interface Props {
     onclick?: () => void;
@@ -16,7 +16,7 @@
 <button
   {id}
   class={[
-    "switch-button theme-toggle",
+    'switch-button theme-toggle',
     { checked: checked },
     { loading: loading },
     { skeleton: loading },

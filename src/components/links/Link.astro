@@ -1,10 +1,10 @@
 ---
-import Icon from "@/components/Icon.svelte";
+import Icon from '@/components/Icon.svelte';
 
 interface Props {
   href: string;
   text: string;
-  variant?: "primary" | "secondary";
+  variant?: 'primary' | 'secondary';
   icon?: string;
   class?: string;
 }
@@ -12,13 +12,13 @@ interface Props {
 let {
   href,
   text,
-  variant = "primary",
-  icon = "keyboard_arrow_right",
+  variant = 'primary',
+  icon = 'keyboard_arrow_right',
   class: className,
 } = Astro.props;
 ---
 
-<a href={href} class:list={["link", variant, className]}>
+<a href={href} class:list={['link', variant, className]}>
   <span class="link-text">{text}</span>
   {icon && <Icon icon={icon} className="icon link-icon" />}
 </a>

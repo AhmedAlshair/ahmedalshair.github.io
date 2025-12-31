@@ -1,13 +1,16 @@
 ---
-import Footer from "@/components/Footer.astro";
-import Header from "@/components/Header.astro";
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
 import {
   ICONS,
   JobTitle,
   MetaDescription,
+  SiteName,
   SitePublicUrl,
-} from "@/utils/Constants.astro";
-import "@styles/global.css";
+  SocialLinks,
+  type SocialLink,
+} from '@/utils/Constants.astro';
+import '@styles/global.css';
 
 interface Props {
   title: string;
@@ -15,40 +18,37 @@ interface Props {
   class?: string;
 }
 
-const { title = "Ahmed Alshair", description, class: className } = Astro.props;
-let sortedIcons = ICONS.sort().join(",");
+const { title = SiteName, description, class: className } = Astro.props;
+let sortedIcons = ICONS.sort().join(',');
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = new URL("/assets/og-image.jpg", Astro.site);
+const canonicalURL = SitePublicUrl;
+const ogImageURL = new URL('/assets/og-image.jpg', Astro.site);
 
 const personSchema = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Ahmed Alshair",
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SiteName,
   jobTitle: JobTitle,
   url: SitePublicUrl,
   sameAs: [
-    "https://linkedin.com/in/ahmedalshair",
-    "https://behance.net/AhmedAlshair",
-    "https://dribbble.com/AhmedAlshair",
-    "https://github.com/ahmedalshair",
-    "https://twitter.com/ahmedalshair",
+    ...Object.values(SocialLinks).map((link: SocialLink) => link.url),
+    'https://twitter.com/ahmedalshair',
   ],
   description: MetaDescription,
   knowsAbout: [
-    "Product Strategy",
-    "User Experience Design",
-    "User Interface Design",
-    "Frontend Development",
-    "React",
-    "Astro",
-    "Svelte",
-    "Typescript",
-    "Javascript",
-    "HTML",
-    "CSS",
+    'Product Strategy',
+    'User Experience Design',
+    'User Interface Design',
+    'Frontend Development',
+    'React',
+    'Astro',
+    'Svelte',
+    'Typescript',
+    'Javascript',
+    'HTML',
+    'CSS',
   ],
-  knowsLanguage: ["en", "ar"],
+  knowsLanguage: ['en', 'ar'],
   image: `${SitePublicUrl}/assets/ahmed-alshair-photo.jpg`,
 };
 ---
@@ -59,6 +59,7 @@ const personSchema = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
 
     <title>{title}</title>
     {
@@ -73,7 +74,7 @@ const personSchema = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageURL} />
-    <meta property="og:image:alt" content=`Ahmed Alshair | ${JobTitle}` />
+    <meta property="og:image:alt" content=`${SiteName} | ${JobTitle}` />
 
     <!-- Twitter / X -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -81,7 +82,7 @@ const personSchema = {
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImageURL} />
-    <meta property="twitter:image:alt" content=`Ahmed Alshair | ${JobTitle}` />
+    <meta property="twitter:image:alt" content=`${SiteName} | ${JobTitle}` />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#172c4f" />
@@ -96,11 +97,11 @@ const personSchema = {
     />
     <script is:inline>
       const theme =
-        localStorage.getItem("theme") ||
-        (window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light");
-      document.documentElement.setAttribute("data-theme", theme);
+        localStorage.getItem('theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
     </script>
   </head>
 
@@ -126,4 +127,8 @@ const personSchema = {
   }
 </style>
 
-<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+<script
+  is:inline
+  type="application/ld+json"
+  set:html={JSON.stringify(personSchema)}
+/>

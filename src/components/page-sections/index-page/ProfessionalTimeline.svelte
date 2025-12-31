@@ -1,81 +1,81 @@
 <script lang="ts">
-  import Icon from "@/components/Icon.svelte";
+  import Icon from '@/components/Icon.svelte';
 
   interface Props {
     concise?: boolean;
-    orientation?: "vertical" | "horizontal";
+    orientation?: 'vertical' | 'horizontal';
     id?: string;
     className?: string;
   }
 
-  let { concise, orientation = "horizontal", id, className }: Props = $props();
+  let { concise, orientation = 'horizontal', id, className }: Props = $props();
 
   const itemDetails = [
     {
-      item: "comet",
-      dateStart: "2022",
-      dateEnd: "Present",
-      title: "Product Lead",
-      company: "COMET",
-      link: "https://www.cometapp.net",
+      item: 'comet',
+      dateStart: '2022',
+      dateEnd: 'Present',
+      title: 'Product Lead',
+      company: 'COMET',
+      link: 'https://www.cometapp.net',
       conciseText:
-        "Leading the strategic transition of a complex simulation engine from an offline basic tool to a scalable SaaS platform. By identifying user-reported logistical challenges, I led the redesign that resulted in a 23x software efficiency boost.",
+        'Leading the strategic transition of a complex simulation engine from an offline basic tool to a scalable SaaS platform. By identifying user-reported logistical challenges, I led the redesign that resulted in a 23x software efficiency boost.',
       responsibilities: [
-        "Leading the redesign of COMET, boosting software efficiency by 23x and increasing Simulations deployment by 267% per workshop.",
-        "Defining product vision, strategy, and roadmap. Scoped and prioritized activities based on business and customer impact.",
-        "Collaborating & Driving the execution of product lifecycle and sprints.",
-        "Translating product strategy into requirements, wireframes, and functional prototypes that prioritize features and validate product designs.",
-        "Leading and executing end-to-end User Experience/Interface Design & Front-end development processes.",
-        "Building simple, elegant, data-driven, human-centric digital experiences and usable intuitive user interfaces, improving them based on user testing.",
+        'Leading the redesign of COMET, boosting software efficiency by 23x and increasing Simulations deployment by 267% per workshop.',
+        'Defining product vision, strategy, and roadmap. Scoped and prioritized activities based on business and customer impact.',
+        'Collaborating & Driving the execution of product lifecycle and sprints.',
+        'Translating product strategy into requirements, wireframes, and functional prototypes that prioritize features and validate product designs.',
+        'Leading and executing end-to-end User Experience/Interface Design & Front-end development processes.',
+        'Building simple, elegant, data-driven, human-centric digital experiences and usable intuitive user interfaces, improving them based on user testing.',
       ],
     },
     {
-      item: "enact",
-      dateStart: "2020",
-      dateEnd: "2022",
-      title: "Senior Product Designer",
-      company: "Energy Action Partners",
-      link: "https://www.enactpartners.org",
+      item: 'enact',
+      dateStart: '2020',
+      dateEnd: '2022',
+      title: 'Senior Product Designer',
+      company: 'Energy Action Partners',
+      link: 'https://www.enactpartners.org',
       conciseText:
-        "Oversaw the end-to-end development of community-focused digital products. I acted as the primary bridge between stakeholder vision and engineering execution, ensuring every design decision was rooted in user value and technical feasibility.",
+        'Oversaw the end-to-end development of community-focused digital products. I acted as the primary bridge between stakeholder vision and engineering execution, ensuring every design decision was rooted in user value and technical feasibility.',
       responsibilities: [
-        "Leading and executing end-to-end User Experience Design process.",
-        "Designing simple, elegant, data-driven, human-centric digital experiences and usable intuitive user interfaces, improve them based on user testing.",
-        "Communicating digital design solutions to developers and stakeholders.",
+        'Leading and executing end-to-end User Experience Design process.',
+        'Designing simple, elegant, data-driven, human-centric digital experiences and usable intuitive user interfaces, improve them based on user testing.',
+        'Communicating digital design solutions to developers and stakeholders.',
       ],
     },
     {
-      item: "tipping-point-1",
-      dateStart: "2015",
-      dateEnd: "2020",
-      title: "Senior UX/UI Designer",
-      company: "The Tipping Point",
-      link: "http://www.ttphcc.com",
+      item: 'tipping-point-1',
+      dateStart: '2015',
+      dateEnd: '2020',
+      title: 'Senior UX/UI Designer',
+      company: 'The Tipping Point',
+      link: 'http://www.ttphcc.com',
       conciseText:
-        "Delivered high-impact interactive experiences for global healthcare leaders including Pfizer, Merck, and Abbott. I managed the full design-to-code workflow for complex CLM applications, balancing strict pharmaceutical compliance with advanced animations and storytelling.",
+        'Delivered high-impact interactive experiences for global healthcare leaders including Pfizer, Merck, and Abbott. I managed the full design-to-code workflow for complex CLM applications, balancing strict pharmaceutical compliance with advanced animations and storytelling.',
       responsibilities: [
-        "Successfully designed and built 40+ interactive digital e-detailing CLM presentations, websites, and adaptive web applications.",
-        "Conducted user research and designed responsive wireframes and high-fidelity prototypes to achieve reliable effective user experiences.",
-        "Developed maintainable cross-platform solutions and improved them based on iterative usability testing, analytics, and user feedback.",
-        "Utilized web animations and intuitive meaningful interactions to deliver complex data as creative infographics and illustrations to users.",
-        "Veeva certified for CLM, Approved Emails, and Engage for 3 years.",
+        'Successfully designed and built 40+ interactive digital e-detailing CLM presentations, websites, and adaptive web applications.',
+        'Conducted user research and designed responsive wireframes and high-fidelity prototypes to achieve reliable effective user experiences.',
+        'Developed maintainable cross-platform solutions and improved them based on iterative usability testing, analytics, and user feedback.',
+        'Utilized web animations and intuitive meaningful interactions to deliver complex data as creative infographics and illustrations to users.',
+        'Veeva certified for CLM, Approved Emails, and Engage for 3 years.',
       ],
     },
 
     {
-      item: "tipping-point-2",
-      dateStart: "2013",
-      dateEnd: "2015",
-      title: "Web Designer & Digital Studio Liaison",
-      company: "The Tipping Point",
-      link: "http://www.ttphcc.com",
+      item: 'tipping-point-2',
+      dateStart: '2013',
+      dateEnd: '2015',
+      title: 'Web Designer & Digital Studio Liaison',
+      company: 'The Tipping Point',
+      link: 'http://www.ttphcc.com',
       conciseText:
-        "Designed, developed, and deployed digital products for CLM and healthcare industry. I collaborated with external agencies and Pharma leading clients for global projects.",
+        'Designed, developed, and deployed digital products for CLM and healthcare industry. I collaborated with external agencies and Pharma leading clients for global projects.',
       responsibilities: [
-        "Conducted user interviews, surveys, and usability testing sessions.",
-        "Conducted stakeholder discovery workshops, presented UX design concepts, and justified UX decisions that meet business goals.",
-        "Designed, developed, and deployed digital products for CLM.",
-        "Liaised with external agencies and Pharma leading clients for global projects.",
+        'Conducted user interviews, surveys, and usability testing sessions.',
+        'Conducted stakeholder discovery workshops, presented UX design concepts, and justified UX decisions that meet business goals.',
+        'Designed, developed, and deployed digital products for CLM.',
+        'Liaised with external agencies and Pharma leading clients for global projects.',
       ],
     },
   ];
@@ -96,9 +96,9 @@
 )}
   <li
     class={[
-      "timeline-item flex-layout gap",
-      item.dateEnd === "Present" && "current",
-      orientation === "horizontal" && "column",
+      'timeline-item flex-layout gap',
+      item.dateEnd === 'Present' && 'current',
+      orientation === 'horizontal' && 'column',
       orientation,
       className,
     ]}
@@ -131,10 +131,10 @@
         <details
           name={item.item}
           class="item-details"
-          open={item.item === "comet"}
+          open={item.item === 'comet'}
         >
           <summary
-            class={["flex-layout align-center", concise && "disabled"]}
+            class={['flex-layout align-center', concise && 'disabled']}
             tabindex={concise ? -1 : 0}
           >
             <span>{item.company}</span>
@@ -157,7 +157,7 @@
 <section
   {id}
   class={[
-    "professional-timeline flex-layout column justify-center",
+    'professional-timeline flex-layout column justify-center',
     orientation,
     className,
   ]}
@@ -166,9 +166,9 @@
 
   <ol
     class={[
-      "timeline flex-layout",
-      orientation === "horizontal" && "full-bleed",
-      orientation === "vertical" && "column",
+      'timeline flex-layout',
+      orientation === 'horizontal' && 'full-bleed',
+      orientation === 'vertical' && 'column',
     ]}
   >
     {#each itemDetails as item}
@@ -233,7 +233,7 @@
       }
 
       &::after {
-        content: "";
+        content: '';
         flex: 1 1 0;
         display: block;
         background-color: var(--surface-3);
@@ -278,7 +278,7 @@
         color: var(--accent);
 
         &::before {
-          content: "";
+          content: '';
           position: absolute;
           top: 0;
           left: 0;
@@ -390,7 +390,7 @@
         }
 
         &::marker {
-          content: "";
+          content: '';
         }
       }
     }

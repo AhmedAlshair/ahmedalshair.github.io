@@ -6,4 +6,4 @@ export const toTitleCase = (str: string): string => {
 };
 
 export const normalizeUrlPath = (path: string) =>
-  path.replace(/^\/|\/$/g, "").toLowerCase();
+  path.replace(/^\/|\/$/g, '').toLowerCase();

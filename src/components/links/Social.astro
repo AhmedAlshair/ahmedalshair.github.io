@@ -1,38 +1,26 @@
 ---
-import LinkedinIcon from "@assets/icons/linkedin.svg";
-import BehanceIcon from "@assets/icons/behance.svg";
-import DribbbleIcon from "@assets/icons/dribbble.svg";
-import Icon from "@/components/Icon.svelte";
+import Icon from '@/components/Icon.svelte';
+import { SocialLinks } from '@/utils/Constants.astro';
+
+const filteredLinks = Object.entries(SocialLinks).filter(([key]) =>
+  ['linkedin', 'behance', 'dribbble'].includes(key),
+);
 ---
 
 <nav class="social-links flex-layout gap">
-  <a
-    class="social-link"
-    href="https://www.linkedin.com/in/ahmedalshair"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="LinkedIn"
-  >
-    <LinkedinIcon />
-  </a>
-  <a
-    class="social-link"
-    href="https://www.behance.net/AhmedAlshair"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Behance"
-  >
-    <BehanceIcon />
-  </a>
-  <a
-    class="social-link"
-    href="https://dribbble.com/AhmedAlshair"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Dribbble"
-  >
-    <DribbbleIcon />
-  </a>
+  {
+    filteredLinks.map(([_, link]) => (
+      <a
+        class="social-link"
+        href={link.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={link.label}
+      >
+        {<link.icon />}
+      </a>
+    ))
+  }
   <a class="social-link" href="/contact" aria-label="More Links">
     <Icon icon="more_horiz" className="icon" />
   </a>

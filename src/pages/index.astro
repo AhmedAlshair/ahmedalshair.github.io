@@ -1,16 +1,16 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import { JobTitle, MetaDescription } from "@/utils/Constants.astro";
-import Icon from "@/components/Icon.svelte";
-import Link from "@/components/links/Link.astro";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { JobTitle, MetaDescription, SiteName } from '@/utils/Constants.astro';
+import Icon from '@/components/Icon.svelte';
+import Link from '@/components/links/Link.astro';
 // import FeaturedWorksSection from '@/components/page-sections/index-page/FeaturedWorksSection.astro';
 // import FeaturedWork from '@/components/page-sections/utils/FeaturedWork.astro';
 // import CometScreenshot from '@assets/works/comet/comet-screenshot-participant.png';
-import ProfessionalTimeline from "@/components/page-sections/index-page/ProfessionalTimeline.svelte";
-import CTA from "@/components/page-sections/CTA.astro";
+import ProfessionalTimeline from '@/components/page-sections/index-page/ProfessionalTimeline.svelte';
+import CTA from '@/components/page-sections/CTA.astro';
 ---
 
-<BaseLayout title=`Ahmed Alshair | ${JobTitle}` description={MetaDescription}>
+<BaseLayout title=`${SiteName} | ${JobTitle}` description={MetaDescription}>
   <section id="hero" class="hero flex-layout column justify-center gap gap-lg">
     <div class="hero-title">
       <h2 class="title-1">Design-driven Problem Solving</h2>
@@ -177,7 +177,7 @@ import CTA from "@/components/page-sections/CTA.astro";
   }
 
   .expertise {
-    min-height: 40lvh;
+    min-height: fit-content;
     padding-bottom: max(10vh, var(--space-xl));
 
     @media (orientation: portrait) {
@@ -253,7 +253,7 @@ import CTA from "@/components/page-sections/CTA.astro";
   const totalDuration = activeDuration * 2 + animationConfig.postDelay;
 
   function generateDynamicKeyframes() {
-    const heroTitle = document.querySelector(".hero-title") as HTMLElement;
+    const heroTitle = document.querySelector('.hero-title') as HTMLElement;
     if (!heroTitle) return;
 
     // Convert durations to percentages of total cycle
@@ -301,22 +301,22 @@ import CTA from "@/components/page-sections/CTA.astro";
       }
     `;
 
-    let styleTag = document.getElementById("dynamic-keyframes");
+    let styleTag = document.getElementById('dynamic-keyframes');
     if (!styleTag) {
-      styleTag = document.createElement("style");
-      styleTag.id = "dynamic-keyframes";
+      styleTag = document.createElement('style');
+      styleTag.id = 'dynamic-keyframes';
       document.head.appendChild(styleTag);
     }
     styleTag.textContent = keyframesCSS;
 
     // Apply animation durations to elements and compute stagger so the second
     // title enters after the first has completed its exit (no overlap).
-    heroTitle.style.setProperty("--cycle", `${totalDuration}s`);
-    heroTitle.style.setProperty("--stagger", `${activeDuration}s`);
+    heroTitle.style.setProperty('--cycle', `${totalDuration}s`);
+    heroTitle.style.setProperty('--stagger', `${activeDuration}s`);
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", generateDynamicKeyframes);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', generateDynamicKeyframes);
   } else {
     generateDynamicKeyframes();
   }

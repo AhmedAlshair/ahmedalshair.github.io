@@ -1,17 +1,17 @@
 <script lang="ts">
-  import Button from "@/components/buttons/Button.svelte";
+  import Button from '@/components/buttons/Button.svelte';
 
   interface Props {
     formId: string;
     className?: string;
   }
 
-  type Status = "initial" | "submitting" | "success" | "error";
+  type Status = 'initial' | 'submitting' | 'success' | 'error';
 
   let { formId, className }: Props = $props();
   let formEndPoint = $derived(`https://formspree.io/f/${formId}`);
 
-  let status = $state<Status>("initial");
+  let status = $state<Status>('initial');
   let error = $state<string | null>(null);
 
   async function handleSubmit(event: SubmitEvent) {
@@ -19,39 +19,39 @@
     const form = event.currentTarget as HTMLFormElement;
     const formData = new FormData(form);
 
-    status = "submitting";
+    status = 'submitting';
 
     try {
       const response = await fetch(formEndPoint, {
-        method: "POST",
+        method: 'POST',
         body: formData,
-        headers: { Accept: "application/json" },
+        headers: { Accept: 'application/json' },
       });
 
       if (response.ok) {
-        status = "success";
+        status = 'success';
         form.reset();
       } else {
         const data = await response.json();
-        status = "error";
+        status = 'error';
         error =
-          data.errors?.map((e: any) => e.message).join(", ") ||
-          "Submission failed.";
+          data.errors?.map((e: any) => e.message).join(', ') ||
+          'Submission failed.';
       }
     } catch (err) {
-      status = "error";
+      status = 'error';
 
       const message = err instanceof Error ? err.message : null;
-      error = message || "Submission failed";
+      error = message || 'Submission failed';
     }
   }
 </script>
 
-{#if ["initial", "submitting", "error"].includes(status)}
+{#if ['initial', 'submitting', 'error'].includes(status)}
   <form
     id="contact-me-form"
     onsubmit={handleSubmit}
-    class={["contact-me-form flex-layout column gap", className]}
+    class={['contact-me-form flex-layout column gap', className]}
   >
     <label for="email" class="half">Email:</label>
     <input
@@ -64,7 +64,7 @@
       autocorrect="off"
       autocapitalize="off"
       spellcheck="false"
-      disabled={status === "submitting"}
+      disabled={status === 'submitting'}
     />
 
     <label for="name" class="half">Name:</label>
@@ -76,7 +76,7 @@
       class="half"
       autocomplete="name"
       spellcheck="false"
-      disabled={status === "submitting"}
+      disabled={status === 'submitting'}
     />
 
     <label for="message">Message:</label>
@@ -86,26 +86,26 @@
       rows="4"
       maxlength="1200"
       placeholder="Type your message here ..."
-      disabled={status === "submitting"}
+      disabled={status === 'submitting'}
     ></textarea>
 
     <Button
       variant="primary"
       type="submit"
-      loading={status === "submitting"}
+      loading={status === 'submitting'}
       icon="send"
       className="align-self-start submit-button"
     >
-      {status === "submitting" ? "Sending" : "Send Message"}
+      {status === 'submitting' ? 'Sending' : 'Send Message'}
     </Button>
   </form>
 {/if}
 
-{#if ["success", "error"].includes(status)}
+{#if ['success', 'error'].includes(status)}
   <div
     class="form-status initial flex-layout column gap justify-center"
-    class:success={status === "success"}
-    class:failure={status !== "success"}
+    class:success={status === 'success'}
+    class:failure={status !== 'success'}
   >
     <h4>Thanks for your message!</h4>
     <p>I'll get back to you as soon as I can.</p>

@@ -1,11 +1,11 @@
 ---
-import DarkThemeToggle from "@/components/DarkThemeToggle.svelte";
-import Nav from "@/components/links/Nav.svelte";
+import DarkThemeToggle from '@/components/DarkThemeToggle.svelte';
+import Nav from '@/components/links/Nav.svelte';
 
-let navLinks = ["Works", "About", "Contact"];
+let navLinks = ['Works', 'About', 'Contact'];
 let currentPage = Astro.url.pathname;
 
-if (currentPage.startsWith("/")) {
+if (currentPage.startsWith('/')) {
   currentPage = currentPage.slice(1);
 }
 ---
@@ -93,14 +93,14 @@ if (currentPage.startsWith("/")) {
 <script>
   let lastScrollY = window.scrollY;
   let ticking = false;
-  const header = document.getElementById("main-header");
+  const header = document.getElementById('main-header');
 
   if (header) {
     const delta = header.clientHeight / 2; // Minimum scroll distance before hiding
     const hideOffset = header.clientHeight; // When to hide
 
     window.addEventListener(
-      "scroll",
+      'scroll',
       () => {
         if (!ticking) {
           window.requestAnimationFrame(() => {
@@ -112,11 +112,11 @@ if (currentPage.startsWith("/")) {
             }
 
             if (currentScrollY > lastScrollY && currentScrollY > hideOffset) {
-              header.classList.add("header-hidden");
+              header.classList.add('header-hidden');
             }
             // Show on Scroll Up
             else {
-              header.classList.remove("header-hidden");
+              header.classList.remove('header-hidden');
             }
 
             lastScrollY = currentScrollY;

@@ -47,7 +47,7 @@
   --shadow-inverse: 0 0 2px rgba(255, 255, 255, 0.8);
 
   /* --- Dark Theme --- */
-  &[data-theme="dark"],
+  &[data-theme='dark'],
   .dark-theme {
     /* --- Status Colors --- */
     --status-error: hsl(from var(var(--status-error)) h s calc(l - 8));
@@ -138,9 +138,9 @@
   --stroke-width-thick: 3px;
 
   /* --- Typography --- */
-  --font-headings: "Space Grotesk", sans-serif;
-  --font-body: "Hanken Grotesk", sans-serif;
-  --font-mono: "Space Mono", monospace;
+  --font-headings: 'Space Grotesk', sans-serif;
+  --font-body: 'Hanken Grotesk', sans-serif;
+  --font-mono: 'Space Mono', monospace;
 
   /* Fluid Scale */
   --font-size-base: 1rem;
@@ -356,10 +356,10 @@ textarea,
   font-weight: unset;
   line-height: normal;
   font-variation-settings:
-    "FILL" 0,
-    "wght" 400,
-    "GRAD" 0,
-    "opsz" 40;
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 40;
 }
 
 /* Links */
@@ -375,7 +375,7 @@ a:not(.link-wrapper) {
 
   &:not(.link, .nav-link, .social-link) {
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       bottom: -0.1em;
       left: 0;
@@ -739,14 +739,14 @@ form,
   }
 
   /* Inputs & Textareas */
-  input[type="text"],
-  input[type="password"],
-  input[type="email"],
-  input[type="number"],
-  input[type="time"],
-  input[type="tel"],
-  input[type="url"],
-  input[type="search"],
+  input[type='text'],
+  input[type='password'],
+  input[type='email'],
+  input[type='number'],
+  input[type='time'],
+  input[type='tel'],
+  input[type='url'],
+  input[type='search'],
   textarea,
   select {
     width: 100%;
@@ -796,7 +796,7 @@ form,
   color: var(--accent);
 
   &::after {
-    content: " ";
+    content: ' ';
     position: absolute;
     top: 0;
     left: 0;
@@ -818,7 +818,7 @@ form,
 
   &.mask-before {
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;

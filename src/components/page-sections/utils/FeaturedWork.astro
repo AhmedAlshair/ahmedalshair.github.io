@@ -1,6 +1,6 @@
 ---
-import Link from "@/components/links/Link.astro";
-import { Image } from "astro:assets";
+import Link from '@/components/links/Link.astro';
+import { Image } from 'astro:assets';
 
 interface Props {
   title: string;
@@ -25,7 +25,7 @@ let {
 } = Astro.props;
 ---
 
-<div class:list={["featured-work flex-layout", { reverse }, className]}>
+<div class:list={['featured-work flex-layout', { reverse }, className]}>
   <div class="work-content flex-layout column gap">
     <div class="work-title flex-layout align-center justify-start">
       <span class="slash mask-before"></span>

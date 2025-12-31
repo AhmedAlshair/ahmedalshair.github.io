@@ -2,13 +2,14 @@
   interface Props {
     icon: string;
     className?: string;
+    [key: string]: any;
   }
 
-  let { icon, className }: Props = $props();
+  let { icon, className, ...props }: Props = $props();
 </script>
 
-<span class={["material-symbols-rounded", className && className]}>
-  {" "}{icon}{" "}
+<span class={['material-symbols-rounded', className && className]} {...props}>
+  {' '}{icon}{' '}
 </span>
 
 <style>

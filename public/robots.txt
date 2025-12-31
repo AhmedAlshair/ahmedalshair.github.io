@@ -1,7 +1,4 @@
 User-agent: * 
 Allow: /
 
-# Disallow: /hcv2030/
-# Disallow: /veeva/
-# Disallow: /stonengem/
-# Sitemap: http://ahmedalshair.net/sitemap.xml
+Sitemap: https://ahmedalshair.net/sitemap-index.xml

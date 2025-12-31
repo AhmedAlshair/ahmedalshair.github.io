@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Icon from "@/components/Icon.svelte";
-  import { normalizeUrlPath, toTitleCase } from "@/utils/Helpers.svelte";
+  import Icon from '@/components/Icon.svelte';
+  import { normalizeUrlPath, toTitleCase } from '@/utils/Helpers.svelte';
 
   interface Props {
     links: string[];
@@ -16,28 +16,32 @@
   const toggleMenu = () => {
     menuOpen = !menuOpen;
   };
-
-  $inspect("currentPage", currentPage);
-  $inspect("menuOpen", menuOpen);
 </script>
 
 <nav
-  class={["header-nav flex-layout gap", className]}
+  class={['header-nav flex-layout gap', className]}
   aria-roledescription="main navigation"
 >
-  <button class="menu-button" onclick={toggleMenu}>
-    <Icon icon="menu" className="icon" />
+  <button
+    class="menu-button"
+    onclick={toggleMenu}
+    tabindex="0"
+    aria-label="Toggle navigation menu"
+    aria-controls="main-menu"
+    aria-expanded={menuOpen}
+  >
+    <Icon icon="menu" className="icon" aria-hidden="true" tabindex="-1" />
   </button>
   <div
-    class={["menu flex-layout gap gap-xs", menuOpen && "open"]}
-    aria-expanded={menuOpen}
+    id="main-menu"
+    class={['menu flex-layout gap gap-xs', menuOpen && 'open']}
   >
     {#each links as link, index}
       {@const normalizedPath = normalizeUrlPath(link)}
       <a
         id={`nav-link-${index}`}
         href={activePage === normalizedPath ? undefined : `/${normalizedPath}`}
-        class={["nav-link", activePage === normalizedPath && "active"]}
+        class={['nav-link', activePage === normalizedPath && 'active']}
       >
         {toTitleCase(link)}
       </a>

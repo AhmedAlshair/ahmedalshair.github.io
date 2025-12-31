@@ -1,5 +1,6 @@
 ---
-import Social from "@/components/links/Social.astro";
+import Social from '@/components/links/Social.astro';
+import { SiteName } from '@/utils/Constants.astro';
 
 let year = new Date().getFullYear();
 ---
@@ -12,7 +13,7 @@ let year = new Date().getFullYear();
   <p class="copyrights meta-label flex-layout align-baseline">
     <span>&#9400;</span>
     <span>{year}</span>
-    <span>Ahmed Alshair</span>
+    <span>{SiteName}</span>
   </p>
 </footer>
 
