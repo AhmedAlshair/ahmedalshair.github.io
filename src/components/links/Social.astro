@@ -1,28 +1,29 @@
 ---
 import Icon from '@/components/Icon.svelte';
-import { SocialLinks } from '@/utils/Constants.astro';
+import { SocialLinks } from '@/utils/Constants.astro.ts';
 
 const filteredLinks = Object.entries(SocialLinks).filter(([key]) =>
   ['linkedin', 'behance', 'dribbble'].includes(key),
 );
 ---
 
-<nav class="social-links flex-layout gap">
+<nav class='social-links flex-layout gap'>
   {
     filteredLinks.map(([_, link]) => (
       <a
-        class="social-link"
+        class='social-link'
         href={link.url}
-        target="_blank"
-        rel="noopener noreferrer"
+        target='_blank'
+        rel='noopener noreferrer'
         aria-label={link.label}
       >
         {<link.icon />}
+        <span class='sr-only'>{link.label}</span>
       </a>
     ))
   }
-  <a class="social-link" href="/contact" aria-label="More Links">
-    <Icon icon="more_horiz" className="icon" />
+  <a class='social-link' href='/contact' aria-label='More Links'>
+    <Icon name='more_horiz' className='icon' />
   </a>
 </nav>
 

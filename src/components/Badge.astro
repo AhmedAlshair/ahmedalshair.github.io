@@ -1,0 +1,65 @@
+---
+import Icon from '@/components/Icon.svelte';
+
+interface Props {
+  type?: 'info' | 'success' | 'warning' | 'error';
+  text: string;
+  icon?: string;
+}
+
+let { type = 'info', text, icon } = Astro.props;
+---
+
+<div class:list={['badge', `badge-${type}`]}>
+  {icon && <Icon name={icon} className='badge-icon' />}
+  <span class='badge-text'>{text}</span>
+</div>
+
+<style>
+  .badge {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1ch;
+    padding: var(--space-2xs) var(--space-sm);
+    border-left: var(--stroke-width-medium) solid var(--border-color);
+
+    &.badge-info {
+      background-color: var(--surface-2);
+      color: var(--text-secondary);
+    }
+
+    &.badge-success {
+      background-color: var(--surface-success);
+      color: var(--status-success);
+      border-left-color: var(--status-success);
+    }
+
+    &.badge-warning {
+      background-color: var(--surface-warning);
+      color: var(--status-warning);
+      border-left-color: var(--status-warning);
+    }
+
+    &.badge-error {
+      background-color: var(--surface-error);
+      color: var(--status-error);
+      border-left-color: var(--status-error);
+    }
+
+    .badge-text {
+      font-family: var(--font-mono);
+      font-size: var(--font-size-h6);
+      text-transform: uppercase;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .badge-icon {
+      font-size: 1em;
+      fill: currentColor;
+      opacity: 0.8;
+    }
+  }
+</style>

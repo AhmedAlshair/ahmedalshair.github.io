@@ -1,82 +1,102 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { SiteName } from '@/utils/Constants.astro';
-import BehanceIcon from '@assets/icons/behance.svg';
-import DribbbleIcon from '@assets/icons/dribbble.svg';
-import YoutubeIcon from '@assets/icons/youtube.svg';
+import { SiteName } from '@/utils/Constants.astro.ts';
+import FeaturedWork from '@/components/page-sections/works/FeaturedWork.astro';
+import CometWorkCover from '@assets/works/comet/work-cover-comet.jpg';
+import PharmaWorkCover from '@assets/works/pharma/work-cover-pharma.jpg';
+import AlrevhairWorkCover from '@assets/works/work-cover-alrevhair.jpg';
+import FindHomeWorkCover from '@assets/works/work-cover-findhome.jpg';
+import CTA from '@/components/page-sections/CTA.astro';
+import { SocialLinks } from '@/utils/Constants.astro.ts';
+
+const title = `Works | ${SiteName}`;
+const description = `My latest projects and case studies showcasing my expertise in UX/UI Design, Frontend Development, and Digital Solutions.`;
 ---
 
-<BaseLayout
-  title=`Works | ${SiteName}`
-  description="My latest projects and work experience."
->
-  <section class="coming-soon flex-layout column gap gap-lg justify-center">
-    <h2>Coming Soon...</h2>
-    <p>
-      This page is currently work in progress! Until then, check out my
-      portfolios on:
-    </p>
+<BaseLayout title={title} description={description} className='gap gap-2xl'>
+  <section id='works' class='container padded flex-layout column gap gap-2xl'>
+    <FeaturedWork
+      title='COMET: Scaling a Complex Impact-First SaaS Product'
+      description='Led the 5-year strategic evolution of a complex simulation engine from an offline field tool to a scalable, cloud-based SaaS solution.'
+      image={CometWorkCover}
+      imageAlt='Comet Screenshot'
+      linkUrl='/works/comet'
+      linkText='Read the Case Study'
+    />
 
-    <ul class="grid-layout two-cols gap">
-      <li>
-        <a
-          class="social-link"
-          href="https://www.behance.net/AhmedAlshair"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Behance"
-        >
-          <BehanceIcon />
-          <span>Behance</span>
-        </a>
-      </li>
-      <li>
-        <a
-          class="social-link"
-          href="https://dribbble.com/AhmedAlshair"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Dribbble"
-        >
-          <DribbbleIcon />
-          <span>Dribbble</span>
-        </a>
-      </li>
-      <li>
-        <a
-          class="social-link"
-          href="https://youtube.com/playlist?list=PL0IMwc8ci4wU288dToUAPFYN19ucJ_Xkx&si=H4NODJGT_wrMu1Fp"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="YouTube"
-        >
-          <YoutubeIcon />
-          <span>YouTube - UX/UI</span>
-        </a>
-      </li>
-      <li>
-        <a
-          class="social-link"
-          href="https://www.youtube.com/playlist?list=PL0IMwc8ci4wVxy4bl74Kt3BuoX5HJmfr-"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="YouTube"
-        >
-          <YoutubeIcon />
-          <span>YouTube - Animation</span>
-        </a>
-      </li>
+    <FeaturedWork
+      title='Customized Experiences for Pharma & Healthcare Leaders'
+      description='Delivering interactive healthcare-focused CLM experiences, websites and mobile apps handling complex data visualization and strict compliance workflows.'
+      image={PharmaWorkCover}
+      imageAlt='Pharma Work Screenshot'
+      linkUrl='/works/pharma'
+      linkText='Explore Projects'
+      reverse
+    />
+
+    <FeaturedWork
+      title='Alrevhair: Website Design for Hair Transplant Center'
+      description='An inclusive international experience of trust, quality and pleasure that puts customers at ease and helps them make informed decisions right from their home countries.'
+      image={AlrevhairWorkCover}
+      imageAlt='Pharma Work Screenshot'
+      linkUrl='https://www.behance.net/gallery/99695209/AlrevHair-Website-Design'
+      linkText='View Case Study'
+      linkTarget='_blank'
+    />
+
+    <FeaturedWork
+      title='FindHome: Accommodation Marketplace UX/UI Design'
+      description='A user-centered UX/UI design for an accommodation marketplace platform connecting property owners with travelers seeking short-term rentals.'
+      image={FindHomeWorkCover}
+      imageAlt='FindHome Website Screenshots'
+      linkUrl='https://www.behance.net/gallery/54932129/Find-Home-(Accomodation-Marketplace)'
+      linkText='View Case Study'
+      linkTarget='_blank'
+      reverse
+    />
+  </section>
+  <section
+    id='more-works'
+    class='container padded flex-layout column gap justify-center'
+  >
+    <h3>Find out more!</h3>
+    <p>For more projects and case studies, check out my portfolios on:</p>
+
+    <ul class='links-grid grid-layout two-cols gap'>
+      {
+        Object.entries(SocialLinks).map(
+          ([key, link]) =>
+            ['behance', 'dribbble', 'youtubeUX', 'youtubeMotion'].includes(
+              key,
+            ) && (
+              <li>
+                <a
+                  class='social-link'
+                  href={link.url}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  aria-label={link.label}
+                >
+                  <link.icon />
+                  <span>{link.label}</span>
+                </a>
+              </li>
+            ),
+        )
+      }
     </ul>
   </section>
+
+  <CTA />
 </BaseLayout>
 
 <style>
-  .coming-soon {
-    min-height: 80lvh;
+  #works {
+    padding-block-start: var(--space-lg);
+  }
 
-    h2 {
-      color: var(--text-secondary);
-    }
+  .links-grid {
+    margin-block-start: var(--space-md);
   }
 
   .social-link {

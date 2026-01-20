@@ -1,0 +1,285 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SiteName } from '@/utils/Constants.astro.ts';
+import { Image } from 'astro:assets';
+import WorkLayout, { type WorkSection } from '@/layouts/WorkLayout.astro';
+import PharmaWorkCover from '@assets/works/pharma/work-cover-pharma.jpg';
+import AlrevhairWorkCover from '@assets/works/work-cover-alrevhair.jpg';
+import ClmAppsImage from '@assets/works/pharma/clm-apps.png';
+import CometWorkCover from '@assets/works/comet/work-cover-comet.jpg';
+import ClinicalCompendiumCover from '@assets/works/pharma/clinical-compendium.jpg';
+import HCVCover from '@assets/works/pharma/hcv-2030.jpg';
+import VenetostartCover from '@assets/works/pharma/venetostart-app.webp';
+import CaremondoCover from '@assets/works/pharma/caremondo-app.png';
+import VeevaLogo from '@assets/works/pharma/veeva-logo.svg';
+import Badge from '@/components/Badge.astro';
+import Icon from '@/components/Icon.svelte';
+import ExploreMoreWorks from '@/components/page-sections/works/ExploreMoreWorks.astro';
+import FeaturedWork from '@/components/page-sections/works/FeaturedWork.astro';
+
+const title = `Customized Experiences for Pharma & Healthcare Leaders | Works | ${SiteName}`;
+const description = `Delivering interactive healthcare-focused CLM experiences, websites and mobile apps handling complex data visualization and strict compliance workflows.`;
+
+let sections: WorkSection[] = [
+  { title: 'CLM & e-Detailing', id: 'clm' },
+  { title: 'Featured: Clinical Compendium', id: 'clinical-compendium' },
+  { title: 'Featured: HCV-free Website', id: 'hcv-2030' },
+  { title: 'Featured: VenetoStart App', id: 'venetostart' },
+  { title: 'Featured: Caremondo Redesign', id: 'caremondo' },
+];
+---
+
+<BaseLayout title={title} description={description} currentPage='works'>
+  <WorkLayout sections={sections}>
+    <Image
+      slot='work-image'
+      src={PharmaWorkCover}
+      alt={'Customized Digital Experiences for Pharma Leaders like Pfizer, Merck, Abbvie, Takeda and Abbott'}
+      loading={'eager'}
+    />
+
+    <Fragment slot='summary'>
+      <div class='summary-head flex-layout column'>
+        <h2>Customized Experiences for Pharma & Healthcare Leaders</h2>
+        <p class='subtitle'>
+          Delivering healthcare-focused digital solutions, from interactive CLM
+          experiences, campaign websites and mobile apps, handling complex data
+          visualization and strict compliance workflows.
+        </p>
+        <div
+          class='badges flex-layout align-center justify-start wrap gap gap-sm'
+        >
+          <Badge text='UX/UI Design' />
+          <Badge text='Frontend Development' />
+          <Badge text='Data Visualization' />
+          <Badge text='Motion' />
+          <Badge text='Medical Comprehension' />
+        </div>
+      </div>
+
+      <div class='role-summary grid-layout two-cols'>
+        <div class='role'>
+          <span class='label'>Role:</span>
+          <p>UX/UI Designer & Frontend Developer</p>
+        </div>
+        <div class='date'>
+          <span class='label'>Timeline:</span>
+          <p>2014 - 2020</p>
+        </div>
+        <div class='impact highlighted'>
+          <span class='label'>Key Outcomes:</span>
+          <p>
+            over <span class='emphasized'
+              >40 digital e-detailing presentations</span
+            >,
+            <span class='emphasized'
+              >Veeva certification for 3 consecutive years</span
+            > and globally launched campaigns for Pfizer, Abbvie, Abbott and Takeda.
+          </p>
+        </div>
+        <div class='core-value highlighted'>
+          <span class='label'>Core Values:</span>
+          <p>
+            Handling complex data and strict compliance while delivering
+            hands-on interactive digital experiences and liaising with
+            multi-disciplinary teams.
+          </p>
+        </div>
+      </div>
+    </Fragment>
+
+    <section
+      id='clm'
+      class='container padded grid-layout two-cols gap gap-xl align-center'
+    >
+      <div class='content-wrapper flex-layout column gap gap-lg justify-center'>
+        <h2>CLM & e-Detailing</h2>
+
+        <p>
+          I led the creation of over 40 digital e-detailing presentations and
+          web apps, primarily focusing on Closed Loop Marketing (CLM) to improve
+          Healthcare Professional (HCP) engagement and patient education.
+        </p>
+        <p>
+          Managed the end-to-end process from initial stakeholder discovery
+          workshops to cross-platform deployment on <a
+            href='https://veeva.com'
+            target='_blank'
+            rel='noopener noreferrer'>Veeva</a
+          >, <a
+            href='https://salesforce.com'
+            target='_blank'
+            rel='noopener noreferrer'>Salesforce</a
+          >, <a
+            href='https://cegedim.com'
+            target='_blank'
+            rel='noopener noreferrer'>Cegedim</a
+          > and <a
+            href='https://agnitio.com'
+            target='_blank'
+            rel='noopener noreferrer'>Agnitio (now Bigtincan)</a
+          > among others.
+        </p>
+      </div>
+
+      <div class='img-wrapper'>
+        <Image
+          src={ClmAppsImage}
+          alt='CLM Apps and Presentations'
+          loading='lazy'
+        />
+      </div>
+
+      <div
+        id='showcasing'
+        class='content-wrapper flex-layout column gap span-2'
+      >
+        <p>
+          Here is a curated selection of CLM presentations and web apps,
+          showcasing the integration of complex data into interactive, animated
+          and fluid digital narratives for HCPs:
+        </p>
+        <div class='youtube-embed-wrapper flex-layout'>
+          <iframe
+            src='https://www.youtube-nocookie.com/embed/videoseries?si=mluo9yxe_a9lHKNC&list=PL0IMwc8ci4wU288dToUAPFYN19ucJ_Xkx'
+            title='YouTube video player'
+            frameborder='0'
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+            referrerpolicy='strict-origin-when-cross-origin'
+            allowfullscreen
+            loading='lazy'></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id='veeva-certified'>
+      <div
+        class='container padded grid-layout two-cols gap gap-xl align-center'
+      >
+        <div
+          class='veeva-logo img-wrapper flex-layout align-center justify-center'
+        >
+          <VeevaLogo aria-label='Veeva Logo' />
+        </div>
+
+        <div class='content-wrapper flex-layout column gap'>
+          <h4>Veeva Certified for 3 Consecutive Years</h4>
+          <p>
+            To meet rigorous technical and compliance high standards, I have
+            maintained <a
+              href='https://www.veeva.com/meet-veeva/partners/agencies-certification/'
+              target='_blank'
+              rel='noopener noreferrer'
+              ><span>Veeva certification</span> <Icon name='open_in_new' /></a
+            > for 3 years in a row for CLM, Approved Emails and Engage business and
+            technical products.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id='featured'
+      class='container padded flex-layout column gap gap-2xl'
+    >
+      <h2>Featured Projects</h2>
+
+      <FeaturedWork
+        id='clinical-compendium'
+        type='secondary'
+        title='Clinical Compendium'
+        description='A trials-navigation app designed to simplify complex clinical research for medical professionals'
+        image={ClinicalCompendiumCover}
+        imageAlt='Clinical Compendium App Screenshot'
+        linkUrl='https://www.behance.net/gallery/37729967/Clinical-Compendium-(Trials-Navigation-App)'
+        linkText='View Case Study'
+        linkTarget='_blank'
+      />
+
+      <FeaturedWork
+        id='hcv-2030'
+        type='secondary'
+        title='HCV-free Campaign Website'
+        description='A campaign website to raise awareness about Hepatitis C prevention and treatment options by Abbvie for HCPs in the MENA region'
+        image={HCVCover}
+        imageAlt='HCV-free Campaign Website Screenshot'
+        linkUrl='/demos/hcv-2030/index.html'
+        linkText='View Website'
+        linkTarget='_blank'
+        reverse
+      />
+
+      <FeaturedWork
+        id='venetostart'
+        type='secondary'
+        title='VenetoStart Prescription Guide App'
+        description='For some critical medical conditions, medication prescription can be an overwhelming task for doctors. This app provides a visual timeline of the treatment course along with assessment guidelines'
+        image={VenetostartCover}
+        imageAlt='VenetoStart Prescription Guide App Screenshot'
+        linkUrl='https://xd.adobe.com/view/195c8122-1b53-4cf1-a422-2604fd30ccf8-4c0f/?fullscreen&hints=off'
+        linkText='View Prototype'
+        linkTarget='_blank'
+      />
+
+      <FeaturedWork
+        id='caremondo'
+        type='secondary'
+        title='Caremondo Medical Tourism Redesign'
+        description='A user-centered redesign of a curated digital marketplace for medical tourism, where patients can find high quality services abroad'
+        image={CaremondoCover}
+        imageAlt='Caremondo Medical Tourism Redesign Screenshot'
+        linkUrl='https://www.behance.net/gallery/37209685/CareMondo-Website-Redesign'
+        linkText='View Case Study'
+        linkTarget='_blank'
+        reverse
+      />
+    </section>
+  </WorkLayout>
+
+  <ExploreMoreWorks
+    works={[
+      {
+        title: 'COMET: Scaling a Complex Impact-First SaaS Product',
+        image: CometWorkCover,
+        linkUrl: '/works/comet',
+      },
+      {
+        title: 'Alrevhair: Website Design for Hair Transplant Center',
+        image: AlrevhairWorkCover,
+        linkUrl:
+          'https://www.behance.net/gallery/99695209/AlrevHair-Website-Design',
+        linkTarget: '_blank',
+      },
+    ]}
+  />
+</BaseLayout>
+
+<style>
+  #showcasing {
+    iframe {
+      position: relative;
+      width: 100%;
+      min-height: min(40rem, 80lvh);
+    }
+  }
+
+  .youtube-embed-wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: var(--surface-2);
+  }
+
+  #veeva-certified {
+    background-color: var(--surface-2);
+
+    .veeva-logo.img-wrapper {
+      min-height: 16rem;
+      background-color: var(--surface-0);
+
+      > svg {
+        max-height: 4rem;
+        max-width: 12rem;
+      }
+    }
+  }
+</style>

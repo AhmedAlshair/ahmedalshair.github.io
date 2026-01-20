@@ -9,18 +9,19 @@ import {
   SitePublicUrl,
   SocialLinks,
   type SocialLink,
-} from '@/utils/Constants.astro';
+} from '@/utils/Constants.astro.ts';
 import '@styles/global.css';
 
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
-  class?: string;
+  currentPage?: string;
+  className?: string;
 }
 
-const { title = SiteName, description, class: className } = Astro.props;
-let sortedIcons = ICONS.sort().join(',');
+const { title = SiteName, description, currentPage, className } = Astro.props;
 
+let sortedIcons = ICONS.sort().join(',');
 const canonicalURL = SitePublicUrl;
 const ogImageURL = new URL('/assets/og-image.jpg', Astro.site);
 
@@ -53,48 +54,53 @@ const personSchema = {
 };
 ---
 
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="canonical" href={canonicalURL} />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <meta name='generator' content={Astro.generator} />
+    <link rel='canonical' href={canonicalURL} />
+    <link rel='sitemap' href='/sitemap-index.xml' />
 
     <title>{title}</title>
     {
       description && (
-        <meta name="description" content={description || MetaDescription} />
+        <meta name='description' content={description || MetaDescription} />
       )
     }
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImageURL} />
-    <meta property="og:image:alt" content=`${SiteName} | ${JobTitle}` />
+    <meta property='og:type' content='website' />
+    <meta property='og:url' content={Astro.url} />
+    <meta property='og:title' content={title} />
+    <meta property='og:description' content={description} />
+    <meta property='og:image' content={ogImageURL} />
+    <meta property='og:image:alt' content=`${SiteName} | ${JobTitle}` />
 
     <!-- Twitter / X -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={ogImageURL} />
-    <meta property="twitter:image:alt" content=`${SiteName} | ${JobTitle}` />
+    <meta property='twitter:card' content='summary_large_image' />
+    <meta property='twitter:url' content={Astro.url} />
+    <meta property='twitter:title' content={title} />
+    <meta property='twitter:description' content={description} />
+    <meta property='twitter:image' content={ogImageURL} />
+    <meta property='twitter:image:alt' content=`${SiteName} | ${JobTitle}` />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#172c4f" />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='theme-color' content='#172c4f' />
 
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-      rel="stylesheet"
+      href='https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..700;1,6..12,200..700&family=Space+Grotesk:wght@300..700&display=swap'
+      rel='stylesheet'
     />
     <link
       href=`https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=${sortedIcons}`
-      rel="stylesheet"
+      rel='stylesheet'
     />
+
     <script is:inline>
       const theme =
         localStorage.getItem('theme') ||
@@ -105,9 +111,9 @@ const personSchema = {
     </script>
   </head>
 
-  <body id="root" class={className}>
-    <Header />
-    <main class="container padded flex-layout column">
+  <body id='root'>
+    <Header currentPage={currentPage} />
+    <main class:list={['full-bleed flex-layout column', className]}>
       <slot />
     </main>
     <Footer />
@@ -129,6 +135,6 @@ const personSchema = {
 
 <script
   is:inline
-  type="application/ld+json"
+  type='application/ld+json'
   set:html={JSON.stringify(personSchema)}
 />

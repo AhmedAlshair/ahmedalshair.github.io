@@ -1,0 +1,1046 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SiteName } from '@/utils/Constants.astro.ts';
+import { Image, getImage } from 'astro:assets';
+import WorkLayout, { type WorkSection } from '@/layouts/WorkLayout.astro';
+import CometWorkCover from '@assets/works/comet/work-cover-comet.jpg';
+import PharmaWorkCover from '@assets/works/pharma/work-cover-pharma.jpg';
+import FindHomeWorkCover from '@assets/works/work-cover-findhome.jpg';
+import MiniGridConceptLight from '@assets/works/comet/mini-grid-game-concept-light.jpg';
+import CometOffline1 from '@assets/works/comet/comet-offline-1.png';
+import CometOffline2 from '@assets/works/comet/comet-offline-2.png';
+import CometOffline3 from '@assets/works/comet/comet-offline-3.jpg';
+import CometOffline4 from '@assets/works/comet/comet-offline-4.png';
+import CometOfflineCarousel1 from '@assets/works/comet/comet-offline-carousel-1.jpg';
+import CometOfflineCarousel2 from '@assets/works/comet/comet-offline-carousel-2.jpg';
+import CometOfflineCarousel3 from '@assets/works/comet/comet-offline-carousel-3.jpg';
+import CometOfflineCarousel4 from '@assets/works/comet/comet-offline-carousel-4.jpg';
+import CometOfflineCarousel5 from '@assets/works/comet/comet-offline-carousel-5.jpg';
+import CometSaasCarousel1 from '@assets/works/comet/comet-saas-carousel-1.png';
+import CometSaasCarousel2 from '@assets/works/comet/comet-saas-carousel-2.png';
+import CometSaasCarousel3 from '@assets/works/comet/comet-saas-carousel-3.png';
+import CometSaasCarousel4 from '@assets/works/comet/comet-saas-carousel-4.png';
+import CometSaasCarousel5 from '@assets/works/comet/comet-saas-carousel-5.png';
+import CometSaasCarousel6 from '@assets/works/comet/comet-saas-carousel-6.png';
+import CometSaasCarousel7 from '@assets/works/comet/comet-saas-carousel-7.png';
+import CometSaasCarousel8 from '@assets/works/comet/comet-saas-carousel-8.png';
+import ASULogo from '@assets/works/comet/asu-logo-light.svg';
+import UNDPLogo from '@assets/works/comet/undp-logo-light.svg';
+import CometSaas1 from '@assets/works/comet/comet-saas-1.jpg';
+import Badge from '@/components/Badge.astro';
+import Icon from '@/components/Icon.svelte';
+import DensityGrid from '@/components/charts/DensityGrid.svelte';
+import BarChart from '@/components/charts/BarChart.svelte';
+import Link from '@/components/links/Link.astro';
+import ImageCarousel from '@/components/ImageCarousel.svelte';
+import ExploreMoreWorks from '@/components/page-sections/works/ExploreMoreWorks.astro';
+
+const title = `COMET: Scaling a Global SaaS Solution | Works | ${SiteName}`;
+const description = `Led COMET's evolution from a field prototype to a global SaaS platform. Achieved a 23x boost in efficiency and 267% more simulations for global clients - A Case Study.`;
+
+let sections: WorkSection[] = [
+  { title: 'Professionalizing the Vision', id: 'offline-toolkit' },
+  { title: 'Evidence-Based Architecture', id: 'evidence-based' },
+  {
+    title: 'The UX Challenge: Zero Internet and Different Users',
+    id: 'ux-challenge',
+  },
+  { title: 'Hands-on Craft: Building the Local Sync', id: 'hands-on-solution' },
+  { title: 'The Impact of a Single Redesign', id: 'redesign-impact' },
+  { title: 'Recognitions', id: 'recognitions' },
+  { title: 'The SaaS Evolution', id: 'saas-transition' },
+  { title: 'Beyond the Launch', id: 'outcome' },
+];
+
+const optimizedOfflineCarousel1 = await getImage({
+  src: CometOfflineCarousel1,
+  format: 'webp',
+});
+const optimizedOfflineCarousel2 = await getImage({
+  src: CometOfflineCarousel2,
+  format: 'webp',
+});
+const optimizedOfflineCarousel3 = await getImage({
+  src: CometOfflineCarousel3,
+  format: 'webp',
+});
+const optimizedOfflineCarousel4 = await getImage({
+  src: CometOfflineCarousel4,
+  format: 'webp',
+});
+const optimizedOfflineCarousel5 = await getImage({
+  src: CometOfflineCarousel5,
+  format: 'webp',
+});
+
+const optimizedSaasCarousel1 = await getImage({
+  src: CometSaasCarousel1,
+  format: 'webp',
+});
+const optimizedSaasCarousel2 = await getImage({
+  src: CometSaasCarousel2,
+  format: 'webp',
+});
+const optimizedSaasCarousel3 = await getImage({
+  src: CometSaasCarousel3,
+  format: 'webp',
+});
+const optimizedSaasCarousel4 = await getImage({
+  src: CometSaasCarousel4,
+  format: 'webp',
+});
+const optimizedSaasCarousel5 = await getImage({
+  src: CometSaasCarousel5,
+  format: 'webp',
+});
+const optimizedSaasCarousel6 = await getImage({
+  src: CometSaasCarousel6,
+  format: 'webp',
+});
+const optimizedSaasCarousel7 = await getImage({
+  src: CometSaasCarousel7,
+  format: 'webp',
+});
+const optimizedSaasCarousel8 = await getImage({
+  src: CometSaasCarousel8,
+  format: 'webp',
+});
+---
+
+<BaseLayout title={title} description={description} currentPage='works'>
+  <WorkLayout sections={sections}>
+    <Image
+      slot='work-image'
+      src={CometWorkCover}
+      alt={'Comet: Community Energy Toolkit'}
+      loading={'eager'}
+    />
+
+    <Fragment slot='summary'>
+      <div class='summary-head flex-layout column'>
+        <h2>COMET: Scaling Into a Complex Impact-First SaaS Product</h2>
+        <p class='subtitle'>
+          Led the strategic evolution of COMET from a raw prototype to a global
+          SaaS platform serving as both the Primary UX/UI Designer and Lead
+          Frontend Developer. By personally bridging the gap between high-level
+          strategy and production-ready code, I managed complex technical debt
+          and team transitions while achieving a 23x boost in operational
+          efficiency.
+        </p>
+        <div
+          class='badges flex-layout align-center justify-start wrap gap gap-sm'
+        >
+          <Badge text='Product Leadership' />
+          <Badge text='UX/UI Design' />
+          <Badge text='Frontend Development' />
+          <Badge text='QA Stewardship' />
+        </div>
+      </div>
+
+      <div class='role-summary grid-layout two-cols'>
+        <div class='role'>
+          <span class='label'>Role:</span>
+          <p>Product Lead (Strategy, UX/UI & Frontend)</p>
+        </div>
+        <div class='date'>
+          <span class='label'>Timeline:</span>
+          <p>2020 - Present</p>
+        </div>
+        <div class='impact highlighted'>
+          <span class='label'>Key Outcomes:</span>
+          <p>
+            <span class='emphasized'>23x Efficiency Increase</span> in site deployment,
+            a <span class='emphasized'>267% rise in simulations</span> conducted per
+            workshop and <span class='emphasized'
+              >global recognition by The UNDP</span
+            >.
+          </p>
+        </div>
+        <div class='core-value highlighted'>
+          <span class='label'>Core Values:</span>
+          <p>
+            Successfully managed backend team turnover and onboarding while
+            maintaining product integrity and data security.
+          </p>
+        </div>
+      </div>
+    </Fragment>
+
+    <section
+      id='offline-toolkit'
+      class='container padded grid-layout horizontal two-cols gap gap-xl align-center'
+    >
+      <div class='content-wrapper flex-layout column gap gap-lg justify-center'>
+        <h3>Professionalizing the Vision</h3>
+
+        <p>
+          At this stage, the <a
+            href='https://solve.mit.edu/solutions/7223'
+            target='_blank'
+            rel='noopener noreferrer'
+            >"Mini-grid Game" <Icon name='open_in_new' /></a
+          > was an ambitious idea that lacked a clear user experience and technical
+          reliability required for developer-level energy planning. My goal was to
+          lead the <span class='emphasized'
+            >transition of this concept into an investment-grade simulation
+            toolkit</span
+          >.
+        </p>
+        <p>
+          Additionally, the workshop and deployment process depending on that
+          concept were <span class='emphasized'
+            >time-consuming and error-prone</span
+          >, often requiring several days of manual setup and configuration. It
+          also relied heavily on manual data collection and handling.
+        </p>
+      </div>
+
+      <Image
+        src={MiniGridConceptLight}
+        alt='The Mini-grid Game Concept'
+        loading='lazy'
+      />
+    </section>
+
+    <section
+      id='evidence-based'
+      class='container padded flex-layout column gap'
+    >
+      <h3>Evidence-Based Architecture</h3>
+      <p>
+        To transform a conceptual "game" into a high-stakes professional
+        toolkit, I implemented a structured, multi-phase design process. This
+        ensured that every pixel and interaction was grounded in field realities
+        and business goals.
+      </p>
+
+      <div
+        id='design-process'
+        class='content-wrapper padded grid-layout two-cols gap gap-xl align-center'
+      >
+        <div class='img-wrapper design-process'>
+          <Image
+            src={CometOffline1}
+            alt='Comet Design Process'
+            loading='lazy'
+          />
+        </div>
+
+        <div class='content-wrapper flex-layout column gap align-start'>
+          <p>
+            <span class='emphasized'>Deep-Dive Research:</span> I conducted expert
+            interviews, stakeholder brainstorming, and secondary research on mini-grid
+            engineering logic to define the "core truth" of the simulation.
+          </p>
+          <p>
+            <span class='emphasized'>Inclusive Information Architecture:</span> I
+            mapped complex user flows for two distinct user groups (Operators vs.
+            Participants), ensuring technical depth for professionals while maintaining
+            extreme simplicity for community members.
+          </p>
+
+          <p>
+            <span class='emphasized'>Iterative Prototyping:</span> Moving from low-fidelity
+            wireframes to high-fidelity interactive prototypes in Figma/Adobe XD allowed
+            us to validate the simulation logic before a single line of code was written.
+          </p>
+          <p>
+            <span class='emphasized'>Rigorous User Testing:</span> I led usability
+            testing sessions to identify friction points in the simulation journey,
+            directly informing the icon-heavy, color-coded UI that became a hallmark
+            of COMET's accessibility.
+          </p>
+        </div>
+      </div>
+
+      <div class='content-wrapper flex-layout column gap align-start'>
+        <p>
+          Learn more about the Design Process and the detailed breakdown of the
+          research methods and UI artifacts that built COMET Offline:
+        </p>
+        <Link
+          variant='secondary'
+          href='https://www.behance.net/gallery/136257167/COMET-Product-Design'
+          target='_blank'
+        >
+          View the full Design Process
+        </Link>
+      </div>
+    </section>
+
+    <section id='ux-challenge' class='full-bleed flex-layout column gap'>
+      <div class='content-wrapper container padded flex-layout column gap'>
+        <h3>
+          The UX Challenge: Designing for Zero Internet and Different Users
+        </h3>
+        <p>
+          Developing software for off-grid areas required a fundamental
+          rethinking of standard web patterns. We had to architect a system that
+          functioned as a local network ecosystem rather than a traditional
+          website.
+        </p>
+      </div>
+
+      <div class='content-wrapper flex-layout column gap gap-xl'>
+        <div class='grid-layout horizontal two-cols gap gap-xl align-center'>
+          <div class='container-padded content-wrapper flex-layout column gap'>
+            <h4>The Dual-Experience Logic</h4>
+            <p>
+              I designed two distinct yet synchronized interfaces, each
+              optimized for a specific user group. <span class='emphasized'
+                >The Operator UI</span
+              >
+              provided comprehensive high-density data for energy professionals, while
+              the <span class='emphasized'>Participant UI</span> was optimized for
+              community members with varying levels of digital literacy.
+            </p>
+          </div>
+
+          <div class='img-wrapper dual-experience'>
+            <Image
+              src={CometOffline2}
+              alt='COMET UIs for Operators and Participants'
+              loading='lazy'
+            />
+          </div>
+        </div>
+
+        <div class='grid-layout horizontal two-cols gap gap-xl align-center'>
+          <Image
+            src={CometOffline3}
+            alt='A participant in a COMET workshop'
+            loading='lazy'
+          />
+          <div class='container-padded content-wrapper flex-layout column gap'>
+            <h4>Accessibility & Empathy</h4>
+            <p>
+              To ensure inclusivity for target users who mostly <a
+                href='https://youtu.be/_JQu_1bGRDo?si=PQR5sXkgY2oeIx-7'
+                target='_blank'
+                rel='noopener noreferrer'
+                ><span>live in remote villages and rural areas</span>
+                <Icon name='open_in_new' /></a
+              >, I prioritized an icon-heavy, color-coded interface that allowed
+              non-technical users to understand and simulate their household
+              energy needs, along with various interaction methods for diverse
+              user preferences.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id='hands-on-solution'
+      class='container padded flex-layout column gap'
+    >
+      <h3>Hands-on Craft: Building the Local Sync</h3>
+      <p>
+        As the primary builder, I was responsible for translating these
+        high-stakes UX requirements into a functional frontend.
+      </p>
+
+      <div class='grid-layout horizontal two-cols gap gap-xl align-center'>
+        <div class='content-wrapper flex-layout column gap gap-xl'>
+          <div class='content-wrapper flex-layout column gap'>
+            <h4>Design System Ownership</h4>
+            <p>
+              I created a comprehensive evolving library of reusable components
+              and styles on <span class='meta-label code'>Adobe XD</span> and
+              <span class='meta-label code'>Figma</span>, from data-heavy charts
+              to form inputs and interactive simulation "Room Appliances",
+              ensuring visual consistency and accessibility across both the
+              Operator and Participant platforms.
+            </p>
+            <p>
+              The system was built with semantic tokenization in mind, and was
+              maintained linked to counterpart frontend components.
+            </p>
+          </div>
+
+          <div class='content-wrapper flex-layout column gap'>
+            <h4>Frontend Architecture & Optimization</h4>
+            <p>
+              After supervising the initial development of the COMET frontend, I
+              took full ownership of the <span class='meta-label code'
+                >React</span
+              > codebase to steer the product toward its launch-ready state. My focus
+              was on: optimization for performance, simulation stability, and comprehension
+              error handling critical for off-grid operations.
+            </p>
+          </div>
+        </div>
+
+        <div class='img-wrapper design-system'>
+          <Image src={CometOffline4} alt='Comet Design System' loading='lazy' />
+        </div>
+      </div>
+    </section>
+
+    <ImageCarousel
+      client:load
+      objectFit='contain'
+      images={[
+        {
+          url: optimizedOfflineCarousel1.src,
+          alt: 'Simulation control UI for operators in COMET Offline',
+        },
+        {
+          url: optimizedOfflineCarousel2.src,
+          alt: 'Simulation UI for participants in COMET Offline',
+        },
+        {
+          url: optimizedOfflineCarousel4.src,
+          alt: 'Simulation billing UI for participants in COMET Offline',
+        },
+        {
+          url: optimizedOfflineCarousel3.src,
+          alt: 'Creating a Project in COMET Offline',
+        },
+        {
+          url: optimizedOfflineCarousel5.src,
+          alt: 'Photos from workshops in deployments using COMET',
+        },
+      ]}
+    />
+
+    <section
+      id='redesign-impact'
+      class='container padded flex-layout column gap gap-lg'
+    >
+      <h3>Results and Impact</h3>
+      <p>
+        This stage wasn't just about aesthetics; it was about exponential scale.
+        After the redesign and technical overhaul, COMET saw:
+      </p>
+      <ul class='impact-list grid-layout horizontal two-cols gap gap-xl'>
+        <li class='flex-layout column gap'>
+          <h5>23x Improvement in Efficiency</h5>
+          <p>
+            Workshop deployment coverage scaled from an average of 3 sites per
+            project/deployment to over 70 sites. This is due to the flexibility
+            and scalability of the new approach adopted in COMET.
+          </p>
+          <div class='chart-content'>
+            <DensityGrid before={3} after={70} columns={7} />
+          </div>
+        </li>
+        <li class='flex-layout column gap'>
+          <h5>267% Increase in Simulations</h5>
+          <p>
+            By streamlining the user journey, we enabled communities to test 8+
+            energy scenarios per workshop (up from just 2-3), leading to more
+            informed local decision-making and better deployment outcomes.
+          </p>
+          <div class='chart-content'>
+            <BarChart
+              data={[
+                { label: 'Before', value: 2 },
+                { label: 'After', value: 8 },
+              ]}
+              width={300}
+              gap={50}
+            />
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section
+      id='recognitions'
+      class='container padded flex-layout column gap gap-lg'
+    >
+      <h3>Recognitions</h3>
+      <p>
+        Leading the transformation of COMET from a raw concept to a robust,
+        investment-grade toolkit was a significant challenge that required
+        strategic vision, UX expertise, subject-matter comprehension, and
+        hands-on frontend development skills. By focusing on user-centric design
+        and efficient frontend architecture, I was able to deliver a B2B
+        solution that meets the complex needs of energy professionals and also
+        empoweres local communities to take charge of their energy futures.
+      </p>
+
+      <div
+        class='content-wrapper grid-layout horizontal two-cols gap gap-xl wrap'
+      >
+        <div class='content-wrapper flex-layout column gap'>
+          <p>
+            This milestone established the institutional trust with partners
+            like
+            <a
+              href='https://news.asu.edu/20240814-environment-and-sustainability-asu-lab-brings-energy'
+              target='_blank'
+              rel='noopener noreferrer'
+              >Arizona State University <Icon name='open_in_new' /></a
+            > that eventually justified our next big leap: the transition to SaaS
+            (cloud-based COMET).
+          </p>
+
+          <div class='partner-logo asu'>
+            <ASULogo />
+          </div>
+        </div>
+
+        <div class='content-wrapper flex-layout column gap'>
+          <p>
+            COMET was also recognized by UNDP as a top innovative solution and
+            featured on
+            <a
+              href='https://digitalx.undp.org/catalogs/community-energy-toolkit-comet.html'
+              target='_blank'
+              rel='noopener noreferrer'
+              >the UNDP Digital X platform <Icon name='open_in_new' /></a
+            > and <a
+              href='https://www.sdg-digital.org/sdg/affordable-and-clean-energy'
+              target='_blank'
+              rel='noopener noreferrer'
+              >the UN SDG Acceleration Agenda <Icon name='open_in_new' /></a
+            >.
+          </p>
+          <div class='partner-logo undp'>
+            <UNDPLogo />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id='pivot-point' class='pivot-point full-bleed'>
+      <div
+        class='pivot-point-content container padded flex-layout gap gap-xl align-center'
+      >
+        <h3 class='pivot-text'>
+          <span class='slash'></span>
+          <span>Pivot</span><span>Point</span>
+        </h3>
+
+        <div class='content-wrapper padded flex-layout column gap'>
+          <p>
+            While COMET Offline achieved global recognition and measurable
+            impact, our field evaluations revealed a growing barrier to scale.
+            The LAN-based model was hitting a 'Physical Ceiling' as the
+            operational complexity of managing on-site hardware and local
+            network instability was preventing us from scaling more sites and
+            partners.
+          </p>
+          <div class='hurdles flex-layout gap'>
+            <span class='hurdle'>Hardware Dependencies</span>
+            <span class='hurdle'>Network Instability</span>
+            <span class='hurdle'>Local Data Loss</span>
+            <span class='hurdle'>Collaboration Barriers</span>
+          </div>
+          <p>
+            To ensure the product could truly scale to the global mini-grid
+            market, I led the strategic decision to architect <span
+              class='emphasized'>COMET SaaS</span
+            >, the next generation of the platform.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id='saas-transition' class='flex-layout column gap gap-xl'>
+      <h2 class='container padded'>The SaaS Evolution</h2>
+
+      <div
+        id='strategic-move'
+        class='container padded content-wrapper flex-layout column gap'
+      >
+        <h3>Strategic Move: Solving for Scale</h3>
+        <p>
+          The move to SaaS was a response to critical field pain points and to
+          provide universal accessibility for energy professionals and
+          communities. I led the research and technical audit that identified
+          three non-negotiable goals for the next generation of COMET:
+        </p>
+
+        <ul class='grid-layout horizontal three-cols gap gap-xl'>
+          <li class='flex-layout column gap'>
+            <h5 class='emphasized'>Eliminate Potential Local Data Loss:</h5>
+            <p>
+              Prevent uncertainty and data loss by transitioning from local
+              state and storage management to a centralized cloud architecture
+              to ensure 100% data persistence and accessibility.
+            </p>
+          </li>
+          <li class='flex-layout column gap'>
+            <h5 class='emphasized'>
+              Reduce Hardware and Network Dependencies:
+            </h5>
+            <p>
+              By removing the need for local hardware and LAN network setup,
+              using the internet as the backbone and the power of cloud services
+              like
+              <a
+                href='https://aws.amazon.com'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <span>AWS</span>
+                <Icon name='open_in_new' />
+              </a> as an infrastructure.
+            </p>
+          </li>
+          <li class='flex-layout column gap'>
+            <h5 class='emphasized'>Embrace a Collaboration-based Model:</h5>
+            <p>
+              Unlock collaborative workflows and reduce the time and effort
+              required to prepare for deployments, giving users the freedom to
+              focus on high-impact work.
+            </p>
+          </li>
+        </ul>
+      </div>
+
+      <div class='saas-hero full-bleed'>
+        <Image
+          src={CometSaas1}
+          alt='COMET SaaS embraces collaboration over the cloud'
+        />
+      </div>
+
+      <div
+        id='product-custodian'
+        class='container padded content-wrapper flex-layout column gap'
+      >
+        <h3>Leading as The Product Custodian</h3>
+        <p>
+          A transition of this scale is often derailed by team turnover. During
+          this phase, I acted as the Technical Glue for the product as our
+          backend team evolved multiple times.
+        </p>
+        <ul class='grid-layout horizontal three-cols gap gap-xl'>
+          <li class='flex-layout column gap'>
+            <h5 class='emphasized'>Logic Validation & QA:</h5>
+            <p>
+              In the absence of a dedicated QA tester, I personally led the
+              functional verification process, bridging the gap between
+              technical execution and user outcomes to maintain simulation
+              accuracy.
+            </p>
+          </li>
+          <li class='flex-layout column gap'>
+            <h5 class='emphasized'>Strategic Documentation:</h5>
+            <p>
+              I developed product's comprehensive technical logic documentation
+              materials, user Knowledge base and managed all tasking in Jira to
+              maintain momentum during developer transitions.
+            </p>
+          </li>
+          <li class='flex-layout column gap'>
+            <h5 class='emphasized'>Managing stakeholder expectations</h5>
+            <p>
+              With delays and uncertainty, I actively provided updates,
+              contextual insights, and feedback to stakeholders to ensure their
+              decisions are informed and aligned.
+            </p>
+          </li>
+        </ul>
+      </div>
+
+      <div
+        id='hands-on'
+        class='container padded content-wrapper flex-layout column gap'
+      >
+        <h3>Hands-on Build: Modernizing the Core</h3>
+        <p>
+          While leading a team of backend developers, I remained the primary UX
+          designer and builder for the React-based frontend, ensuring that the
+          SaaS version exceeded the user experience bar set by its predecessor.
+        </p>
+
+        <ul id='saas-features' class='grid-layout two-cols'>
+          <li class='flex-layout column gap gap-sm'>
+            <Icon name='cloud_sync' className='icon' />
+            <h4>Cloud-Synced Frontend:</h4>
+            <p>
+              I designed the SaaS frontend to prioritize performance and
+              accuracy, ensuring that users receive a seamless experience even
+              during intense tasks like real-time simulation synchronization.
+              This involved optimizing edge cases and refining the codebase for
+              efficiency.
+            </p>
+          </li>
+          <li class='flex-layout column gap gap-sm'>
+            <Icon name='contrast' className='icon' />
+            <h4>Legibility & Accessibility:</h4>
+            <p>
+              I revamped the UI to prioritize readability and contrast, ensuring
+              the platform remained accessible for users with varying levels of
+              digital literacy. Additionally, I implemented keyboard navigation
+              to further enhance the overall accessibility of the platform.
+            </p>
+          </li>
+          <li class='flex-layout column gap gap-sm'>
+            <Icon name='passkey' className='icon' />
+            <h4>Authentication & Authorization:</h4>
+            <p>
+              I designed and integrated a secure authentication and
+              authorization system built on top of <a
+                href='https://auth0.com'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <span>Auth0</span>
+                <Icon name='open_in_new' />
+              </a>. This ensured secure access to the core logic and data, and
+              was especially important for the SaaS version, which required a
+              more robust security approach to protect user data.
+            </p>
+          </li>
+          <li class='flex-layout column gap gap-sm'>
+            <Icon name='info' className='icon' />
+            <h4>Keeping Users Informed:</h4>
+            <p>
+              I designed an adaptive onboarding system and refactored form
+              inputs to have meaningful default values, speeding up workflows.
+              Additionally, I created a comprehensive error handling system to
+              provide users with clear and actionable feedback when something
+              goes wrong.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <ImageCarousel
+      client:load
+      objectFit='contain'
+      images={[
+        {
+          url: optimizedSaasCarousel1.src,
+          alt: 'Simulation control UI for operators in COMET SaaS',
+        },
+        {
+          url: optimizedSaasCarousel2.src,
+          alt: 'Simulation UI for participants in COMET SaaS',
+        },
+        {
+          url: optimizedSaasCarousel3.src,
+          alt: 'Simulation billing UI for participants in COMET SaaS',
+        },
+        {
+          url: optimizedSaasCarousel4.src,
+          alt: 'COMET SaaS operator dashboard home page',
+        },
+        {
+          url: optimizedSaasCarousel5.src,
+          alt: 'Simulations list in the workshop page in COMET SaaS',
+        },
+        {
+          url: optimizedSaasCarousel6.src,
+          alt: 'New simulation form in COMET SaaS',
+        },
+        {
+          url: optimizedSaasCarousel7.src,
+          alt: 'Simulation results UI in COMET SaaS',
+        },
+        {
+          url: optimizedSaasCarousel8.src,
+          alt: 'Project page in COMET SaaS',
+        },
+      ]}
+    />
+
+    <section id='outcome' class='container padded flex-layout column gap'>
+      <h2>Beyond the Launch</h2>
+      <p>
+        Successfully leading COMET through its SaaS evolution was not just a
+        technical victory; it was a masterclass in Product Resilience. It proved
+        that a product could survive and thrive through multiple team turnovers,
+        organizational pivots, and radical technological shifts if the core
+        logic and user-centric vision remained intact.
+      </p>
+
+      <div
+        id='key-takeaways'
+        class='content-wrapper flex-layout column gap gap-xl'
+      >
+        <h3>Key Strategic Takeaways</h3>
+        <ul class='grid-layout two-cols gap gap-lg'>
+          <li>
+            <h4>The Value of Continuity:</h4>
+            <p>
+              Acting as the <strong>"Technical Glue"</strong> during backend team
+              transitions was as critical as the code itself. It taught me that a
+              Lead's role is often as much about Knowledge Stewardship as it is about
+              design or development.
+            </p>
+          </li>
+          <li>
+            <h4>Data Integrity is Non-Negotiable:</h4>
+            <p>
+              Moving to the cloud was the right strategic call. By prioritizing
+              100% data persistence, we've transformed COMET from a "field
+              experiment" into a reliable, investment-grade engine for global
+              infrastructure.
+            </p>
+          </li>
+          <li>
+            <h4>Hybrid Efficiency:</h4>
+            <p>
+              Serving as both the UX Designer and Lead Frontend Developer
+              allowed us to maintain a "single source of truth," significantly
+              reducing the friction typically found between design handoff and
+              production deployment.
+            </p>
+          </li>
+          <li>
+            <h4>The Importance of Documentation:</h4>
+            <p>
+              Continuous documentation effort even during team turnovers and
+              time limitations provided a solid foundation for team members to
+              understand the product's logic and functionality, even when the
+              code itself was changing.
+            </p>
+          </li>
+        </ul>
+      </div>
+
+      <div id='road-ahead' class='content-wrapper flex-layout column gap'>
+        <h3>The Road Ahead</h3>
+        <p>
+          With COMET SaaS now production-ready, we are poised to scale our
+          impact to thousands of mini-grid projects worldwide. My journey with
+          COMET continues to evolve, as I now focus on building the next
+          generation of data-driven insights with the new COMET Reports feature.
+        </p>
+      </div>
+    </section>
+  </WorkLayout>
+  <ExploreMoreWorks
+    works={[
+      {
+        title: 'Customized Digital Experiences for Pharma',
+        image: PharmaWorkCover,
+        linkUrl: '/works/pharma',
+      },
+      {
+        title: 'FindHome: Accommodation Marketplace',
+        image: FindHomeWorkCover,
+        linkUrl:
+          'https://www.behance.net/gallery/54932129/Find-Home-(Accomodation-Marketplace)',
+        linkTarget: '_blank',
+      },
+    ]}
+  />
+</BaseLayout>
+
+<style>
+  #ux-challenge {
+    padding-block-end: var(--space-2xl);
+  }
+
+  .img-wrapper.design-system {
+    [data-theme='dark'] & {
+      background-color: var(--surface-2);
+    }
+  }
+
+  #redesign-impact {
+    padding-block-start: var(--space-2xl);
+    padding-block-end: var(--space-2xl);
+
+    h5 {
+      color: var(--text-secondary);
+    }
+
+    .chart-content {
+      padding: var(--space-xl);
+      height: 20rem;
+    }
+  }
+
+  #recognitions {
+    padding-block-end: var(--space-2xl);
+
+    .partner-logo {
+      padding: var(--space-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0 var(--space-md);
+      background-color: var(--surface-1);
+      height: 16rem;
+
+      [data-theme='dark'] & {
+        background-color: var(--surface-2);
+      }
+
+      svg {
+        max-width: 85%;
+        min-height: 8rem;
+        object-fit: contain;
+
+        [data-theme='dark'] & {
+          path[fill='black'],
+          path[fill='#A30046'] {
+            fill: white;
+            opacity: 0.95;
+          }
+        }
+      }
+    }
+  }
+
+  #pivot-point {
+    padding-block-start: var(--space-2xl);
+    padding-block-end: var(--space-2xl);
+    background-color: var(--surface-inverse);
+
+    @media (max-width: 768px) {
+      .pivot-point-content {
+        flex-wrap: wrap;
+      }
+    }
+
+    .slash {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0.8em;
+      color: var(--surface-3);
+      opacity: 0.35;
+      z-index: 0;
+    }
+
+    .pivot-text {
+      position: relative;
+      padding-inline-start: 1.2em;
+      display: flex;
+      flex-direction: column;
+      min-width: min(40vw, 22rem);
+      font-size: calc(var(--font-size-h1) + 2.25vw);
+      font-weight: 700;
+      line-height: 1;
+      z-index: 1;
+
+      > span:not(.slash) {
+        color: var(--text-inverse);
+        opacity: 0.8;
+      }
+
+      > span:last-child {
+        color: var(--text-inverse);
+        opacity: 0.6;
+      }
+
+      @media (max-width: 768px) {
+        font-size: var(--font-size-h1);
+        flex-direction: row;
+        gap: var(--space-xs);
+      }
+    }
+
+    p {
+      color: var(--text-inverse);
+      opacity: 0.9;
+
+      span.emphasized {
+        color: var(--text-inverse);
+      }
+    }
+
+    .hurdles {
+      flex-wrap: wrap;
+
+      .hurdle {
+        flex: 1 1 8rem;
+        padding: var(--space-sm) var(--space-md);
+        color: var(--text-inverse);
+        background-color: rgb(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: var(--font-weight-medium);
+        text-align: center;
+
+        [data-theme='dark'] & {
+          background-color: rgb(0, 0, 0, 0.08);
+        }
+      }
+    }
+  }
+
+  .saas-hero {
+    height: 32rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--surface-1);
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+      min-height: 100%;
+      min-width: 100%;
+    }
+  }
+
+  #strategic-move,
+  #product-custodian {
+    ul {
+      margin-top: var(--space-md);
+
+      > li {
+        flex: 1 1 0;
+        padding: var(--space-md);
+        background-color: var(--surface-2);
+        justify-content: start;
+      }
+    }
+  }
+
+  #strategic-move {
+    padding-block-end: var(--space-2xl);
+  }
+
+  #hands-on,
+  #product-custodian {
+    padding-block-start: var(--space-2xl);
+  }
+
+  #saas-features {
+    background-color: var(--surface-1);
+
+    li {
+      padding: var(--space-lg);
+
+      > .icon {
+        color: var(--text-secondary);
+        font-size: var(--font-size-h1);
+        opacity: 0.55;
+      }
+    }
+
+    h4 {
+      color: var(--text-secondary);
+    }
+
+    p {
+      margin-block-end: var(--space-xs);
+    }
+  }
+
+  #outcome {
+    .content-wrapper {
+      padding-block-start: var(--space-lg);
+    }
+
+    #key-takeaways {
+      ul.grid-layout {
+        column-gap: var(--space-xl);
+      }
+
+      li {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs);
+
+        h4 {
+          color: var(--text-secondary);
+        }
+      }
+    }
+  }
+</style>

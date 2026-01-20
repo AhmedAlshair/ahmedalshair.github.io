@@ -126,12 +126,12 @@
 
     &.success {
       border-color: var(--status-success);
-      background-color: hsl(from var(--status-success) h calc(s - 10) 95 / 10%);
+      background-color: var(--surface-success);
     }
 
     &.failure {
       border-color: var(--status-error);
-      background-color: hsl(from var(--status-error) h calc(s - 10) 95 / 10%);
+      background-color: var(--surface-error);
     }
 
     p {

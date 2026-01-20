@@ -1,0 +1,169 @@
+---
+import Link from '@/components/links/Link.astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  type?: 'primary' | 'secondary';
+  title: string;
+  description?: string;
+  image: ImageMetadata;
+  imageAlt: string;
+  linkUrl?: string;
+  linkText?: string;
+  linkTarget?: '_blank' | '_self';
+  reverse?: boolean;
+  id?: string;
+  className?: string;
+}
+
+let {
+  type = 'primary',
+  title,
+  description,
+  image,
+  imageAlt,
+  linkUrl,
+  linkText,
+  linkTarget = '_self',
+  reverse,
+  id,
+  className,
+} = Astro.props;
+---
+
+<div
+  id={id}
+  class:list={['featured-work flex-layout', type, { reverse }, className]}
+>
+  <div class='work-info flex-layout column gap'>
+    <div class='work-title flex-layout align-center justify-start'>
+      {type === 'primary' && <span class='slash mask-before' />}
+      <h3>{title}</h3>
+    </div>
+
+    {description && <p class='description'>{description}</p>}
+
+    {
+      linkUrl && linkText && (
+        <Link
+          href={linkUrl}
+          variant={type}
+          target={linkTarget}
+          class='work-link'
+        >
+          {linkText}
+        </Link>
+      )
+    }
+  </div>
+
+  <div class='work-image flex-layout align-end justify-end'>
+    <Image src={image} alt={imageAlt} loading='lazy' />
+  </div>
+</div>
+
+<style>
+  .featured-work {
+    max-width: 100%;
+    flex-wrap: wrap;
+    overflow: hidden;
+
+    &.primary {
+      min-height: 75lvh;
+    }
+
+    &.secondary {
+      min-height: 55lvh;
+    }
+
+    &.reverse {
+      flex-direction: row-reverse;
+
+      @media (max-width: 768px) {
+        flex-direction: column-reverse;
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .work-info {
+    flex: 1 1 40%;
+    padding: var(--space-xl);
+    min-width: max(22rem, 20vw);
+
+    .primary & {
+      align-self: center;
+      background-color: var(--surface-0);
+      border: var(--stroke-width-thin) solid var(--border-color);
+    }
+
+    .secondary & {
+      align-self: start;
+      justify-content: center;
+      background-color: var(--surface-1);
+
+      .work-link {
+        margin-top: auto;
+      }
+    }
+
+    .work-title {
+      position: relative;
+      height: fit-content;
+      gap: var(--space-md);
+
+      .slash {
+        height: fit-content;
+        width: fit-content;
+        min-height: 3.6em;
+        min-width: 1.6em;
+      }
+
+      h3 {
+        margin: 0;
+      }
+    }
+
+    p {
+      margin-block-end: var(--space-md);
+      color: var(--text-muted);
+    }
+  }
+
+  .work-image {
+    position: relative;
+    flex: 1 1 60%;
+    justify-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    background-color: var(--surface-2);
+    overflow: hidden;
+
+    .primary & {
+      margin-inline-start: -20vw;
+      z-index: -1;
+    }
+
+    .secondary & {
+      max-height: 30rem;
+    }
+
+    .reverse & {
+      margin-inline-start: 0;
+
+      .primary & {
+        margin-inline-end: -20vw;
+      }
+    }
+
+    > img {
+      object-fit: cover;
+      min-height: 100%;
+      min-width: 100%;
+    }
+  }
+</style>

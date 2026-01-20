@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    The Tipping Point Healthcare Communications
+    http://www.ttphcc.com
+
+    <name> -- <role> -- <website>
+    Ahmed Alshair   --  Digital Product Designer  --  http://ahmedalshair.net
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5, JS
+    jQuery, Modernizr, Normalize.css

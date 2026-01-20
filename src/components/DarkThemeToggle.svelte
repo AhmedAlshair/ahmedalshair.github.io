@@ -4,7 +4,7 @@
 
   let theme: string | null = $state(null);
   const icon = $derived(
-    theme ? (theme === 'dark' ? 'dark_mode' : 'light_mode') : null,
+    theme ? (theme === 'dark' ? 'light_mode' : 'dark_mode') : null,
   );
 
   onMount(() => {
@@ -34,7 +34,6 @@
       localStorage.setItem('theme', theme);
       document.documentElement.setAttribute('data-theme', theme);
     } catch (e) {}
-    $inspect('theme', theme);
   }
 </script>
 
@@ -43,4 +42,6 @@
   icon={icon || undefined}
   checked={theme === 'light'}
   loading={!theme}
+  className="theme-toggle"
+  aria-label="Toggle theme"
 />
