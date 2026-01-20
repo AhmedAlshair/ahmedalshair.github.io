@@ -1,0 +1,134 @@
+---
+import WorkNav from '@/components/links/WorkNav.svelte';
+
+export interface WorkSection {
+  title: string;
+  id: string;
+}
+
+interface Props {
+  sections: WorkSection[];
+  className?: string;
+}
+
+let { sections, className } = Astro.props;
+let hasSummary = Astro.slots.summary !== undefined;
+---
+
+<div
+  id='work-layout'
+  class:list={['work-layout flex-layout column', className]}
+>
+  <WorkNav client:only='svelte' {sections} />
+
+  <div class='work-image flex-layout align-center justify-center'>
+    <slot name='work-image' />
+  </div>
+
+  {
+    hasSummary && (
+      <section id='summary' class='container padded flex-layout column'>
+        <slot name='summary' />
+      </section>
+    )
+  }
+
+  <div class='work-content flex-layout column'>
+    <slot />
+  </div>
+</div>
+
+<style>
+  .work-image {
+    background-color: var(--surface-1);
+
+    &:has(> img) {
+      height: calc(88lvh - var(--container-padding));
+    }
+
+    &:not(:has(> img)) {
+      padding: calc(var(--container-padding) / 2)
+        calc(var(--container-padding) / 2) 10lvh;
+      height: calc(10lvh + var(--container-padding) * 1.5);
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .work-content {
+    > section {
+      padding-block-start: var(--space-2xl);
+      padding-block-end: var(--space-2xl);
+    }
+  }
+
+  #summary {
+    margin-block-start: calc(-10lvh - var(--container-padding));
+    padding: var(--container-padding);
+    background-color: var(--surface-0);
+    border: var(--stroke-width-thin) solid var(--border-color);
+    gap: var(--space-xl);
+
+    .summary-head {
+      gap: var(--space-lg);
+    }
+
+    .role-summary {
+      row-gap: var(--space-md);
+      column-gap: var(--space-xl);
+
+      .label {
+        display: block;
+        color: var(--text-muted);
+
+        &:has(+ p) {
+          margin-block-end: var(--space-2xs);
+        }
+      }
+
+      .highlighted {
+        background-color: var(--surface-1);
+        padding: var(--space-md);
+      }
+    }
+  }
+
+  :global(p) {
+    max-width: 85ch;
+  }
+
+  :global(.img-wrapper) {
+    position: relative;
+    padding: var(--space-lg);
+    background-color: var(--surface-1);
+  }
+
+  :global(.content-wrapper.padded):not(.container) {
+    padding-block-start: var(--space-xl);
+    padding-block-end: var(--space-xl);
+  }
+
+  :global(.chart-content) {
+    padding: var(--space-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0 var(--space-md);
+    background-color: var(--surface-1);
+    height: 16rem;
+
+    [data-theme='dark'] & {
+      background-color: var(--surface-2);
+    }
+
+    > .chart {
+      max-width: 85%;
+      min-height: 10rem;
+      object-fit: contain;
+    }
+  }
+</style>

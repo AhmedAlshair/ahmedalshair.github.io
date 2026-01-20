@@ -5,7 +5,8 @@
   import Loader from '@/components/Loader.svelte';
 
   interface Props {
-    variant?: 'primary' | 'secondary';
+    variant?: 'primary' | 'secondary' | 'ghost';
+    size?: 'small' | 'medium' | 'large';
     onclick?: () => void;
     icon?: string;
     loading?: boolean;
@@ -13,11 +14,13 @@
     type?: HTMLButtonAttributes['type'];
     id?: string;
     className?: string;
-    children: Snippet;
+    children?: Snippet;
+    [key: string]: any;
   }
 
   let {
     variant = 'primary',
+    size = 'medium',
     onclick,
     icon,
     loading,
@@ -26,42 +29,66 @@
     id,
     className,
     children,
+    ...props
   }: Props = $props();
 </script>
 
 <button
   {id}
-  class={['button', variant, disabled, loading && 'disabled', className]}
+  class={[
+    'button',
+    variant,
+    size,
+    disabled && 'disabled',
+    loading && 'disabled',
+    !children && icon && 'icon-only',
+    className,
+  ]}
   {onclick}
   {type}
   {disabled}
+  {...props}
 >
   {#if loading}
     <Loader />
   {/if}
 
-  <span class="button-text">{@render children()}</span>
+  {#if children}
+    <span class="button-text">{@render children()}</span>
+  {/if}
 
   {#if icon}
-    <Icon {icon} className="icon button-icon" />
+    <Icon name={icon} className="icon button-icon" />
   {/if}
 </button>
 
 <style>
   .button {
     position: relative;
-    padding: var(--space-sm);
     font-family: var(--font-headings);
-    font-size: var(--font-size-h5);
-    font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-semibold);
     display: inline-flex;
     align-items: center;
     justify-content: start;
-    gap: var(--space-xs);
+    user-select: none;
     transition: all var(--transition-fast);
 
-    > :global(.button-icon) {
-      margin-inline-start: auto;
+    &.small {
+      padding: var(--space-xs);
+      font-size: var(--font-size-h6);
+      gap: var(--space-xs);
+    }
+
+    &.medium {
+      padding: var(--space-sm);
+      font-size: var(--font-size-body);
+      gap: var(--space-xs);
+    }
+
+    &.large {
+      padding: var(--space-md);
+      font-size: var(--font-size-h5);
+      gap: var(--space-sm);
     }
 
     &.primary {
@@ -71,7 +98,12 @@
 
     &.secondary {
       color: var(--action-default);
-      border: 1px solid var(--action-default);
+      border: var(--stroke-width-thin) solid var(--action-default);
+    }
+
+    &.ghost {
+      background-color: transparent;
+      color: var(--action-default);
     }
 
     &:hover {
@@ -86,8 +118,10 @@
         background-color: var(--surface-hover);
       }
 
-      :global(.button-icon) {
-        transform: translateX(0.2ch);
+      &:not(.icon-only) {
+        :global(.button-icon) {
+          transform: translateX(0.2ch);
+        }
       }
     }
 
@@ -102,6 +136,11 @@
       }
     }
 
+    &.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
     .button-text {
       display: inline-block;
 
@@ -111,6 +150,7 @@
     }
 
     :global(.button-icon) {
+      margin-inline-start: auto;
       aspect-ratio: 1;
       flex-shrink: 0;
       transition: all var(--transition-fast);

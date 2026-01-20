@@ -1,0 +1,14 @@
+{
+  "short_name": "HCV Free",
+  "name": "HCV Free 2030",
+  "icons": [
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "#A7238B",
+  "theme_color": "#A7238B"
+}

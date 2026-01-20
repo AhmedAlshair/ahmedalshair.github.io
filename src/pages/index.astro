@@ -1,43 +1,88 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import { JobTitle, MetaDescription, SiteName } from '@/utils/Constants.astro';
+import {
+  JobTitle,
+  MetaDescription,
+  SiteName,
+} from '@/utils/Constants.astro.ts';
 import Icon from '@/components/Icon.svelte';
 import Link from '@/components/links/Link.astro';
-// import FeaturedWorksSection from '@/components/page-sections/index-page/FeaturedWorksSection.astro';
-// import FeaturedWork from '@/components/page-sections/utils/FeaturedWork.astro';
-// import CometScreenshot from '@assets/works/comet/comet-screenshot-participant.png';
-import ProfessionalTimeline from '@/components/page-sections/index-page/ProfessionalTimeline.svelte';
+import FeaturedWorksSection from '@/components/page-sections/works/FeaturedWorksSection.astro';
+import FeaturedWork from '@/components/page-sections/works/FeaturedWork.astro';
+import CometWorkCover from '@assets/works/comet/work-cover-comet.jpg';
+import PharmaWorkCover from '@assets/works/pharma/work-cover-pharma.jpg';
+import ProfessionalTimeline from '@/components/page-sections/about/ProfessionalTimeline.svelte';
 import CTA from '@/components/page-sections/CTA.astro';
+import Testimonials from '@/components/Testimonials.svelte';
+import EssamAvatar from '@assets/avatars/essam-rabah.png';
+import IhtashamAvatar from '@assets/avatars/muhammad-ihtasham.png';
+import RafaelAvatar from '@assets/avatars/rafael-adel.png';
+
+const title = `${SiteName} | ${JobTitle}`;
+
+const TestimonialsData = [
+  {
+    name: 'Muhammad Ihtasham Arif',
+    role: 'Software Engineer',
+    text: 'Ahmed is a skilled communicator who effectively manages teams and stakeholders. He has a keen ability to identify and mitigate risks while ensuring that project objectives are met on time. Ahmed is also an excellent problem-solver who remains calm under pressure and makes data-driven decisions. As a human being, he is a really kind and gentle person. I really look forward to working with him again in the future. ',
+    avatar: {
+      src: IhtashamAvatar.src,
+    },
+  },
+  {
+    name: 'Rafael Adel',
+    role: 'Software Engineer',
+    text: 'Ahmed was one of the most innovative and motivated colleagues I have worked with. His willingness to know more and to improvise solutions played as a great driving force for us. He always adds a sense of professionalism and decency to the workplace. I would really recommend Ahmed to any place to work with.',
+    avatar: {
+      src: RafaelAvatar.src,
+    },
+  },
+  {
+    name: 'Essam Rabah',
+    role: 'Head of Product Design',
+    text: `It’s rare that you come across standout talent like Shair's, I had the pleasure of working with Ahmed for at "The Seven Layers" and "The Tipping Point" Joint Venture, Shair's ability to juggle multiple projects was unlike any I've seen before and made a dramatic difference in the productivity level of our team and we still miss him in the office, In words (Bold, Committed and Talented). Thank you, Ahmed you earn my highest recommendation.`,
+    avatar: {
+      src: EssamAvatar.src,
+    },
+  },
+];
 ---
 
-<BaseLayout title=`${SiteName} | ${JobTitle}` description={MetaDescription}>
-  <section id="hero" class="hero flex-layout column justify-center gap gap-lg">
-    <div class="hero-title">
-      <h2 class="title-1">Design-driven Problem Solving</h2>
-      <h2 class="title-2">Hands-on Code Level Craft</h2>
-      <span class="slash mask-before"></span>
+<BaseLayout title={title} description={MetaDescription}>
+  <section
+    id='hero'
+    class='hero container padded flex-layout column justify-center gap gap-lg'
+  >
+    <div class='hero-title'>
+      <h1 class='title-1' aria-label='Design-driven Problem Solving'>
+        Design-driven Problem Solving
+      </h1>
+      <h1 class='title-2' aria-label='Hands-on Code Level Craft'>
+        Hands-on Code Level Craft
+      </h1>
+      <span class='slash mask-before'></span>
     </div>
 
-    <p class="subtitle">
+    <p class='subtitle'>
       10+ years leading product, UX/UI, and engineering efforts to turn
       real-world problems into simple, impactful solutions. Currently leading at
       <a
-        href="https://www.cometapp.net"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="emphasized">COMET</a
+        href='https://www.cometapp.net'
+        target='_blank'
+        rel='noopener noreferrer'
+        class='emphasized'>COMET</a
       >.
     </p>
   </section>
 
   <section
-    id="expertise"
-    class="expertise grid-layout horizontal three-cols gap gap-lg align-stretch"
+    id='expertise'
+    class='expertise container padded grid-layout horizontal three-cols gap gap-lg align-stretch'
   >
-    <div class="exp product flex-layout column gap">
-      <div class="exp-title wrapper flex-layout gap align-center justify-start">
-        <Icon icon="category" className="exp-icon" />
-        <h4>Product Leadership</h4>
+    <div class='exp product flex-layout column gap'>
+      <div class='exp-title wrapper flex-layout gap align-center justify-start'>
+        <Icon name='category' className='exp-icon' />
+        <h3>Product Leadership</h3>
       </div>
       <p>
         Defining vision, mapping business goals to technical scoped tasks, and
@@ -45,10 +90,10 @@ import CTA from '@/components/page-sections/CTA.astro';
       </p>
     </div>
 
-    <div class="exp ux flex-layout column gap">
-      <div class="exp-title wrapper flex-layout gap align-center justify-start">
-        <Icon icon="design_services" className="exp-icon" />
-        <h4>User Experience</h4>
+    <div class='exp ux flex-layout column gap'>
+      <div class='exp-title wrapper flex-layout gap align-center justify-start'>
+        <Icon name='design_services' className='exp-icon' />
+        <h3>User Experience</h3>
       </div>
       <p>
         Solving complex business problems through research-driven UIs,
@@ -56,46 +101,53 @@ import CTA from '@/components/page-sections/CTA.astro';
       </p>
     </div>
 
-    <div class="exp frontend flex-layout column gap">
-      <div class="exp-title wrapper flex-layout gap align-center justify-start">
-        <Icon icon="code_blocks" className="exp-icon" />
-        <h4>Front-end Craft</h4>
+    <div class='exp frontend flex-layout column gap'>
+      <div class='exp-title wrapper flex-layout gap align-center justify-start'>
+        <Icon name='code_blocks' className='exp-icon' />
+        <h3>Front-end Craft</h3>
       </div>
       <p>
         Building performant web apps and services using modern frameworks like <span
-          class="meta-label">Astro</span
-        >, <span class="meta-label">Svelte</span> and <span class="meta-label"
-          >React</span
+          class='meta-label code'>Astro</span
+        >, <span class='meta-label code'>Svelte</span> and <span
+          class='meta-label code'>React</span
         > among others.
       </p>
     </div>
   </section>
 
-  <!-- <FeaturedWorksSection>
+  <FeaturedWorksSection>
     <FeaturedWork
-      title="COMET: Standalone to SaaS Evolution"
-      description="Led the 5-year strategic evolution of a complex simulation engine into a scalable SaaS product."
-      image={CometScreenshot}
-      imageAlt="Comet Screenshot"
-      linkUrl="/works/comet"
-      linkText="Read the Case Study"
+      title='COMET: Scaling a Complex Impact-First SaaS Product'
+      description='Led the 5-year strategic evolution of a complex simulation engine from an offline field tool to a scalable, cloud-based SaaS solution.'
+      image={CometWorkCover}
+      imageAlt='Comet Screenshot'
+      linkUrl='/works/comet'
+      linkText='Read the Case Study'
     />
 
     <FeaturedWork
-      title="High-Impact Experiences for Pharma Leaders"
-      description="Led the 5-year strategic evolution of a complex simulation engine into a scalable SaaS product."
-      image={CometScreenshot}
-      imageAlt="Comet Screenshot"
-      linkUrl="/works/comet"
-      linkText="Read the Case Study"
+      title='Customized Experiences for Pharma & Healthcare Leaders'
+      description='Delivering interactive healthcare-focused CLM experiences, websites and mobile apps handling complex data visualization and strict compliance workflows.'
+      image={PharmaWorkCover}
+      imageAlt='Pharma Work Screenshot'
+      linkUrl='/works/pharma'
+      linkText='Explore Projects'
       reverse
     />
-  </FeaturedWorksSection> -->
+  </FeaturedWorksSection>
 
-  <ProfessionalTimeline client:load concise={true} id="career-timeline" />
-  <div class="timeline-learn-more">
-    <Link variant="secondary" href="/about" text="Learn more about me" />
-  </div>
+  <section id='career-timeline' class='container padded'>
+    <ProfessionalTimeline client:load concise={true} />
+    <div class='timeline-learn-more'>
+      <Link variant='secondary' href='/about'>Learn more about me</Link>
+    </div>
+  </section>
+
+  <section class='testimonials container padded flex-layout column gap gap-xl'>
+    <h2>Testimonials</h2>
+    <Testimonials client:visible testimonials={TestimonialsData} />
+  </section>
 
   <CTA />
 </BaseLayout>
@@ -121,7 +173,7 @@ import CTA from '@/components/page-sections/CTA.astro';
       min-height: fit-content;
       overflow: hidden;
 
-      > h2 {
+      > h1 {
         position: absolute;
         left: 0;
         top: 0;
@@ -178,7 +230,7 @@ import CTA from '@/components/page-sections/CTA.astro';
 
   .expertise {
     min-height: fit-content;
-    padding-bottom: max(10vh, var(--space-xl));
+    padding-bottom: max(15vh, var(--space-2xl));
 
     @media (orientation: portrait) {
       min-height: fit-content;
@@ -198,7 +250,7 @@ import CTA from '@/components/page-sections/CTA.astro';
         flex-wrap: wrap;
       }
 
-      h4 {
+      h3 {
         margin: 0;
       }
 
@@ -233,16 +285,21 @@ import CTA from '@/components/page-sections/CTA.astro';
       min-height: fit-content;
     }
   }
+
+  .testimonials {
+    padding-block-start: var(--space-2xl);
+    padding-block-end: var(--space-3xl);
+  }
 </style>
 
 <script>
   // Animation configuration (seconds)
   const animationConfig = {
-    preDelay: 0.5, // time before title enters
+    preDelay: 0.4, // time before title enters
     enterDuration: 0.4, // enter animation duration
     holdDuration: 5, // title stays visible
     exitDuration: 0.4, // exit animation duration
-    postDelay: 0.2, // off-screen time after exit until next cycle
+    postDelay: 0.1, // off-screen time after exit until next cycle
   };
 
   const activeDuration =

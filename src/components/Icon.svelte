@@ -1,15 +1,15 @@
 <script lang="ts">
   interface Props {
-    icon: string;
+    name: string;
     className?: string;
     [key: string]: any;
   }
 
-  let { icon, className, ...props }: Props = $props();
+  let { name, className, ...props }: Props = $props();
 </script>
 
-<span class={['material-symbols-rounded', className && className]} {...props}>
-  {' '}{icon}{' '}
+<span class={['material-symbols-rounded', 'icon', className]} {...props}>
+  {' '}{name}{' '}
 </span>
 
 <style>

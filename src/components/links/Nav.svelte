@@ -30,7 +30,11 @@
     aria-controls="main-menu"
     aria-expanded={menuOpen}
   >
-    <Icon icon="menu" className="icon" aria-hidden="true" tabindex="-1" />
+    <Icon
+      name={menuOpen ? 'top_panel_close' : 'menu'}
+      className="icon"
+      tabindex="-1"
+    />
   </button>
   <div
     id="main-menu"
@@ -40,7 +44,7 @@
       {@const normalizedPath = normalizeUrlPath(link)}
       <a
         id={`nav-link-${index}`}
-        href={activePage === normalizedPath ? undefined : `/${normalizedPath}`}
+        href={`/${normalizedPath}`}
         class={['nav-link', activePage === normalizedPath && 'active']}
       >
         {toTitleCase(link)}
@@ -60,9 +64,13 @@
       padding: var(--space-xs) var(--space-sm);
 
       &.active {
-        background-color: var(--surface-3);
-        text-shadow: var(--shadow-inverse);
+        background-color: var(--surface-2);
         cursor: initial;
+        pointer-events: none;
+
+        .open & {
+          background-color: var(--surface-3);
+        }
       }
     }
   }
@@ -96,6 +104,22 @@
         &.gap-2xs {
           gap: var(--space-sm);
         }
+      }
+    }
+  }
+
+  @media screen and (max-width: 475px) {
+    nav:has(.menu.open) {
+      position: static;
+    }
+
+    .menu {
+      &.open {
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        width: 100vw;
+        z-index: var(--z-sticky);
       }
     }
   }

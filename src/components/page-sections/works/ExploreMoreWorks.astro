@@ -1,0 +1,102 @@
+---
+import Icon from '@/components/Icon.svelte';
+import { Image } from 'astro:assets';
+
+interface Work {
+  title: string;
+  image: ImageMetadata;
+  linkUrl: string;
+  linkTarget?: '_blank' | '_self';
+}
+
+interface Props {
+  works: Work[];
+  className?: string;
+}
+
+let { works, className } = Astro.props;
+---
+
+<div
+  class:list={['explore-more-works flex-layout column gap gap-lg', className]}
+>
+  <div class='section-head container padded flex-layout gap align-center'>
+    <h4 class='flex-layout gap gap-sm align-center justify-start'>
+      <span class='slash'></span>
+      <span>Explore More Works</span>
+    </h4>
+
+    <a href='/works' class='back-link flex-layout gap gap-2xs align-center'>
+      <span>All Works</span>
+      <Icon name='keyboard_arrow_right' />
+    </a>
+  </div>
+  <div class='container padded grid-layout two-cols gap gap-xl'>
+    {
+      works.map((work: Work) => (
+        <div class='work-card'>
+          <a href={work.linkUrl} target={work.linkTarget ?? '_self'}>
+            <Image src={work.image} alt={work.title} />
+            <h5>{work.title}</h5>
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .explore-more-works {
+    padding-block-start: var(--space-xl);
+    padding-block-end: var(--space-xl);
+    background-color: var(--surface-2);
+  }
+
+  .section-head {
+    a.back-link:hover {
+      background-size: 100% 100%;
+      background-image: linear-gradient(var(--surface-1));
+    }
+  }
+
+  .work-card {
+    flex: 1 1 28rem;
+    height: 16rem;
+    position: relative;
+    background-color: var(--surface-0);
+    border: var(--stroke-width-thin) solid var(--border-color);
+    transition: all var(--transition-default);
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+      transition: all var(--transition-default);
+
+      .work-card:hover & {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+    }
+
+    h5 {
+      position: absolute;
+      bottom: var(--space-md);
+      left: var(--space-md);
+      width: calc(100% - var(--space-md) * 1);
+      padding: var(--space-md);
+      background-color: var(--surface-1);
+      opacity: 0.95;
+      transition: all var(--transition-fast);
+      z-index: 1;
+
+      .work-card:hover & {
+        padding: var(--space-xl) var(--space-md);
+        background-color: var(--surface-3);
+        opacity: 0.95;
+      }
+    }
+  }
+</style>

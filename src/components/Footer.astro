@@ -1,26 +1,27 @@
 ---
 import Social from '@/components/links/Social.astro';
-import { SiteName } from '@/utils/Constants.astro';
+import { SiteName } from '@/utils/Constants.astro.ts';
 
 let year = new Date().getFullYear();
 ---
 
-<footer
-  class="main-footer container padded flex-layout gap align-center space-between wrap"
->
-  <Social />
+<footer id='main-footer' class='flex-layout align-center'>
+  <div class='container padded flex-layout gap align-center space-between wrap'>
+    <Social />
 
-  <p class="copyrights meta-label flex-layout align-baseline">
-    <span>&#9400;</span>
-    <span>{year}</span>
-    <span>{SiteName}</span>
-  </p>
+    <p class='copyrights meta-label flex-layout align-baseline'>
+      <span>&#9400;</span>
+      <span>{year}</span>
+      <span>{SiteName}</span>
+    </p>
+  </div>
 </footer>
 
 <style>
   footer {
     padding-block-start: var(--space-lg);
     padding-block-end: var(--space-lg);
+    min-height: var(--header-height);
   }
 
   .copyrights {

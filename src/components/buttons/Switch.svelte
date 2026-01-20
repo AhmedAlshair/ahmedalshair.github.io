@@ -8,15 +8,17 @@
     loading?: boolean;
     id?: string;
     className?: string;
+    [key: string]: any;
   }
 
-  let { onclick, checked, icon, loading, id, className }: Props = $props();
+  let { onclick, checked, icon, loading, id, className, ...props }: Props =
+    $props();
 </script>
 
 <button
   {id}
   class={[
-    'switch-button theme-toggle',
+    'switch-button',
     { checked: checked },
     { loading: loading },
     { skeleton: loading },
@@ -26,10 +28,10 @@
     checked = !checked;
     onclick && onclick();
   }}
-  aria-label="Toggle theme"
+  {...props}
 >
   {#if icon}
-    <Icon {icon} className="icon" />
+    <Icon name={icon} className="icon" />
   {:else}
     <span class="icon"></span>
   {/if}
@@ -41,11 +43,10 @@
     --switch-size: var(--input-height-sm);
     position: relative;
     height: var(--switch-size);
-    aspect-ratio: 2 / 1.12;
+    aspect-ratio: 2 / 1.06;
     border: none;
     display: flex;
     align-items: center;
-    border-radius: var(--radius-pill);
     background-color: var(--action-default);
     cursor: pointer;
 
@@ -81,7 +82,6 @@
       font-size: var(--icon-md);
       color: var(--action-default);
       background-color: var(--surface-1);
-      border-radius: var(--radius-full);
       transition: all var(--transition-fast);
 
       :global(.checked) & {

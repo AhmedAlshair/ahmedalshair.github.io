@@ -2,29 +2,37 @@
 import DarkThemeToggle from '@/components/DarkThemeToggle.svelte';
 import Nav from '@/components/links/Nav.svelte';
 
-let navLinks = ['Works', 'About', 'Contact'];
-let currentPage = Astro.url.pathname;
+export interface Props {
+  currentPage?: string;
+}
 
-if (currentPage.startsWith('/')) {
-  currentPage = currentPage.slice(1);
+const { currentPage } = Astro.props;
+
+let navLinks = ['Works', 'About', 'Contact'];
+let activePage = currentPage || Astro.url.pathname;
+
+if (activePage.startsWith('/')) {
+  activePage = activePage.slice(1);
 }
 ---
 
-<header id="main-header" class="full-bleed flex-layout align-center gap">
-  <a class="branded-title link-wrapper" href="/">
-    <span class="highlight">Ahmed </span>
-    <span>Alshair</span>
-  </a>
+<header id='main-header'>
+  <div class='container padded flex-layout align-center gap'>
+    <a class='branded-title link-wrapper' href='/'>
+      <span class='highlight'>Ahmed </span>
+      <span>Alshair</span>
+    </a>
 
-  <Nav
-    client:load
-    className="main-nav"
-    links={navLinks}
-    currentPage={currentPage}
-  />
+    <Nav
+      client:load
+      className='main-nav'
+      links={navLinks}
+      currentPage={activePage}
+    />
 
-  <div class="wrapper toggle-wrapper">
-    <DarkThemeToggle client:only="svelte" />
+    <div class='wrapper toggle-wrapper'>
+      <DarkThemeToggle client:only='svelte' />
+    </div>
   </div>
 </header>
 
@@ -32,10 +40,11 @@ if (currentPage.startsWith('/')) {
   header {
     padding-block-start: var(--space-sm);
     padding-block-end: var(--space-sm);
+    height: var(--header-height);
     position: sticky;
     top: 0;
     background-color: var(--surface-0);
-    z-index: var(--z-sticky);
+    z-index: var(--z-header);
     transition:
       transform var(--transition-default),
       background-color var(--transition-default),
@@ -81,7 +90,7 @@ if (currentPage.startsWith('/')) {
 
   .toggle-wrapper {
     min-height: var(--input-height-sm);
-    min-width: calc(var(--input-height-sm) * 2);
+    min-width: calc(var(--input-height-sm) * 1.88);
     border-radius: var(--radius-pill);
 
     &:empty {

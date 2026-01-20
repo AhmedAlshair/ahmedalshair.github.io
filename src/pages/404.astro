@@ -1,21 +1,18 @@
 ---
 import Link from '@/components/links/Link.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
+
+const title = '404 | Page Not Found';
+const description = 'The page you are looking for does not exist.';
 ---
 
-<BaseLayout
-  title="Page Not Found"
-  description="The page you are looking for does not exist."
->
-  <div class="container flex-layout column justify-center gap">
+<BaseLayout title={title} description={description}>
+  <div class='container padded flex-layout column justify-center gap'>
     <h1>404</h1>
-    <p class="subtitle">The page you are looking for does not exist.</p>
-    <Link
-      variant="secondary"
-      href="/"
-      class="go-home-link"
-      text="Go to Main Page"
-    />
+    <p class='subtitle'>The page you are looking for does not exist.</p>
+    <Link variant='secondary' href='/' class='go-home-link'
+      >Go to Main Page</Link
+    >
   </div>
 </BaseLayout>
 

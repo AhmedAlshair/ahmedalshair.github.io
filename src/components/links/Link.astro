@@ -2,39 +2,64 @@
 import Icon from '@/components/Icon.svelte';
 
 interface Props {
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'small' | 'medium' | 'large';
   href: string;
-  text: string;
-  variant?: 'primary' | 'secondary';
   icon?: string;
   class?: string;
+  [key: string]: any;
 }
 
 let {
   href,
-  text,
   variant = 'primary',
+  size = 'medium',
   icon = 'keyboard_arrow_right',
   class: className,
+  ...props
 } = Astro.props;
+
+let isIconOnly = !Astro.slots.has('default') && icon;
 ---
 
-<a href={href} class:list={['link', variant, className]}>
-  <span class="link-text">{text}</span>
-  {icon && <Icon icon={icon} className="icon link-icon" />}
+<a
+  href={href}
+  class:list={['link', variant, size, { 'icon-only': isIconOnly }, className]}
+  {...props}
+>
+  <span class='link-text'>
+    <slot />
+  </span>
+  {icon && <Icon name={icon} className='icon link-icon' />}
 </a>
 
 <style>
   a.link {
     position: relative;
-    padding: var(--space-sm);
     font-family: var(--font-headings);
-    font-size: var(--font-size-h5);
-    font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-semibold);
     display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--space-xs);
+    justify-content: start;
     transition: all var(--transition-fast);
+
+    &.small {
+      padding: var(--space-xs);
+      font-size: var(--font-size-h6);
+      gap: var(--space-xs);
+    }
+
+    &.medium {
+      padding: var(--space-sm);
+      font-size: var(--font-size-body);
+      gap: var(--space-xs);
+    }
+
+    &.large {
+      padding: var(--space-md);
+      font-size: var(--font-size-h5);
+      gap: var(--space-sm);
+    }
 
     &.primary {
       background-color: var(--action-default);
@@ -43,7 +68,12 @@ let {
 
     &.secondary {
       color: var(--action-default);
-      border: 1px solid var(--action-default);
+      border: var(--stroke-width-thin) solid var(--action-default);
+    }
+
+    &.ghost {
+      background-color: transparent;
+      color: var(--action-default);
     }
 
     &:hover {
@@ -58,8 +88,10 @@ let {
         background-color: var(--surface-hover);
       }
 
-      .link-icon {
-        transform: translateX(0.2ch);
+      &:not(.icon-only) {
+        .link-icon {
+          transform: translateX(0.2ch);
+        }
       }
     }
 
@@ -83,6 +115,7 @@ let {
     }
 
     .link-icon {
+      margin-inline-start: auto;
       aspect-ratio: 1;
       flex-shrink: 0;
       transition: all var(--transition-fast);
