@@ -55,7 +55,11 @@
       >
         <p class="quote">"{item.text}"</p>
         <div class="author flex-layout align-center justify-start gap">
-          <img src={item.avatar.src} alt={item.avatar.alt || item.name} />
+          <img
+            src={item.avatar.src}
+            alt={item.avatar.alt || item.name}
+            loading="lazy"
+          />
           <div class="author-info flex-layout column">
             <strong>{item.name}</strong>
             <span>{item.role}</span>

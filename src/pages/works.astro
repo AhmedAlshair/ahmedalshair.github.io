@@ -1,13 +1,12 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { SiteName } from '@/utils/Constants.astro.ts';
+import { SiteName, SocialLinks } from '@/utils/Constants.astro';
 import FeaturedWork from '@/components/page-sections/works/FeaturedWork.astro';
 import CometWorkCover from '@assets/works/comet/work-cover-comet.jpg';
 import PharmaWorkCover from '@assets/works/pharma/work-cover-pharma.jpg';
 import AlrevhairWorkCover from '@assets/works/work-cover-alrevhair.jpg';
 import FindHomeWorkCover from '@assets/works/work-cover-findhome.jpg';
 import CTA from '@/components/page-sections/CTA.astro';
-import { SocialLinks } from '@/utils/Constants.astro.ts';
 
 const title = `Works | ${SiteName}`;
 const description = `My latest projects and case studies showcasing my expertise in UX/UI Design, Frontend Development, and Digital Solutions.`;
@@ -17,7 +16,7 @@ const description = `My latest projects and case studies showcasing my expertise
   <section id='works' class='container padded flex-layout column gap gap-2xl'>
     <FeaturedWork
       title='COMET: Scaling a Complex Impact-First SaaS Product'
-      description='Led the 5-year strategic evolution of a complex simulation engine from an offline field tool to a scalable, cloud-based SaaS solution.'
+      description='Leading the 5-year strategic evolution of a complex simulation engine from an offline field tool to a scalable, cloud-based SaaS solution.'
       image={CometWorkCover}
       imageAlt='Comet Screenshot'
       linkUrl='/works/comet'

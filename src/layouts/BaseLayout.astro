@@ -8,8 +8,9 @@ import {
   SiteName,
   SitePublicUrl,
   SocialLinks,
+  ThemeColors,
   type SocialLink,
-} from '@/utils/Constants.astro.ts';
+} from '@/utils/Constants.astro';
 import '@styles/global.css';
 
 interface Props {
@@ -21,8 +22,10 @@ interface Props {
 
 const { title = SiteName, description, currentPage, className } = Astro.props;
 
+const siteVersion = import.meta.env.VITE_SITE_VERSION;
 let sortedIcons = ICONS.sort().join(',');
-const canonicalURL = SitePublicUrl;
+const canonicalURL = Astro.url;
+const defaultThemeColor = ThemeColors.brandNavy;
 const ogImageURL = new URL('/assets/og-image.jpg', Astro.site);
 
 const personSchema = {
@@ -59,25 +62,20 @@ const personSchema = {
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1' />
     <meta name='generator' content={Astro.generator} />
+
     <link rel='canonical' href={canonicalURL} />
     <link rel='sitemap' href='/sitemap-index.xml' />
 
     <title>{title}</title>
-    {
-      description && (
-        <meta name='description' content={description || MetaDescription} />
-      )
-    }
+    <meta name='description' content={description || MetaDescription} />
 
-    <!-- Open Graph / Facebook -->
     <meta property='og:type' content='website' />
-    <meta property='og:url' content={Astro.url} />
+    <meta property='og:url' content={Astro.url || SitePublicUrl} />
     <meta property='og:title' content={title} />
     <meta property='og:description' content={description} />
     <meta property='og:image' content={ogImageURL} />
     <meta property='og:image:alt' content=`${SiteName} | ${JobTitle}` />
 
-    <!-- Twitter / X -->
     <meta property='twitter:card' content='summary_large_image' />
     <meta property='twitter:url' content={Astro.url} />
     <meta property='twitter:title' content={title} />
@@ -86,10 +84,9 @@ const personSchema = {
     <meta property='twitter:image:alt' content=`${SiteName} | ${JobTitle}` />
 
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <meta name='theme-color' content='#172c4f' />
+    <meta name='theme-color' content={defaultThemeColor} />
+    <meta name='version' content={siteVersion} />
 
-    <link rel='preconnect' href='https://fonts.googleapis.com' />
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
     <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
     <link

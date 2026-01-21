@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ThemeColors } from '@/utils/Constants.astro.ts';
+  import { ThemeColors } from '@/utils/Constants.astro';
 
   interface Props {
     data: number[];
@@ -83,7 +83,7 @@
   }
   .default-empty {
     text-align: center;
-    color: #999;
+    color: var(--text-muted);
   }
   .default-empty p {
     position: absolute;

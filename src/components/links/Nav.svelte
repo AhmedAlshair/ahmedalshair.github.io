@@ -1,6 +1,6 @@
 <script lang="ts">
   import Icon from '@/components/Icon.svelte';
-  import { normalizeUrlPath, toTitleCase } from '@/utils/Helpers.svelte';
+  import { normalizeUrlPath, toTitleCase } from '@/utils/Helpers.astro';
 
   interface Props {
     links: string[];

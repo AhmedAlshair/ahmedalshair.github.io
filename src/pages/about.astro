@@ -2,9 +2,9 @@
 import CTA from '@/components/page-sections/CTA.astro';
 import ProfessionalTimeline from '@/components/page-sections/about/ProfessionalTimeline.svelte';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { SiteName } from '@/utils/Constants.astro.ts';
-import MyPhoto from '@assets/ahmed-halftone.webp';
+import { SiteName } from '@/utils/Constants.astro';
 import Image from 'astro/components/Image.astro';
+import MyPhoto from '@assets/ahmed-halftone.webp';
 
 const title = `About | ${SiteName}`;
 const description = `Learn more about me, my background and my career.`;
@@ -155,7 +155,7 @@ const description = `Learn more about me, my background and my career.`;
         }
       }
 
-      @media (max-width: 768px) {
+      @media (min-width: 600px) and (max-width: 768px) {
         > .way-started {
           padding-block-end: var(--space-2xl);
         }

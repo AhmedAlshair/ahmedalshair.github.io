@@ -1,10 +1,10 @@
 ---
+function getImage(arg0: { src: ImageMetadata; format: string }) {
+  throw new Error('Function not implemented.');
+}
+
 import BaseLayout from '@layouts/BaseLayout.astro';
-import {
-  JobTitle,
-  MetaDescription,
-  SiteName,
-} from '@/utils/Constants.astro.ts';
+import { JobTitle, MetaDescription, SiteName } from '@/utils/Constants.astro';
 import Icon from '@/components/Icon.svelte';
 import Link from '@/components/links/Link.astro';
 import FeaturedWorksSection from '@/components/page-sections/works/FeaturedWorksSection.astro';
@@ -17,8 +17,12 @@ import Testimonials from '@/components/Testimonials.svelte';
 import EssamAvatar from '@assets/avatars/essam-rabah.png';
 import IhtashamAvatar from '@assets/avatars/muhammad-ihtasham.png';
 import RafaelAvatar from '@assets/avatars/rafael-adel.png';
+import { optimizeImages } from '@/utils/Helpers.astro';
 
 const title = `${SiteName} | ${JobTitle}`;
+
+const [optimizedEssamAvatar, optimizedIhtashamAvatar, optimizedRafaelAvatar] =
+  await optimizeImages([EssamAvatar, IhtashamAvatar, RafaelAvatar]);
 
 const TestimonialsData = [
   {
@@ -26,7 +30,7 @@ const TestimonialsData = [
     role: 'Software Engineer',
     text: 'Ahmed is a skilled communicator who effectively manages teams and stakeholders. He has a keen ability to identify and mitigate risks while ensuring that project objectives are met on time. Ahmed is also an excellent problem-solver who remains calm under pressure and makes data-driven decisions. As a human being, he is a really kind and gentle person. I really look forward to working with him again in the future. ',
     avatar: {
-      src: IhtashamAvatar.src,
+      src: optimizedIhtashamAvatar.src,
     },
   },
   {
@@ -34,7 +38,7 @@ const TestimonialsData = [
     role: 'Software Engineer',
     text: 'Ahmed was one of the most innovative and motivated colleagues I have worked with. His willingness to know more and to improvise solutions played as a great driving force for us. He always adds a sense of professionalism and decency to the workplace. I would really recommend Ahmed to any place to work with.',
     avatar: {
-      src: RafaelAvatar.src,
+      src: optimizedRafaelAvatar.src,
     },
   },
   {
@@ -42,7 +46,7 @@ const TestimonialsData = [
     role: 'Head of Product Design',
     text: `It’s rare that you come across standout talent like Shair's, I had the pleasure of working with Ahmed for at "The Seven Layers" and "The Tipping Point" Joint Venture, Shair's ability to juggle multiple projects was unlike any I've seen before and made a dramatic difference in the productivity level of our team and we still miss him in the office, In words (Bold, Committed and Talented). Thank you, Ahmed you earn my highest recommendation.`,
     avatar: {
-      src: EssamAvatar.src,
+      src: optimizedEssamAvatar.src,
     },
   },
 ];
@@ -119,7 +123,7 @@ const TestimonialsData = [
   <FeaturedWorksSection>
     <FeaturedWork
       title='COMET: Scaling a Complex Impact-First SaaS Product'
-      description='Led the 5-year strategic evolution of a complex simulation engine from an offline field tool to a scalable, cloud-based SaaS solution.'
+      description='Leading the 5-year strategic evolution of a complex simulation engine from an offline field tool to a scalable, cloud-based SaaS solution.'
       image={CometWorkCover}
       imageAlt='Comet Screenshot'
       linkUrl='/works/comet'
@@ -180,7 +184,7 @@ const TestimonialsData = [
         margin: 0;
         width: fit-content;
         height: 100%;
-        padding: 0 clamp(3.5rem, 4.5vw, 5.5rem);
+        padding: 0 clamp(4rem, 5vw, 6rem);
         visibility: hidden;
         animation-fill-mode: both;
         will-change: transform, visibility;
@@ -211,8 +215,8 @@ const TestimonialsData = [
       }
 
       > .slash {
-        width: clamp(2.5rem, 3vw, 3.5rem);
-        height: clamp(6.5rem, 7vw, 8rem);
+        width: clamp(3rem, 4vw, 4rem);
+        height: clamp(7rem, 8vw, 8rem);
         animation: slash-in 0.3s ease 0.3s backwards;
         z-index: 1;
       }

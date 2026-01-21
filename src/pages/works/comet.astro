@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { SiteName } from '@/utils/Constants.astro.ts';
-import { Image, getImage } from 'astro:assets';
+import { SiteName } from '@/utils/Constants.astro';
+import { optimizeImages } from '@/utils/Helpers.astro';
+import { Image } from 'astro:assets';
 import WorkLayout, { type WorkSection } from '@/layouts/WorkLayout.astro';
 import CometWorkCover from '@assets/works/comet/work-cover-comet.jpg';
 import PharmaWorkCover from '@assets/works/pharma/work-cover-pharma.jpg';
@@ -52,59 +53,39 @@ let sections: WorkSection[] = [
   { title: 'Beyond the Launch', id: 'outcome' },
 ];
 
-const optimizedOfflineCarousel1 = await getImage({
-  src: CometOfflineCarousel1,
-  format: 'webp',
-});
-const optimizedOfflineCarousel2 = await getImage({
-  src: CometOfflineCarousel2,
-  format: 'webp',
-});
-const optimizedOfflineCarousel3 = await getImage({
-  src: CometOfflineCarousel3,
-  format: 'webp',
-});
-const optimizedOfflineCarousel4 = await getImage({
-  src: CometOfflineCarousel4,
-  format: 'webp',
-});
-const optimizedOfflineCarousel5 = await getImage({
-  src: CometOfflineCarousel5,
-  format: 'webp',
-});
+const [
+  optimizedOfflineCarousel1,
+  optimizedOfflineCarousel2,
+  optimizedOfflineCarousel3,
+  optimizedOfflineCarousel4,
+  optimizedOfflineCarousel5,
+] = await optimizeImages([
+  CometOfflineCarousel1,
+  CometOfflineCarousel2,
+  CometOfflineCarousel3,
+  CometOfflineCarousel4,
+  CometOfflineCarousel5,
+]);
 
-const optimizedSaasCarousel1 = await getImage({
-  src: CometSaasCarousel1,
-  format: 'webp',
-});
-const optimizedSaasCarousel2 = await getImage({
-  src: CometSaasCarousel2,
-  format: 'webp',
-});
-const optimizedSaasCarousel3 = await getImage({
-  src: CometSaasCarousel3,
-  format: 'webp',
-});
-const optimizedSaasCarousel4 = await getImage({
-  src: CometSaasCarousel4,
-  format: 'webp',
-});
-const optimizedSaasCarousel5 = await getImage({
-  src: CometSaasCarousel5,
-  format: 'webp',
-});
-const optimizedSaasCarousel6 = await getImage({
-  src: CometSaasCarousel6,
-  format: 'webp',
-});
-const optimizedSaasCarousel7 = await getImage({
-  src: CometSaasCarousel7,
-  format: 'webp',
-});
-const optimizedSaasCarousel8 = await getImage({
-  src: CometSaasCarousel8,
-  format: 'webp',
-});
+const [
+  optimizedSaasCarousel1,
+  optimizedSaasCarousel2,
+  optimizedSaasCarousel3,
+  optimizedSaasCarousel4,
+  optimizedSaasCarousel5,
+  optimizedSaasCarousel6,
+  optimizedSaasCarousel7,
+  optimizedSaasCarousel8,
+] = await optimizeImages([
+  CometSaasCarousel1,
+  CometSaasCarousel2,
+  CometSaasCarousel3,
+  CometSaasCarousel4,
+  CometSaasCarousel5,
+  CometSaasCarousel6,
+  CometSaasCarousel7,
+  CometSaasCarousel8,
+]);
 ---
 
 <BaseLayout title={title} description={description} currentPage='works'>
@@ -120,8 +101,8 @@ const optimizedSaasCarousel8 = await getImage({
       <div class='summary-head flex-layout column'>
         <h2>COMET: Scaling Into a Complex Impact-First SaaS Product</h2>
         <p class='subtitle'>
-          Led the strategic evolution of COMET from a raw prototype to a global
-          SaaS platform serving as both the Primary UX/UI Designer and Lead
+          Leading the strategic evolution of COMET from a raw prototype to a
+          global SaaS platform serving as both the Primary UX/UI Designer and
           Frontend Developer. By personally bridging the gap between high-level
           strategy and production-ready code, I managed complex technical debt
           and team transitions while achieving a 23x boost in operational
@@ -847,7 +828,6 @@ const optimizedSaasCarousel8 = await getImage({
 
     .chart-content {
       padding: var(--space-xl) var(--space-sm);
-      min-height: 20rem;
 
       > * {
         flex-shrink: 0;
