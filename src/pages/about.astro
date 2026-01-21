@@ -149,8 +149,16 @@ const description = `Learn more about me, my background and my career.`;
         }
       }
 
-      > .way-started {
-        padding-inline-end: var(--space-2xl);
+      @media (min-width: 769px) {
+        > .way-started {
+          padding-inline-end: var(--space-2xl);
+        }
+      }
+
+      @media (max-width: 768px) {
+        > .way-started {
+          padding-block-end: var(--space-2xl);
+        }
       }
 
       &.intro {
