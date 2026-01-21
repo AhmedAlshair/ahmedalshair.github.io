@@ -1,8 +1,4 @@
 ---
-function getImage(arg0: { src: ImageMetadata; format: string }) {
-  throw new Error('Function not implemented.');
-}
-
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { JobTitle, MetaDescription, SiteName } from '@/utils/Constants.astro';
 import Icon from '@/components/Icon.svelte';
@@ -205,7 +201,7 @@ const TestimonialsData = [
         }
 
         &.title-1 {
-          animation: slideInLeft var(--cycle) ease-in-out 0s infinite;
+          animation: slideInLeft var(--cycle) ease-in-out 0.1s infinite;
         }
 
         &.title-2 {
@@ -217,7 +213,7 @@ const TestimonialsData = [
       > .slash {
         width: clamp(3rem, 4vw, 4rem);
         height: clamp(7rem, 8vw, 8rem);
-        animation: slash-in 0.3s ease 0.3s backwards;
+        animation: slash-in 0.3s ease 0.2s backwards;
         z-index: 1;
       }
     }
