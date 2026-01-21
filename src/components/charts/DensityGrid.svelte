@@ -119,6 +119,9 @@
   .group {
     display: flex;
     flex-direction: column;
+    width: fit-content;
+    height: 100%;
+    min-width: max-content;
     gap: var(--space-md);
   }
 

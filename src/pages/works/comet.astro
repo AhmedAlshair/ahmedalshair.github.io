@@ -846,8 +846,17 @@ const optimizedSaasCarousel8 = await getImage({
     }
 
     .chart-content {
-      padding: var(--space-xl);
-      height: 20rem;
+      padding: var(--space-xl) var(--space-sm);
+      min-height: 20rem;
+
+      > * {
+        flex-shrink: 0;
+      }
+
+      @media (max-width: 768px) {
+        padding: var(--space-xl) var(--space-sm);
+        height: auto;
+      }
     }
   }
 

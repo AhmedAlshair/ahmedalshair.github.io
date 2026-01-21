@@ -65,7 +65,7 @@
     {/each}
   </div>
 
-  <div class="controls gap flex-layout align-center justify-space-between">
+  <div class="controls flex-layout gap align-center justify-space-between">
     <Button
       className="prev-button"
       variant="secondary"

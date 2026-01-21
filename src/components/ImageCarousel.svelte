@@ -116,13 +116,21 @@
     position: relative;
     margin: auto;
     width: 100%;
-    height: calc(90lvh - var(--header-height));
+    height: min(calc(90lvh - var(--header-height)), 40rem);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     background-color: var(--surface-1);
     overflow: hidden;
+
+    @media (max-width: 768px) {
+      height: min(60lvh, 24rem);
+    }
+
+    @media (max-width: 600px) {
+      height: min(50lvh, 16rem);
+    }
   }
 
   .carousel-img {
