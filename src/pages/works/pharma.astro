@@ -14,8 +14,14 @@ import CaremondoCover from '@assets/works/pharma/caremondo-app.png';
 import VeevaLogo from '@assets/works/pharma/veeva-logo.svg';
 import Badge from '@/components/Badge.astro';
 import Icon from '@/components/Icon.svelte';
-import ExploreMoreWorks from '@/components/page-sections/works/ExploreMoreWorks.astro';
 import FeaturedWork from '@/components/page-sections/works/FeaturedWork.astro';
+import ExploreMoreWorks from '@/components/page-sections/works/ExploreMoreWorks.astro';
+import BrandAbbott from '@assets/works/pharma/brands/brand-abbott-logo.svg';
+import BrandAbbvie from '@assets/works/pharma/brands/brand-abbvie-logo.svg';
+import BrandBayer from '@assets/works/pharma/brands/brand-bayer-logo.svg';
+import BrandMerck from '@assets/works/pharma/brands/brand-merck-logo.svg';
+import BrandPfizer from '@assets/works/pharma/brands/brand-pfizer-logo.svg';
+import BrandTakeda from '@assets/works/pharma/brands/brand-takeda-logo.svg';
 
 const title = `Customized Experiences for Pharma & Healthcare Leaders | Works | ${SiteName}`;
 const description = `Delivering interactive healthcare-focused CLM experiences, websites and mobile apps handling complex data visualization and strict compliance workflows.`;
@@ -152,6 +158,18 @@ let sections: WorkSection[] = [
       </div>
     </section>
 
+    <section id='brands' class='flex-layout column gap gap-sm'>
+      <h4 class='container padded'>Brands I Designed for:</h4>
+      <div class='brands-grid'>
+        <div class='brand'><BrandAbbott /></div>
+        <div class='brand'><BrandPfizer /></div>
+        <div class='brand'><BrandAbbvie /></div>
+        <div class='brand'><BrandMerck /></div>
+        <div class='brand'><BrandTakeda /></div>
+        <div class='brand'><BrandBayer /></div>
+      </div>
+    </section>
+
     <section id='veeva-certified'>
       <div
         class='container padded grid-layout two-cols gap gap-xl align-center'
@@ -279,6 +297,57 @@ let sections: WorkSection[] = [
       > svg {
         max-height: 4rem;
         max-width: 12rem;
+      }
+    }
+  }
+
+  #brands {
+    padding-block-start: var(--space-xl);
+    padding-block-end: var(--space-xl);
+
+    .brands-grid {
+      padding-inline: var(--container-padding);
+      max-width: min(var(--max-width), 100%);
+      margin-inline: auto;
+      mask-image: linear-gradient(
+        to right,
+        transparent,
+        black var(--container-padding),
+        black calc(100% - var(--container-padding)),
+        transparent
+      );
+      display: grid;
+      grid-template-columns: repeat(6, minmax(12rem, 1fr));
+      gap: var(--space-xl);
+      align-items: center;
+      overflow-x: auto;
+
+      .brand {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        filter: grayscale(0.95);
+        opacity: 0.9;
+        transition: var(--transition-default);
+
+        &:hover {
+          filter: none;
+          opacity: 1;
+        }
+
+        svg {
+          object-fit: contain;
+          max-width: 100%;
+          max-height: min(7rem, 100%);
+
+          [data-theme='dark'] & {
+            filter: brightness(1.6);
+            fill: var(--text-muted);
+          }
+        }
       }
     }
   }
