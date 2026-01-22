@@ -179,7 +179,13 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    gap: var(--space-md);
     z-index: 1;
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      align-items: stretch;
+    }
   }
 
   .caption {

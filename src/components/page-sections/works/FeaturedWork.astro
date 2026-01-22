@@ -65,7 +65,6 @@ let {
 <style>
   .featured-work {
     max-width: 100%;
-    flex-wrap: wrap;
     overflow: hidden;
 
     &.primary {
@@ -86,6 +85,11 @@ let {
 
     @media (max-width: 768px) {
       flex-direction: column-reverse;
+
+      &.primary,
+      &.secondary {
+        min-height: fit-content;
+      }
     }
   }
 
@@ -111,7 +115,7 @@ let {
       }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       padding: var(--space-lg);
       min-width: auto;
       flex: none;
@@ -143,6 +147,7 @@ let {
   .work-image {
     position: relative;
     flex: 1 1 60%;
+    max-width: 100%;
     justify-self: stretch;
     display: flex;
     align-items: center;
@@ -151,6 +156,7 @@ let {
     overflow: hidden;
 
     .primary & {
+      max-height: 100%;
       margin-inline-start: -20vw;
       z-index: -1;
     }
@@ -171,6 +177,12 @@ let {
       object-fit: cover;
       min-height: 100%;
       min-width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .primary & {
+        margin-inline-start: 0;
+      }
     }
   }
 </style>

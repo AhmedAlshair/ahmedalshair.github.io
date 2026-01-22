@@ -103,7 +103,10 @@
 
 {#if ['success', 'error'].includes(status)}
   <div
-    class="form-status initial flex-layout column gap justify-center"
+    class={[
+      'form-status initial flex-layout column gap gap-xs justify-center',
+      className,
+    ]}
     class:success={status === 'success'}
     class:failure={status !== 'success'}
   >
@@ -119,7 +122,8 @@
 
   .form-status {
     min-height: 20lvh;
-    padding: var(--space-md);
+    padding-block-start: var(--space-md);
+    padding-block-end: var(--space-md);
     border: var(--stroke-width-thin) solid var(--surface-2);
     background-color: var(--surface-1);
     color: var(--text-primary);
