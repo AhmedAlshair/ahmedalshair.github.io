@@ -144,7 +144,7 @@ const TestimonialsData = [
     </div>
   </section>
 
-  <section class='testimonials flex-layout column gap gap-xl'>
+  <section id='testimonials' class='flex-layout column gap gap-xl'>
     <h2>Testimonials</h2>
     <Testimonials client:visible testimonials={TestimonialsData} />
   </section>
@@ -194,10 +194,6 @@ const TestimonialsData = [
 
         @media (max-width: 400px) {
           font-size: var(--font-size-h3);
-        }
-
-        @media (max-width: 300px) {
-          font-size: var(--font-size-h4);
         }
 
         &.title-1 {
@@ -261,6 +257,8 @@ const TestimonialsData = [
         aspect-ratio: 1;
         color: var(--accent);
         font-size: var(--icon-lg);
+        max-width: 2em;
+        max-height: 2em;
       }
     }
 
@@ -286,12 +284,12 @@ const TestimonialsData = [
     }
   }
 
-  .testimonials {
+  #testimonials {
+    max-width: min(var(--max-width), 100%);
     padding-block-start: var(--space-2xl);
     padding-block-end: var(--space-3xl);
 
     @media (min-width: 601px) {
-      max-width: var(--max-width);
       padding-inline: var(--container-padding);
       margin-inline: auto;
     }

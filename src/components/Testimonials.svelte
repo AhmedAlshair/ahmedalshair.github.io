@@ -133,9 +133,9 @@
   }
 
   .testimonial-card {
-    flex: 1 0 100%;
+    flex: 1 0 calc(100% - var(--space-lg) * 2);
     position: relative;
-    padding: var(--space-xl);
+    padding: var(--space-2xl);
     background-color: var(--surface-1);
     scroll-snap-align: center;
 
@@ -144,6 +144,9 @@
     }
 
     .quote {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
       font-style: italic;
       color: var(--text-muted);
     }
