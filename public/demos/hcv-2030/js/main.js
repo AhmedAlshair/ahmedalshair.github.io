@@ -1,6 +1,6 @@
 $(function () {
   const animateCSS = (element, animation, prefix = 'animate__') =>
-    new Promise((resolve, reject) => {
+    new Promise((resolve) => {
       const animationName = `${prefix}${animation}`;
       const node = document.querySelector(element);
       node.classList.add(`${prefix}animated`, animationName);
@@ -25,7 +25,7 @@ $(function () {
     hideOverlay = function () {
       $('.hero > *').show();
       $('body').removeClass('noscroll');
-      animateCSS('.consent-overlay', 'slideOutDown').then((message) => {
+      animateCSS('.consent-overlay', 'slideOutDown').then(() => {
         // Do something after the animation
         $('.consent-overlay').prop('hidden', true);
       });
@@ -37,12 +37,12 @@ $(function () {
     hideOverlay();
   }
 
-  $('.consent-overlay .yes-btn').click(function (e) {
+  $('.consent-overlay .yes-btn').click(function () {
     localStorage.setItem(hideOverlayConsent, true);
     hideOverlay();
   });
 
-  $('.consent-overlay .no-btn').click(function (e) {
+  $('.consent-overlay .no-btn').click(function () {
     document.location = 'http://abbvie.com';
   });
 
@@ -68,8 +68,7 @@ $(function () {
       circle_circumference = circle_radius * Math.PI * 2,
       percent_dashoffset = circle_circumference * (1 - percent_val / 100),
       percent_circle = $('.circle_cont').find('.percentage_val'),
-      percent_display = $('.circle_cont').find('.percentage-display h1'),
-      circle_desc = $('.circle_cont').siblings('.circle_desc');
+      percent_display = $('.circle_cont').find('.percentage-display h1');
 
     percent_circle.get(0).style.strokeDasharray = circle_circumference;
     percent_circle.get(0).style.strokeDashoffset = percent_dashoffset;
@@ -103,7 +102,7 @@ $(function () {
 
   // Scroll - Floating Bar
 
-  $(window).on('scroll', function (e) {
+  $(window).on('scroll', function () {
     let winHeight = $(window).innerHeight(),
       winScrollTop = $(window).scrollTop();
 
@@ -121,13 +120,10 @@ $(function () {
   let enlargeViewer = $('.video-overlay');
 
   $('.show-video').click(function (e) {
-    console.log(e);
     e.preventDefault();
     e.stopPropagation();
     enlargeViewer.html('');
-    let imgPath = $(this).attr('href'),
-      path = $(this).attr('href'),
-      newImg = $('<img>').attr('src', path),
+    let path = $(this).attr('href'),
       newVid = $('<video autoplay controls>').attr('src', path),
       closeBtn =
         "<button class='close-btn'><img src='img/close-24px.svg' alt='Close'></button>";

@@ -813,7 +813,7 @@ const [
   }
 
   .img-wrapper.design-system {
-    [data-theme='dark'] & {
+    :global([data-theme='dark']) & {
       background-color: var(--surface-2);
     }
   }
@@ -852,7 +852,7 @@ const [
       background-color: var(--surface-1);
       height: 16rem;
 
-      [data-theme='dark'] & {
+      :global([data-theme='dark']) & {
         background-color: var(--surface-2);
       }
 
@@ -861,7 +861,7 @@ const [
         min-height: 8rem;
         object-fit: contain;
 
-        [data-theme='dark'] & {
+        :global([data-theme='dark']) & {
           path[fill='black'],
           path[fill='#A30046'] {
             fill: white;
@@ -944,7 +944,7 @@ const [
         font-weight: var(--font-weight-medium);
         text-align: center;
 
-        [data-theme='dark'] & {
+        :global([data-theme='dark']) & {
           background-color: rgb(0, 0, 0, 0.08);
         }
       }

@@ -53,9 +53,9 @@
   &[data-theme='dark'],
   .dark-theme {
     /* --- Status Colors --- */
-    --status-error: hsl(from var(var(--status-error)) h s calc(l - 8));
-    --status-success: hsl(from var(var(--status-success)) h s calc(l - 8));
-    --status-warning: hsl(from var(var(--status-warning)) h s calc(l - 8));
+    --status-error: hsl(from var(--status-error) h s calc(l - 8));
+    --status-success: hsl(from var(--status-success) h s calc(l - 8));
+    --status-warning: hsl(from var(--status-warning) h s calc(l - 8));
 
     /* --- Semantic Colors --- */
     --bg-primary: var(--brand-onyx);

@@ -100,7 +100,7 @@
     conciseText: string;
     responsibilities: string[];
   },
-  className?: string,
+  className: string = '',
 )}
   <li
     class={[

@@ -63,8 +63,8 @@ let hasSummary = Astro.slots.summary !== undefined;
     }
   }
 
-  .work-content {
-    > section {
+  :global(.work-content) {
+    > :global(section) {
       padding-block-start: var(--space-2xl);
       padding-block-end: var(--space-2xl);
     }
@@ -130,7 +130,7 @@ let hasSummary = Astro.slots.summary !== undefined;
     overflow-x: auto;
     max-width: 100%;
 
-    [data-theme='dark'] & {
+    :global([data-theme='dark']) & {
       background-color: var(--surface-2);
     }
 

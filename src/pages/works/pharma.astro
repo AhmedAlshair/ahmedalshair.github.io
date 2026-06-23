@@ -149,7 +149,6 @@ let sections: WorkSection[] = [
           <iframe
             src='https://www.youtube-nocookie.com/embed/videoseries?si=mluo9yxe_a9lHKNC&list=PL0IMwc8ci4wU288dToUAPFYN19ucJ_Xkx'
             title='YouTube video player'
-            frameborder='0'
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
             referrerpolicy='strict-origin-when-cross-origin'
             allowfullscreen
@@ -333,6 +332,17 @@ let sections: WorkSection[] = [
         opacity: 0.9;
         transition: var(--transition-default);
 
+        :global([data-theme='dark']) & {
+          opacity: 0.8;
+          filter: grayscale(0.9) brightness(0.8) invert();
+          fill: var(--text-muted);
+        }
+
+        &:hover {
+          filter: none;
+          opacity: 1;
+        }
+
         &:hover {
           filter: none;
           opacity: 1;
@@ -342,11 +352,6 @@ let sections: WorkSection[] = [
           object-fit: contain;
           max-width: 100%;
           max-height: min(7rem, 100%);
-
-          [data-theme='dark'] & {
-            filter: brightness(1.6);
-            fill: var(--text-muted);
-          }
         }
       }
     }
