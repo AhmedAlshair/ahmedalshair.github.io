@@ -86,8 +86,7 @@
       rows="4"
       maxlength="1200"
       placeholder="Type your message here ..."
-      disabled={status === 'submitting'}
-    ></textarea>
+      disabled={status === 'submitting'}></textarea>
 
     <Button
       variant="primary"

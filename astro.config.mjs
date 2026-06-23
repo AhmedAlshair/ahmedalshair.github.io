@@ -7,4 +7,11 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   integrations: [svelte(), sitemap()],
   site: 'https://ahmedalshair.net',
+  // vite: {
+  //   css:{
+  //     lightningcss: {
+  //         errorRecovery: true // Logs warnings instead of crashing the build
+  //     }
+  //   }
+  // }
 });

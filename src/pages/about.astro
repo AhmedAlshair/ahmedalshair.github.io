@@ -341,7 +341,7 @@ const description = `Learn more about me, my background and my career.`;
       max-height: 100%;
       object-fit: contain;
 
-      [data-theme='dark'] & {
+      :global([data-theme='dark']) & {
         filter: brightness(0.88) saturate(0.9) contrast(1.05);
       }
     }
