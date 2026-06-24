@@ -277,6 +277,12 @@ let sections: WorkSection[] = [
       position: relative;
       width: 100%;
       min-height: min(40rem, 80lvh);
+      aspect-ratio: 16 / 9;
+      border: none;
+
+      @media (max-width: 768px) {
+        min-height: min(30rem, 60lvh);
+      }
     }
   }
 

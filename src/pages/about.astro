@@ -117,7 +117,7 @@ const description = `Learn more about me, my background and my career.`;
       </div>
       <h2>What Defines Me</h2>
     </div>
-    <ul class='core-values-list flex-layout column gap gap-lg'>
+    <ul class='core-values-list flex-layout column gap'>
       <li>
         <strong>Integrity</strong>
         <p>
@@ -361,7 +361,14 @@ const description = `Learn more about me, my background and my career.`;
       li {
         display: flex;
         flex-direction: column;
-        gap: var(--space-xs);
+        gap: var(--space-2xs);
+        padding: var(--space-md) 0;
+        transition: var(--transition-default);
+
+        &:hover {
+          padding: var(--space-md);
+          background-color: var(--surface-1);
+        }
 
         strong {
           font-size: var(--font-size-h3);
@@ -371,6 +378,7 @@ const description = `Learn more about me, my background and my career.`;
 
         p {
           max-width: 75ch;
+          color: var(--text-muted);
         }
       }
     }
@@ -399,6 +407,7 @@ const description = `Learn more about me, my background and my career.`;
 
         li {
           padding-inline-start: var(--space-xs);
+          color: var(--text-muted);
 
           &:not(:last-of-type) {
             margin-block-end: var(--space-xs);

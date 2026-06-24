@@ -1,11 +1,10 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Trigger the workflow every time you push to the `main` branch
-  # Using a different branch name? Replace `main` with your branch’s name
+  # Trigger the workflow with every push/merge to the `main/master` branch.
   push:
     branches: [master]
-  # Allows you to run this workflow manually from the Actions tab on GitHub.
+  # Allow to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
 # Allow this job to clone the repo and create a page deployment
@@ -18,15 +17,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your repository using git
+      - name: Checkout this repository using git
         uses: actions/checkout@v5
-      - name: Install, build, and upload your site
+      - name: Install, build, and upload Ahmed Alshair's website
         uses: withastro/action@v5
         # with:
-        # path: . # The root location of your Astro project inside the repository. (optional)
-        # node-version: 24 # The specific version of Node that should be used to build your site. Defaults to 22. (optional)
-        # package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
-        # build-cmd: pnpm run build # The command to run to build your site. Runs the package build script/task by default. (optional)
+        # path: . # The root location of Astro project inside the repository. (optional)
+        # node-version: 24 # The specific version of Node that should be used to build the website. Defaults to 22. (optional)
+        # package-manager: npm@latest # The Node package manager that should be used to install dependencies and build the website. Automatically detected based on lockfile. (optional)
+        # build-cmd: npm run build # The command to run to build the website. Runs the package build script/task by default. (optional)
         env:
           HUSKY: 0 # Disables Husky
 

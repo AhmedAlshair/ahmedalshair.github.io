@@ -437,6 +437,7 @@
         list-style-type: square;
         list-style-position: outside;
         padding-inline-start: var(--space-xs);
+        color: var(--text-muted);
       }
     }
   }
