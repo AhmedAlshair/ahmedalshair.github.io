@@ -1,0 +1,153 @@
+---
+import PureAthkarLogo from '@assets/works/personal-projects/pure-athkar-logo.svg';
+import PureAthkarPreview from '@assets/works/personal-projects/pure-athkar-preview.webp';
+import { Image } from 'astro:assets';
+---
+
+<section
+  id='personal-projects'
+  class='container padded flex-layout column gap justify-center'
+>
+  <h3>Personal Projects</h3>
+  <p>A selection of side projects I've enjoyed building:</p>
+
+  <div class='projects-layout'>
+    <ul class='links-grid'>
+      <li class='personal-project'>
+        <a
+          href='https://ahmedalshair.net/pure-athkar'
+          target='_blank'
+          class='project-link'
+        >
+          <div class='flex-layout gap'>
+            <div class='project-logo'>
+              <PureAthkarLogo />
+            </div>
+            <div class='project-info'>
+              <h4>Pure Athkar</h4>
+              <p>
+                A simple and elegant web app for daily Islamic Athkar and
+                supplications.
+              </p>
+            </div>
+          </div>
+        </a>
+
+        <div class='preview-img flex-layout align-center justify-center'>
+          <Image
+            src={PureAthkarPreview}
+            alt='Pure Athkar web app preview'
+            loading='lazy'
+          />
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .projects-layout {
+    margin-block-start: var(--space-md);
+  }
+
+  .links-grid {
+    list-style: none;
+    display: grid;
+    gap: var(--space-xl);
+    margin: 0;
+    padding: 0;
+  }
+
+  li.personal-project {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    align-items: start;
+    gap: var(--space-lg);
+
+    a.project-link {
+      padding: var(--space-md);
+      min-height: 8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: var(--stroke-width-thin) solid var(--border-color);
+      background: none;
+
+      > div {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .preview-img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 12rem;
+      overflow: hidden;
+      opacity: 0.8;
+      pointer-events: none;
+      transition:
+        opacity 180ms ease,
+        visibility 180ms ease;
+
+      img {
+        display: block;
+        min-width: 102%;
+        height: auto;
+        max-height: 24rem;
+        object-fit: cover;
+      }
+    }
+
+    .project-link:hover + .preview-img,
+    .project-link:focus-visible + .preview-img,
+    .personal-project:has(.project-link:hover) .preview-img,
+    .personal-project:has(.project-link:focus-visible) .preview-img {
+      opacity: 1;
+    }
+
+    .project-logo {
+      position: relative;
+      width: 6rem;
+      height: 6rem;
+      flex-shrink: 0;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .project-info {
+      h4 {
+        margin-block-end: var(--space-xs);
+        font-size: var(--font-size-h5);
+      }
+
+      p {
+        font-size: var(--font-size-body);
+        color: var(--text-color-secondary);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    li.personal-project {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+
+      .preview-img {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      a.project-link > div {
+        flex-direction: row;
+        align-items: center;
+        gap: var(--space-md);
+      }
+    }
+  }
+</style>

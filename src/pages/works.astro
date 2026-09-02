@@ -7,6 +7,7 @@ import PharmaWorkCover from '@assets/works/pharma/work-cover-pharma.jpg';
 import AlrevhairWorkCover from '@assets/works/work-cover-alrevhair.jpg';
 import FindHomeWorkCover from '@assets/works/work-cover-findhome.jpg';
 import CTA from '@/components/page-sections/CTA.astro';
+import PersonalProjects from '@/components/page-sections/works/PersonalProjects.astro';
 
 const title = `Works | ${SiteName}`;
 const description = `My latest projects and case studies showcasing my expertise in UX/UI Design, Frontend Development, and Digital Solutions.`;
@@ -54,6 +55,9 @@ const description = `My latest projects and case studies showcasing my expertise
       reverse
     />
   </section>
+
+  <PersonalProjects />
+
   <section
     id='more-works'
     class='container padded flex-layout column gap justify-center'

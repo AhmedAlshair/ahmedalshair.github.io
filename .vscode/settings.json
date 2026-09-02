@@ -1,5 +1,6 @@
 {
   "cSpell.words": [
     "xqeknyvp"
-  ]
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

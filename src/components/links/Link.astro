@@ -30,7 +30,7 @@ let isIconOnly = !Astro.slots.has('default') && icon;
   <span class='link-text'>
     <slot />
   </span>
-  {icon && <Icon name={icon} className='icon link-icon' />}
+  {icon && <Icon name={icon} className={'icon link-icon'} />}
 </a>
 
 <style>

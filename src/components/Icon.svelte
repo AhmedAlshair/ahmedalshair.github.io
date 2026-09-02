@@ -8,8 +8,11 @@
   let { name, className, ...props }: Props = $props();
 </script>
 
-<span class={['material-symbols-rounded', 'icon', className]} {...props}>
-  {' '}{name}{' '}
+<span
+  class={['material-symbols-rounded icon', className && className]}
+  {...props}
+>
+  {name}
 </span>
 
 <style>

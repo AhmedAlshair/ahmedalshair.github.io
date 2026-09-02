@@ -395,12 +395,12 @@ a:not(.link-wrapper) {
   text-decoration: none;
   color: var(--text-primary);
 
-  &:not(.link, .nav-link, .social-link, .emphasized) {
+  &:not(.link, .nav-link, .social-link, .project-link, .emphasized) {
     font-weight: var(--font-weight-medium);
     color: var(--action-default);
   }
 
-  &:not(.link, .nav-link, .social-link) {
+  &:not(.link, .nav-link, .social-link, .project-link) {
     background-image: linear-gradient(var(--surface-3));
     background-position: bottom;
     background-size: 100% var(--stroke-width-thick);
@@ -425,14 +425,20 @@ a:not(.link-wrapper) {
   &:hover:not(.active) {
     color: var(--action-hover);
 
-    &:not(.link, .nav-link, .social-link) {
+    &:not(.link, .nav-link, .social-link, .project-link) {
       background-size: 100% 100%;
       background-image: linear-gradient(var(--surface-2));
     }
 
     &.nav-link,
-    &.social-link {
+    &.social-link,
+    &.project-link {
       background-color: var(--surface-hover);
+    }
+
+    &.project-link,
+    &.social-link {
+      transform: translateY(-0.1rem);
     }
   }
 
