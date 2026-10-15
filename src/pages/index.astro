@@ -5,7 +5,6 @@ import Icon from '@/components/Icon.svelte';
 import Link from '@/components/links/Link.astro';
 import FeaturedWorksSection from '@/components/page-sections/works/FeaturedWorksSection.astro';
 import FeaturedWork from '@/components/page-sections/works/FeaturedWork.astro';
-import CometWorkCover from '@assets/works/comet/work-cover-comet.jpg';
 import PharmaWorkCover from '@assets/works/pharma/work-cover-pharma.jpg';
 import ProfessionalTimeline from '@/components/page-sections/about/ProfessionalTimeline.svelte';
 import CTA from '@/components/page-sections/CTA.astro';
@@ -14,6 +13,11 @@ import EssamAvatar from '@assets/avatars/essam-rabah.png';
 import IhtashamAvatar from '@assets/avatars/muhammad-ihtasham.png';
 import RafaelAvatar from '@assets/avatars/rafael-adel.png';
 import { optimizeImages } from '@/utils/Helpers.astro';
+import { Image } from 'astro:assets';
+import CometDashboard from '@assets/works/comet/comet-saas-carousel-7.png';
+import AlrevhairWorkCover from '@assets/works/work-cover-alrevhair.jpg';
+import HeroMotionToggle from '@/components/HeroMotionToggle.svelte';
+import { undefined } from 'astro:schema';
 
 const title = `${SiteName} | ${JobTitle}`;
 
@@ -51,29 +55,101 @@ const TestimonialsData = [
 <BaseLayout title={title} description={MetaDescription}>
   <section
     id='hero'
-    class='hero container padded flex-layout column justify-center gap gap-lg'
+    class='hero container padded'
+    aria-labelledby='hero-heading'
   >
-    <div class='hero-title'>
-      <h1 class='title-1' aria-label='Design-driven Problem Solving'>
-        Design-driven Problem Solving
+    <div class='hero-intro'>
+      <p class='hero-roles'>
+        <span>Product Lead</span>
+        <span>UX Designer</span>
+        <span>Frontend Engineer</span>
+      </p>
+
+      <h1 id='hero-heading'>
+        I shape complex systems into <span>clear, useful products</span>
       </h1>
-      <h1 class='title-2' aria-label='Hands-on Code Level Craft'>
-        Hands-on Code Level Craft
-      </h1>
-      <span class='slash mask-before'></span>
+
+      <p class='hero-description'>
+        For 10+ years, I’ve led work from opportunity discovery and product
+        direction through UX design and hands-on frontend engineering.
+      </p>
+
+      <div class='hero-actions'>
+        <Link href='/contact#form' variant='primary'>
+          Let’s talk
+        </Link>
+        <Link href='#selected-works' variant='secondary' icon={null}>
+          Explore my work
+        </Link>
+      </div>
+
+      <div id='hero-process' class='hero-process'>
+        <p class='sr-only'>Explore. Shape. Design. Build.</p>
+        <div class='hero-motion' aria-hidden='true'>
+          <span class='slash mask-before'></span>
+          <div class='hero-phrases'>
+            <span>Explore</span>
+            <span>Shape</span>
+            <span>Design</span>
+            <span>Build</span>
+          </div>
+        </div>
+
+        <HeroMotionToggle
+          client:load
+          targetId='hero-process'
+          hideButton={true}
+        />
+      </div>
     </div>
 
-    <p class='subtitle'>
-      10+ years leading product, UX/UI design, and engineering efforts to turn
-      real-world problems into simple, impactful solutions. Currently leading at
-      {' '}
+    <aside class='hero-project' aria-labelledby='hero-project-title'>
+      <div class='hero-project-label'>
+        <div class='meta-label'>
+          Featured / <span class='emphasized'>COMET</span>
+        </div>
+        <span class='hero-project-category'>Energy &amp; Impact</span>
+      </div>
       <a
-        href='https://www.cometapp.net'
-        target='_blank'
-        rel='noopener noreferrer'
-        class='emphasized'>COMET</a
-      >.
-    </p>
+        class='hero-project-image'
+        href='/works/comet'
+        aria-label='Explore the COMET case study'
+      >
+        <Image
+          src={CometDashboard}
+          alt='COMET simulation report showing energy insights and participant outcomes'
+          widths={[480, 800, 1200]}
+          sizes='(max-width: 600px) calc(100vw - 48px), (max-width: 1000px) min(672px, calc(100vw - 96px)), 465px'
+          loading='eager'
+          fetchpriority='high'
+        />
+      </a>
+      <div class='hero-project-story'>
+        <h2 id='hero-project-title'>
+          From a field tool to a collaborative simulation platform.
+        </h2>
+        <ul
+          class='hero-project-impact'
+          aria-label='COMET project facts and outcomes'
+        >
+          <li>
+            <strong>2020 - Present</strong>
+            <span>Product ownership</span>
+          </li>
+          <li>
+            <strong>23x</strong>
+            <span>Site coverage</span>
+          </li>
+          <li>
+            <strong>267%</strong>
+            <span>More simulations</span>
+          </li>
+        </ul>
+        <Link href='/works/comet' variant='secondary'>
+          Read the case study
+        </Link>
+      </div>
+    </aside>
   </section>
 
   <section
@@ -108,40 +184,43 @@ const TestimonialsData = [
         <h3>Front-end Craft</h3>
       </div>
       <p>
-        Building performant web apps and services using modern frameworks like <span
-          class='meta-label code'>Astro</span
-        >, <span class='meta-label code'>Svelte</span> and <span
-          class='meta-label code'>React</span
-        > among others.
+        Building performant web apps and services using modern frameworks like{' '}
+        <span class='meta-label code'>Astro</span>,{' '}
+        <span class='meta-label code'>Svelte</span> and{' '}
+        <span class='meta-label code'>React</span> among others.
       </p>
     </div>
   </section>
 
-  <FeaturedWorksSection>
-    <FeaturedWork
-      title='COMET: Scaling a Complex Impact-First SaaS Product'
-      description='Leading the 5-year strategic evolution of a complex simulation engine from an offline field tool to a scalable, cloud-based SaaS solution.'
-      image={CometWorkCover}
-      imageAlt='Comet Screenshot'
-      linkUrl='/works/comet'
-      linkText='Read the Case Study'
-    />
-
-    <FeaturedWork
-      title='Customized Experiences for Pharma & Healthcare Leaders'
-      description='Delivering interactive healthcare-focused CLM experiences, websites and mobile apps handling complex data visualization and strict compliance workflows.'
-      image={PharmaWorkCover}
-      imageAlt='Pharma Work Screenshot'
-      linkUrl='/works/pharma'
-      linkText='Explore Projects'
-      reverse
-    />
-  </FeaturedWorksSection>
+  <div id='selected-works' class='selected-work'>
+    <FeaturedWorksSection>
+      <FeaturedWork
+        title='Customized Experiences for Pharma & Healthcare Leaders'
+        description='Delivering interactive healthcare-focused CLM experiences, websites and mobile apps handling complex data visualization and strict compliance workflows.'
+        image={PharmaWorkCover}
+        imageAlt='Pharma Work Screenshot'
+        linkUrl='/works/pharma'
+        linkText='Explore Projects'
+        reverse
+      />
+      <FeaturedWork
+        title='Alrevhair: Website Design for Hair Transplant Center'
+        description='An inclusive international experience of trust, quality and pleasure that puts customers at ease and helps them make informed decisions right from their home countries.'
+        image={AlrevhairWorkCover}
+        imageAlt='Pharma Work Screenshot'
+        linkUrl='https://www.behance.net/gallery/99695209/AlrevHair-Website-Design'
+        linkText='View Case Study'
+        linkTarget='_blank'
+      />
+    </FeaturedWorksSection>
+  </div>
 
   <section id='career-timeline' class='container padded'>
     <ProfessionalTimeline client:load concise={true} />
     <div class='timeline-learn-more'>
-      <Link variant='secondary' href='/about'>Learn more about me</Link>
+      <Link variant='secondary' href='/about'>
+        Learn more about me
+      </Link>
     </div>
   </section>
 
@@ -155,79 +234,330 @@ const TestimonialsData = [
 
 <style>
   .hero {
-    position: relative;
-    min-height: 80lvh;
-    padding-block-start: max(12vh, var(--space-xl));
-    padding-block-end: max(12vh, var(--space-xl));
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(2rem, 4vw, 4rem);
+    padding-block: clamp(1.5rem, 4vh, 3.5rem) clamp(4rem, 8vh, 6rem);
+  }
+
+  .hero-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-lg);
+    min-width: 0;
+  }
+
+  .hero-roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs) var(--space-sm);
+    color: var(--text-secondary);
+    font-size: 0.8125rem;
+    font-weight: var(--font-weight-semibold);
+
+    span + span::before {
+      content: '/';
+      margin-inline-end: var(--space-sm);
+      color: var(--accent);
+    }
+  }
+
+  .hero h1 {
+    max-width: 15ch;
+    font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.055em;
+    text-wrap: pretty;
+
+    span {
+      color: var(--accent);
+    }
+  }
+
+  .hero-description {
+    max-width: 46ch;
+    color: var(--text-muted);
+    font-size: 1.125rem;
+    text-wrap: pretty;
+  }
+
+  .hero-process {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
     width: 100%;
-    gap: var(--space-md);
+  }
 
-    @media (orientation: portrait) {
-      min-height: fit-content;
+  .hero-motion {
+    --hero-slash-width: 0.8em;
+    --hero-slash-edge-bottom: 0.267em;
+
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    gap: 0;
+    font-family: var(--font-headings);
+    font-size: clamp(1rem, 1.7vw, 1.1875rem);
+    font-weight: var(--font-weight-semibold);
+
+    .slash {
+      width: var(--hero-slash-width);
+      min-width: var(--hero-slash-width);
+      height: 2em;
+      z-index: 1;
+    }
+  }
+
+  .hero-phrases {
+    display: grid;
+    align-items: center;
+    height: 2em;
+    margin-inline-start: calc(0px - var(--hero-slash-width));
+    padding-inline-start: calc(var(--hero-slash-width) + var(--space-sm));
+    overflow: hidden;
+    clip-path: polygon(
+      var(--hero-slash-width) 0,
+      100% 0,
+      100% 100%,
+      var(--hero-slash-edge-bottom) 100%
+    );
+
+    span {
+      grid-area: 1 / 1;
+      visibility: hidden;
     }
 
-    .hero-title {
-      position: relative;
-      display: flex;
-      align-items: center;
-      flex-wrap: nowrap;
-      min-height: fit-content;
-      overflow: hidden;
+    span:first-child {
+      visibility: visible;
+    }
+  }
 
-      > h1 {
-        position: absolute;
-        left: 0;
-        top: 0;
-        margin: 0;
-        width: fit-content;
-        height: 100%;
-        padding: 0 clamp(4rem, 5vw, 6rem);
-        visibility: hidden;
-        animation-fill-mode: both;
-        will-change: transform, visibility;
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    width: 100%;
+  }
 
+  .hero-project {
+    min-width: 0;
+    border: var(--stroke-width-thin) solid var(--border-color);
+    background-color: var(--surface-1);
+  }
+
+  .hero-project-label {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+
+  .hero-project-category {
+    color: var(--text-muted);
+  }
+
+  .hero-project-image {
+    display: block;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-block: var(--stroke-width-thin) solid var(--border-color);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: transform var(--transition-slow);
+      transform-origin: top;
+    }
+
+    &:hover img {
+      transform: scale(1.02);
+    }
+  }
+
+  .hero-project-story {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+
+    h2 {
+      font-size: clamp(1.375rem, 2vw, 1.625rem);
+      line-height: 1.2;
+      text-wrap: pretty;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+    }
+
+    .hero-project-role {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .hero-project-impact {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      width: 100%;
+
+      li {
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        gap: var(--space-3xs);
+        min-width: 0;
+        padding: var(--space-sm) 0;
 
-        @media (max-width: 600px) {
-          font-size: var(--font-size-h2);
-        }
-
-        @media (max-width: 400px) {
-          font-size: var(--font-size-h3);
-        }
-
-        &.title-1 {
-          animation: slideInLeft var(--cycle) ease-in-out 0.1s infinite;
-        }
-
-        &.title-2 {
-          animation: slideInLeft var(--cycle) ease-in-out
-            calc(var(--stagger) * -1) infinite;
+        & + li {
+          border-inline-start: var(--stroke-width-thin) solid
+            var(--border-color);
+          padding-inline-start: var(--space-md);
         }
       }
 
-      > .slash {
-        width: clamp(3rem, 4vw, 4rem);
-        height: clamp(7rem, 8vw, 8rem);
-        animation: slash-in 0.3s ease 0.2s backwards;
-        z-index: 1;
+      strong {
+        color: var(--text-primary);
+        font-family: var(--font-headings);
+        font-size: 0.875rem;
+        line-height: var(--lh-tight);
+      }
+
+      span {
+        color: var(--text-muted);
+        font-size: 0.6875rem;
+        line-height: var(--lh-tight);
       }
     }
 
-    .subtitle {
-      text-wrap: balance;
-      hyphens: auto;
+    :global(a.link.ghost) {
+      padding-inline: 0;
     }
 
-    .actions {
-      padding: var(--space-md) 0;
+    :global(a.link.ghost .link-text) {
+      margin-inline-start: 0;
+    }
+  }
+
+  .selected-work {
+    width: 100%;
+    scroll-margin-top: calc(var(--header-height) + var(--space-lg));
+  }
+
+  @media (max-width: 1000px) {
+    .hero {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-xl);
+    }
+
+    .hero h1 {
+      max-width: 17ch;
+    }
+
+    .hero-project {
+      width: 100%;
+      max-width: 42rem;
+      justify-self: center;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero {
+      padding-block: var(--space-xl) var(--space-2xl);
+    }
+
+    .hero-intro {
+      gap: var(--space-md);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.25rem, 9vw, 3.25rem);
+    }
+
+    .hero-description {
+      font-size: 1rem;
+    }
+
+    .hero-actions {
+      :global(a.link) {
+        width: 100%;
+        font-size: 0.9375rem;
+      }
+    }
+
+    .hero-project-label,
+    .hero-project-story {
+      padding-inline: var(--space-md);
+    }
+
+    .hero-project-impact {
+      li {
+        padding-inline: var(--space-2xs);
+      }
+
+      strong {
+        font-size: 0.8125rem;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-process.is-animated .hero-phrases span {
+      animation: hero-phrase 20s ease-in-out infinite both;
+
+      &:nth-child(2) {
+        animation-delay: 5s;
+      }
+
+      &:nth-child(3) {
+        animation-delay: 10s;
+      }
+
+      &:nth-child(4) {
+        animation-delay: 15s;
+      }
+    }
+
+    .hero-process.is-paused .hero-phrases span {
+      animation-play-state: paused;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-project-image:hover img {
+      transform: none;
+    }
+  }
+
+  @keyframes hero-phrase {
+    0% {
+      visibility: hidden;
+      transform: translateX(-105%);
+    }
+    2%,
+    23% {
+      visibility: visible;
+      transform: translateX(0);
+    }
+    25%,
+    100% {
+      visibility: hidden;
+      transform: translateX(-105%);
     }
   }
 
   .expertise {
     min-height: fit-content;
-    padding-bottom: max(15vh, var(--space-2xl));
+    padding-block-start: max(12vh, var(--space-2xl));
+    padding-block-end: max(16vh, var(--space-3xl));
 
     @media (orientation: portrait) {
       min-height: fit-content;
@@ -270,13 +600,6 @@ const TestimonialsData = [
     }
   }
 
-  @keyframes slash-in {
-    from {
-      opacity: 0;
-      transform: translateX(100%);
-    }
-  }
-
   .timeline-learn-more {
     min-height: 15lvh;
     padding-block-end: max(10vh, var(--space-xl));
@@ -303,90 +626,3 @@ const TestimonialsData = [
     }
   }
 </style>
-
-<script>
-  // Animation configuration (seconds)
-  const animationConfig = {
-    preDelay: 0.4, // time before title enters
-    enterDuration: 0.4, // enter animation duration
-    holdDuration: 5, // title stays visible
-    exitDuration: 0.4, // exit animation duration
-    postDelay: 0.1, // off-screen time after exit until next cycle
-  };
-
-  const activeDuration =
-    animationConfig.preDelay +
-    animationConfig.enterDuration +
-    animationConfig.holdDuration +
-    animationConfig.exitDuration;
-  const totalDuration = activeDuration * 2 + animationConfig.postDelay;
-
-  function generateDynamicKeyframes() {
-    const heroTitle = document.querySelector('.hero-title') as HTMLElement;
-    if (!heroTitle) return;
-
-    // Convert durations to percentages of total cycle
-    const preDelayPct = Math.round(
-      ((animationConfig.preDelay + animationConfig.postDelay) / totalDuration) *
-        100,
-    );
-    const enterEndPct = Math.round(
-      (animationConfig.enterDuration / totalDuration) * 100 + preDelayPct,
-    );
-    const holdEndPct = Math.round(
-      ((animationConfig.preDelay +
-        animationConfig.enterDuration +
-        animationConfig.holdDuration) /
-        totalDuration) *
-        100,
-    );
-    const exitEndPct = Math.round((activeDuration / totalDuration) * 100);
-
-    const keyframesCSS = `
-      @keyframes slideInLeft {
-        0% {
-          transform: translateX(-80%);
-          visibility: hidden;
-        }
-        ${preDelayPct}% {
-            transform: translateX(-80%);
-            visibility: hidden;
-        }
-        ${enterEndPct}% {
-          transform: translateX(0);
-          visibility: visible;
-        }
-        ${holdEndPct}% {
-          transform: translateX(0);
-          visibility: visible;
-        }
-        ${exitEndPct}% {
-          transform: translateX(-100%);
-          visibility: hidden;
-        }
-        100% {
-          transform: translateX(-100%);
-        }
-      }
-    `;
-
-    let styleTag = document.getElementById('dynamic-keyframes');
-    if (!styleTag) {
-      styleTag = document.createElement('style');
-      styleTag.id = 'dynamic-keyframes';
-      document.head.appendChild(styleTag);
-    }
-    styleTag.textContent = keyframesCSS;
-
-    // Apply animation durations to elements and compute stagger so the second
-    // title enters after the first has completed its exit (no overlap).
-    heroTitle.style.setProperty('--cycle', `${totalDuration}s`);
-    heroTitle.style.setProperty('--stagger', `${activeDuration}s`);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', generateDynamicKeyframes);
-  } else {
-    generateDynamicKeyframes();
-  }
-</script>

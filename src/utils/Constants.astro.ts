@@ -24,14 +24,20 @@ export const ICONS: string[] = [
   'left_panel_close',
   'top_panel_close',
   'open_in_new',
+  'open_in_full',
+  'close',
   'cloud_sync',
   'contrast',
   'passkey',
   'info',
+  'pause',
+  'play_arrow',
+  'receipt_long',
+  'sync',
 ];
 
 export const ThemeColors = {
-  brandOnyx: '#17181C',
+  brandOnyx: '#1E1F24',
   brandNavy: '#172C4F',
   brandAccent: '#0F4A8A',
   brandSilver: '#F7F9FC',
@@ -65,7 +71,7 @@ export const ThemeColors = {
 export const SitePublicUrl = 'https://ahmedalshair.net';
 
 export const SiteName = 'Ahmed Alshair';
-export const JobTitle = 'Product Lead, UX Expert & Front-end Developer';
+export const JobTitle = 'Product Lead, UX Designer & Frontend Engineer';
 export const MetaDescription =
   'Digital Product Lead with 10+ years of experience bridging the gap between product strategy and technical execution. Passionate about crafting impactful, user-centric and data-driven digital experiences.';
 

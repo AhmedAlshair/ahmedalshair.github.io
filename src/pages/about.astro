@@ -14,12 +14,12 @@ const description = `Learn more about me, my background and my career.`;
 
 <BaseLayout title={title} description={description}>
   <section id='me' class='about-me flex-layout column'>
-    <div
-      class='about-me-content container padded intro grid-layout horizontal three-cols gap gap-2xl'
-    >
+    <div class='about-me-content container padded intro grid-layout horizontal three-cols gap gap-2xl'>
       <div class='my-photo span-1'>
         <span class='slash'></span>
-        <Image src={MyPhoto} alt=`${SiteName}` loading={'eager'} />
+        <div class='portrait'>
+          <Image src={MyPhoto} alt=`${SiteName}` loading={'eager'} />
+        </div>
       </div>
       <div class='content way-started span-2 flex-layout column gap gap-lg'>
         <div class='title-wrapper flex-layout column gap gap-sm'>
@@ -31,33 +31,35 @@ const description = `Learn more about me, my background and my career.`;
         </div>
         <p>
           My connection to design and technology began in elementary school,
-          long before I ever touched a line of code. <span class='emphasized'
-            >I started as a graphic designer</span
-          >, crafting everything from school magazines to complex, animated
+          long before I ever touched a line of code.{' '}
+          <span class='emphasized'>I started as a graphic designer</span>,
+          crafting everything from school magazines to complex, animated
           presentations that pushed tools like Photoshop to their limits. By
-          2013, <span class='emphasized'
-            >my focus had fully shifted to the web</span
-          >, evolving from static layouts into the high-performance applications
-          I lead today.
+          2013,{' '}
+          <span class='emphasized'>my focus had fully shifted to the web</span>,
+          evolving from static layouts into the high-performance applications I
+          lead today.
         </p>
       </div>
     </div>
 
     <div class='about-me the-challenge full-bleed'>
-      <div
-        class='about-me-content container padded grid-layout two-cols align-start'
-      >
+      <div class='about-me-content container padded grid-layout two-cols align-start'>
         <div class='content flex-layout column gap'>
           <h3>Atypical Journey</h3>
           <p id='medical-degree'>
-            My path through <span class='emphasized'
-              >medicine was a divergence of discipline</span
-            >. I accepted the challenge of a medical degree initially as a
-            career goal, and later as a test of my own capability. After
-            graduating with distinction, <span class='emphasized'
-              >I chose to make my final move toward design from a "mountain’s
-              summit" rather than a valley</span
-            >, proving that my shift was driven by passion, not an escape.
+            My path through{' '}
+            <span class='emphasized'>
+              medicine was a divergence of discipline
+            </span>
+            . I accepted the challenge of a medical degree initially as a career
+            goal, and later as a test of my own capability. After graduating
+            with distinction,{' '}
+            <span class='emphasized'>
+              I chose to make my final move toward design from a "mountain’s
+              summit" rather than a valley
+            </span>
+            , proving that my shift was driven by passion, not an escape.
           </p>
           <div class='inline-photo doctor-me' aria-hidden='true'>
             <Image
@@ -69,9 +71,11 @@ const description = `Learn more about me, my background and my career.`;
 
           <p id='visual-arts-degree'>
             Knowing that passion alone wasn't enough to lead at the highest
-            level, I chose to pursue a Bachelor’s in <span class='emphasized'
-              >Visual Arts Technology as a second challenge</span
-            >, ensuring I possessed the formal core knowledge required to bridge
+            level, I chose to pursue a Bachelor’s in{' '}
+            <span class='emphasized'>
+              Visual Arts Technology as a second challenge
+            </span>
+            , ensuring I possessed the formal core knowledge required to bridge
             gaps between logic and creativity.
           </p>
           <div class='inline-photo artist-me' aria-hidden='true'>
@@ -87,19 +91,23 @@ const description = `Learn more about me, my background and my career.`;
           <p>
             This journey ingrained in me a "high-stakes" precision, analytical
             rigor and an unwavering diligence. As a designer, front-end
-            developer and leader, <span class='emphasized'
-              >I prioritize compassion, empathy, and deep ownership</span
-            >, fostering environments where top-tier performance stems from
+            developer and leader,{' '}
+            <span class='emphasized'>
+              I prioritize compassion, empathy, and deep ownership
+            </span>
+            , fostering environments where top-tier performance stems from
             mutual respect.
           </p>
           <p>
-            This dedication has earned me <span class='emphasized'
-              >significant independence</span
-            > from CEOs, founders and managers, providing a level of trust I've maintained
-            for 10+ years by consistently <span class='emphasized'
-              >bridging the gap between stakeholder's high-level vision and
-              meticulous, hands-on functional design and code</span
-            >.
+            This dedication has earned me{' '}
+            <span class='emphasized'>significant independence</span> from CEOs,
+            founders and managers, providing a level of trust I've maintained
+            for 10+ years by consistently{' '}
+            <span class='emphasized'>
+              bridging the gap between stakeholder's high-level vision and
+              meticulous, hands-on functional design and code
+            </span>
+            .
           </p>
         </div>
       </div>
@@ -324,6 +332,7 @@ const description = `Learn more about me, my background and my career.`;
     justify-content: center;
     align-items: end;
     aspect-ratio: 1 / 0.9;
+    isolation: isolate;
 
     .slash {
       position: absolute;
@@ -332,18 +341,70 @@ const description = `Learn more about me, my background and my career.`;
       width: 100%;
       height: 100%;
       color: var(--surface-1);
-      z-index: -1;
+      z-index: 0;
     }
 
-    img {
-      margin-block-start: auto;
-      min-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
+    .portrait {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: end;
 
-      :global([data-theme='dark']) & {
-        filter: brightness(0.88) saturate(0.9) contrast(1.05);
+      img {
+        margin-block-start: auto;
+        min-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+
+        :global([data-theme='dark']) & {
+          filter: brightness(0.88) saturate(0.9) contrast(1.05);
+        }
       }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      > .slash {
+        animation: photo-slash-enter 1100ms ease-in-out both;
+      }
+
+      .portrait {
+        animation: portrait-enter 1000ms ease-in-out 100ms both;
+      }
+    }
+  }
+
+  @keyframes photo-slash-enter {
+    from {
+      opacity: 0;
+      transform: translateX(-45%);
+    }
+
+    70% {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes portrait-enter {
+    from {
+      opacity: 0;
+      transform: translate3d(11%, 2%, 0) scale(0.99);
+    }
+
+    40% {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
     }
   }
 

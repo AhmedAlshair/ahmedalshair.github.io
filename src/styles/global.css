@@ -1,15 +1,20 @@
 /* --- Theme Variables --- */
 :root {
   /* --- Core Brand Colors --- */
-  --brand-onyx: hsl(228, 10%, 10%);
-  --brand-navy: rgb(23, 44, 79);
-  --brand-accent: hsl(211, 80%, 30%);
-  --brand-silver: hsl(220, 50%, 98%);
+  --brand-onyx: hsl(228, 10%, 13%); /* #1E1F24 */
+  --brand-navy: rgb(23, 44, 79); /* #172C4F */
+  --brand-accent: hsl(211, 80%, 30%); /* #0F4A8A */
+  --brand-silver: hsl(220, 50%, 98%); /* #F7F9FC */
 
   /* --- Status Colors --- */
-  --status-error: hsl(4, 80%, 50%);
-  --status-success: hsl(122, 44%, 44%);
-  --status-warning: hsl(36, 90%, 55%);
+  --status-error-base: hsl(4, 80%, 50%); /* #E62719 */
+  --status-success-base: hsl(122, 44%, 44%); /* #3FA242 */
+  --status-warning-base: hsl(36, 90%, 55%); /* #F4A125 */
+  --status-error: var(--status-error-base);
+  --status-success: var(--status-success-base);
+  --status-warning: var(--status-warning-base);
+
+  color-scheme: light;
 
   /* --- Semantic Colors (Light Mode) --- */
   --bg-primary: var(--brand-silver);
@@ -51,11 +56,19 @@
 
   /* --- Dark Theme --- */
   &[data-theme='dark'],
-  .dark-theme {
+  &.dark-theme {
+    color-scheme: dark;
+
     /* --- Status Colors --- */
-    --status-error: hsl(from var(--status-error) h s calc(l - 8));
-    --status-success: hsl(from var(--status-success) h s calc(l - 8));
-    --status-warning: hsl(from var(--status-warning) h s calc(l - 8));
+    --status-error: hsl(
+      from var(--status-error-base) h calc(s - 6) calc(l + 12)
+    );
+    --status-success: hsl(
+      from var(--status-success-base) h calc(s - 4) calc(l + 16)
+    );
+    --status-warning: hsl(
+      from var(--status-warning-base) h calc(s - 6) calc(l + 5)
+    );
 
     /* --- Semantic Colors --- */
     --bg-primary: var(--brand-onyx);
@@ -68,45 +81,46 @@
     --text-secondary: color-mix(
       in srgb,
       var(--brand-navy),
-      var(--brand-silver) 88%
+      var(--brand-silver) 84%
     );
     --text-inverse: var(--brand-onyx);
     --text-muted: color-mix(
       in srgb,
       var(--brand-onyx),
-      var(--brand-silver) 72%
+      var(--brand-silver) 76%
     );
-    --accent: hsl(from var(--brand-accent) h calc(s + 8) calc(l + 48));
-    --border-color: rgb(from var(--accent) r g b / 0.3);
+    --accent: hsl(from var(--brand-accent) h calc(s + 8) calc(l + 44));
+    --border-color: rgb(from var(--accent) r g b / 0.28);
 
     /* --- Dark Surface Elevations --- */
     --surface-0: var(--bg-primary);
     --surface-1: var(--bg-secondary);
-    --surface-2: color-mix(in srgb, var(--bg-primary), var(--brand-silver) 8%);
+    --surface-2: color-mix(in srgb, var(--bg-primary), var(--brand-silver) 7%);
     --surface-3: color-mix(
       in srgb,
       var(--bg-secondary),
-      var(--brand-silver) 16%
+      var(--brand-silver) 14%
     );
     --surface-inverse: color-mix(
       in srgb,
       var(--bg-primary),
       var(--brand-silver) 90%
     );
-    --surface-success: hsl(from var(--status-success) h calc(s - 12) 92 / 12%);
-    --surface-error: hsl(from var(--status-error) h calc(s - 10) 98 / 10%);
-    --surface-warning: hsl(from var(--status-warning) h calc(s - 12) 94 / 12%);
+    --surface-success: rgb(from var(--status-success) r g b / 0.12);
+    --surface-error: rgb(from var(--status-error) r g b / 0.12);
+    --surface-warning: rgb(from var(--status-warning) r g b / 0.12);
 
     /* --- Dark Mode Actions --- */
-    --action-hover: hsl(from var(--accent) h calc(s + 20) calc(l + 10));
-    --action-active: hsl(from var(--accent) h calc(s + 40) calc(l + 20));
-    --action-focus: rgb(from var(--accent) r g b / 0.6);
-    --surface-hover: rgb(from var(--action-hover) r g b / 0.12);
+    --action-hover: hsl(from var(--accent) h calc(s + 4) calc(l + 7));
+    --action-active: hsl(from var(--accent) h s calc(l - 7));
+    --action-focus: rgb(from var(--accent) r g b / 0.5);
+    --action-disabled: rgb(from var(--text-muted) r g b / 0.28);
+    --surface-hover: rgb(from var(--action-hover) r g b / 0.14);
 
-    /* --- Dark Shadows (Higher Opacity) --- */
-    --shadow-subtle: 0 1px 3px rgb(from var(--brand-silver) r g b / 0.1);
-    --shadow-near: 0 4px 8px rgb(from var(--brand-silver) r g b / 0.12);
-    --shadow-far: 0 8px 16px rgb(from var(--brand-silver) r g b / 0.16);
+    /* --- Dark Shadows --- */
+    --shadow-subtle: 0 1px 3px rgb(0 0 0 / 0.32);
+    --shadow-near: 0 6px 16px rgb(0 0 0 / 0.36);
+    --shadow-far: 0 14px 36px rgb(0 0 0 / 0.42);
     --shadow-inverse: 0 0 2px rgba(0, 0, 0, 0.8);
   }
 

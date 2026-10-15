@@ -1,5 +1,6 @@
 <script lang="ts">
   import Button from '@/components/buttons/Button.svelte';
+  import { onDestroy } from 'svelte';
   import { sineOut } from 'svelte/easing';
   import { fade } from 'svelte/transition';
 
@@ -27,6 +28,49 @@
   let nextIndex = $derived((currentIndex + 1) % images.length);
 
   let direction = $state<'next' | 'prev'>('next');
+  let enlargedDialog: HTMLDialogElement;
+  let pageScrollY = 0;
+  let pageScrollLocked = false;
+
+  function lockPageScroll() {
+    pageScrollY = window.scrollY;
+    pageScrollLocked = true;
+    document.documentElement.classList.add('carousel-dialog-open');
+  }
+
+  function unlockPageScroll() {
+    if (typeof document === 'undefined' || !pageScrollLocked) {
+      return;
+    }
+
+    const root = document.documentElement;
+    root.classList.remove('carousel-dialog-open');
+    pageScrollLocked = false;
+
+    if (window.scrollY !== pageScrollY) {
+      const previousScrollBehavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = 'auto';
+      window.scrollTo(0, pageScrollY);
+      root.style.scrollBehavior = previousScrollBehavior;
+    }
+  }
+
+  function enlarge() {
+    if (!enlargedDialog.open) {
+      lockPageScroll();
+      enlargedDialog.showModal();
+    }
+  }
+
+  function closeEnlarged() {
+    enlargedDialog.close();
+  }
+
+  function closeOnBackdrop(event: MouseEvent) {
+    if (event.target === enlargedDialog) {
+      closeEnlarged();
+    }
+  }
 
   // Wrap index back to 0 at the end
   function next() {
@@ -39,6 +83,8 @@
     direction = 'prev';
     currentIndex = (currentIndex - 1 + images.length) % images.length;
   }
+
+  onDestroy(unlockPageScroll);
 </script>
 
 <div class="image-carousel">
@@ -80,6 +126,14 @@
       <Button
         variant="secondary"
         size="small"
+        onclick={enlarge}
+        icon="open_in_full"
+        aria-label={`Enlarge image: ${images[currentIndex].alt}`}
+      />
+
+      <Button
+        variant="secondary"
+        size="small"
         onclick={prev}
         icon="keyboard_arrow_left"
         aria-label="Previous image"
@@ -98,6 +152,37 @@
       />
     </div>
   </div>
+
+  <dialog
+    bind:this={enlargedDialog}
+    class="enlarged-dialog"
+    aria-label={`Enlarged view: ${images[currentIndex].alt}`}
+    onclick={closeOnBackdrop}
+    onclose={unlockPageScroll}
+  >
+    <div class="enlarged-content">
+      <div class="enlarged-actions">
+        <Button
+          variant="primary"
+          size="small"
+          className="enlarged-close"
+          onclick={closeEnlarged}
+          icon="close"
+          aria-label="Close enlarged image"
+        />
+      </div>
+
+      <img
+        src={images[currentIndex].url}
+        alt={images[currentIndex].alt}
+        class="enlarged-img"
+      />
+
+      {#if showCaption}
+        <p class="enlarged-caption">{images[currentIndex].alt}</p>
+      {/if}
+    </div>
+  </dialog>
 </div>
 
 <style>
@@ -214,6 +299,86 @@
       user-select: none;
       color: var(--text-muted);
     }
+  }
+
+  .enlarged-dialog {
+    position: fixed;
+    inset: 0;
+    width: min(calc(100vw - var(--space-xl)), 96rem);
+    max-width: none;
+    height: calc(100dvh - var(--space-xl));
+    max-height: none;
+    margin: auto;
+    padding: 0;
+    color: var(--text-primary);
+    background-color: var(--surface-3);
+    border: var(--stroke-width-thin) solid var(--border-color);
+    box-shadow: var(--shadow-far);
+    overflow: hidden;
+
+    &[open] {
+      display: grid;
+    }
+
+    &::backdrop {
+      background-color: rgb(from var(--brand-onyx) r g b / 0.8);
+      backdrop-filter: blur(0.25rem);
+    }
+
+    @media (max-width: 600px) {
+      width: calc(100vw - var(--space-md));
+      height: calc(100dvh - var(--space-md));
+    }
+  }
+
+  .enlarged-content {
+    position: relative;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .enlarged-actions {
+    position: sticky;
+    top: var(--space-sm);
+    padding-inline: var(--space-sm);
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  :global(.enlarged-close) {
+    box-shadow: var(--shadow-far);
+    pointer-events: auto;
+    height: fit-content;
+  }
+
+  .enlarged-img {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    margin-block: auto;
+    margin-block-start: -2.88rem;
+  }
+
+  .enlarged-caption {
+    flex: 0 0 auto;
+    max-width: 70ch;
+    padding: var(--space-lg) var(--space-lg);
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  :global(html.carousel-dialog-open) {
+    overflow: hidden;
   }
 
   .preloader {

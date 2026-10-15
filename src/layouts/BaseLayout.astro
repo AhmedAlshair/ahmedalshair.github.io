@@ -99,8 +99,19 @@ const personSchema = {
     />
 
     <script is:inline>
+      let savedTheme = null;
+
+      try {
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme === 'light' || storedTheme === 'dark') {
+          savedTheme = storedTheme;
+        }
+      } catch {
+        // Continue with the operating-system preference when storage is blocked.
+      }
+
       const theme =
-        localStorage.getItem('theme') ||
+        savedTheme ||
         (window.matchMedia('(prefers-color-scheme: dark)').matches
           ? 'dark'
           : 'light');

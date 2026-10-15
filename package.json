@@ -15,15 +15,18 @@
     "@astrojs/check": "^0.9.9",
     "@astrojs/sitemap": "^3.7.3",
     "@astrojs/svelte": "^9.0.1",
-    "astro": "^7.2.10",
-    "sharp": "^0.35.4",
-    "svelte": "^5.57.0"
+    "astro": "^7.3.5",
+    "svelte": "^5.57.1"
   },
   "devDependencies": {
     "husky": "^9.1.7",
-    "prettier": "^3.9.6",
-    "prettier-plugin-astro": "0.14.1",
+    "lint-staged": "^17.6.0",
+    "prettier": "^3.9.9",
+    "prettier-plugin-astro": "^1.1.0",
     "prettier-plugin-svelte": "^4.1.1",
     "typescript": "~6.0.0"
+  },
+  "lint-staged": {
+    "*.{js,ts,astro,svelte,json,md,css}": "prettier --write"
   }
 }

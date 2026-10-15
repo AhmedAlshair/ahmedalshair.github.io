@@ -5,7 +5,7 @@ interface Props {
   variant?: 'primary' | 'secondary' | 'ghost';
   size?: 'small' | 'medium' | 'large';
   href: string;
-  icon?: string;
+  icon?: string | null;
   class?: string;
   [key: string]: any;
 }
@@ -19,7 +19,7 @@ let {
   ...props
 } = Astro.props;
 
-let isIconOnly = !Astro.slots.has('default') && icon;
+let isIconOnly = !Astro.slots.has('default') && icon && icon !== null;
 ---
 
 <a

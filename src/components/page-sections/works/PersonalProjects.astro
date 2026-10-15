@@ -85,12 +85,11 @@ import { Image } from 'astro:assets';
       align-items: center;
       width: 100%;
       min-height: 12rem;
+      padding: var(--space-lg);
+      border-block-start: var(--stroke-width-thin) solid var(--border-color);
+      background-color: var(--surface-1);
       overflow: hidden;
-      opacity: 0.8;
       pointer-events: none;
-      transition:
-        opacity 180ms ease,
-        visibility 180ms ease;
 
       img {
         display: block;
@@ -98,6 +97,10 @@ import { Image } from 'astro:assets';
         height: auto;
         max-height: 24rem;
         object-fit: cover;
+        opacity: 0.8;
+        transition:
+          opacity 180ms ease,
+          visibility 180ms ease;
       }
     }
 
@@ -106,6 +109,10 @@ import { Image } from 'astro:assets';
     .personal-project:has(.project-link:hover) .preview-img,
     .personal-project:has(.project-link:focus-visible) .preview-img {
       opacity: 1;
+
+      img {
+        opacity: 1;
+      }
     }
 
     .project-logo {
