@@ -71,7 +71,7 @@ export const ThemeColors = {
 export const SitePublicUrl = 'https://ahmedalshair.net';
 
 export const SiteName = 'Ahmed Alshair';
-export const JobTitle = 'Product Lead, UX Designer & Frontend Engineer';
+export const JobTitle = 'Product Lead, UX Designer & Frontend Developer';
 export const MetaDescription =
   'Digital Product Lead with 10+ years of experience bridging the gap between product strategy and technical execution. Passionate about crafting impactful, user-centric and data-driven digital experiences.';
 

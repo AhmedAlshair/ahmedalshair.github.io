@@ -66,11 +66,6 @@
   <div
     class="toggle-button flex-layout gap gap-xl align-center justify-space-between"
   >
-    <a href="/works" class="back-link flex-layout gap gap-2xs align-center">
-      <Icon name="arrow_back" />
-      <span>All Works</span>
-    </a>
-
     <Button
       variant="primary"
       size="small"
@@ -78,6 +73,11 @@
       icon={isOpen ? 'left_panel_close' : 'list_alt'}
       className={isOpen ? 'align-self-end' : 'align-self-start'}
     />
+
+    <a href="/works" class="back-link flex-layout gap gap-2xs align-center">
+      <Icon name="arrow_back" />
+      <span>All Works</span>
+    </a>
   </div>
 
   <ul class="section-list flex-layout column gap gap-xs">
@@ -131,7 +131,7 @@
       z-index: var(--z-sticky);
 
       .menu-open & {
-        padding: var(--space-sm) var(--space-md) var(--space-lg);
+        padding: var(--space-xs) var(--space-md) var(--space-lg);
         background-color: var(--surface-2);
         mask-image: linear-gradient(
           to bottom,
@@ -144,8 +144,8 @@
 
   .section-list {
     max-width: 100%;
-    min-width: 20ch;
-    padding: 0 var(--space-lg) var(--space-2xl) var(--space-lg);
+    min-width: 16ch;
+    padding: 0 var(--space-md) var(--space-xl) var(--space-md);
 
     .section-item .nav-link {
       padding: var(--space-xs);

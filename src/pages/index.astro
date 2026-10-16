@@ -58,11 +58,23 @@ const TestimonialsData = [
     aria-labelledby='hero-heading'
   >
     <div class='hero-intro'>
-      <p class='hero-roles'>
-        <span>Product Lead</span>
-        <span>UX Designer</span>
-        <span>Frontend Engineer</span>
-      </p>
+      <div id='hero-process' class='hero-process'>
+        <p class='sr-only'>Product Lead. UX Designer. Frontend Development.</p>
+        <div class='hero-motion' aria-hidden='true'>
+          <span class='slash mask-before'></span>
+          <div class='hero-phrases'>
+            <span>Product Lead</span>
+            <span>UX Designer</span>
+            <span>Frontend Development</span>
+          </div>
+        </div>
+
+        <HeroMotionToggle
+          client:load
+          targetId='hero-process'
+          hideButton={true}
+        />
+      </div>
 
       <h1 id='hero-heading'>
         I shape complex systems into <span>clear, useful products</span>
@@ -77,28 +89,9 @@ const TestimonialsData = [
         <Link href='/contact#form' variant='primary'>
           Let’s talk
         </Link>
-        <Link href='#selected-works' variant='secondary' icon={null}>
+        <Link href='#selected-works' variant='ghost' icon={null}>
           Explore my work
         </Link>
-      </div>
-
-      <div id='hero-process' class='hero-process'>
-        <p class='sr-only'>Explore. Shape. Design. Build.</p>
-        <div class='hero-motion' aria-hidden='true'>
-          <span class='slash mask-before'></span>
-          <div class='hero-phrases'>
-            <span>Explore</span>
-            <span>Shape</span>
-            <span>Design</span>
-            <span>Build</span>
-          </div>
-        </div>
-
-        <HeroMotionToggle
-          client:load
-          targetId='hero-process'
-          hideButton={true}
-        />
       </div>
     </div>
 
@@ -124,24 +117,24 @@ const TestimonialsData = [
         />
       </a>
       <div class='hero-project-story'>
-        <h2 id='hero-project-title'>
-          From a field tool to a collaborative simulation platform.
-        </h2>
+        <h4 id='hero-project-title'>
+          Designing and building a collaborative energy-planning SaaS
+        </h4>
         <ul
           class='hero-project-impact'
-          aria-label='COMET project facts and outcomes'
+          aria-label='COMET case study highlights'
         >
           <li>
             <strong>2020 - Present</strong>
-            <span>Product ownership</span>
+            <span>Product direction, UX/UI &amp; frontend</span>
           </li>
           <li>
-            <strong>23x</strong>
-            <span>Site coverage</span>
+            <strong>~3 years</strong>
+            <span>SaaS design &amp; development</span>
           </li>
           <li>
-            <strong>267%</strong>
-            <span>More simulations</span>
+            <strong>ASU + UNDP</strong>
+            <span>Recognition &amp; partnerships</span>
           </li>
         </ul>
         <Link href='/works/comet' variant='secondary'>
@@ -387,12 +380,6 @@ const TestimonialsData = [
     gap: var(--space-sm);
     padding: var(--space-lg);
 
-    h2 {
-      font-size: clamp(1.375rem, 2vw, 1.625rem);
-      line-height: 1.2;
-      text-wrap: pretty;
-    }
-
     p {
       color: var(--text-muted);
       font-size: 0.9375rem;
@@ -414,7 +401,7 @@ const TestimonialsData = [
         flex-direction: column;
         gap: var(--space-3xs);
         min-width: 0;
-        padding: var(--space-sm) 0;
+        padding: var(--space-sm) var(--space-sm) var(--space-sm) 0;
 
         & + li {
           border-inline-start: var(--stroke-width-thin) solid
@@ -510,7 +497,7 @@ const TestimonialsData = [
 
   @media (prefers-reduced-motion: no-preference) {
     .hero-process.is-animated .hero-phrases span {
-      animation: hero-phrase 20s ease-in-out infinite both;
+      animation: hero-phrase 15s ease-in-out infinite both;
 
       &:nth-child(2) {
         animation-delay: 5s;
@@ -518,10 +505,6 @@ const TestimonialsData = [
 
       &:nth-child(3) {
         animation-delay: 10s;
-      }
-
-      &:nth-child(4) {
-        animation-delay: 15s;
       }
     }
 
@@ -538,18 +521,22 @@ const TestimonialsData = [
 
   @keyframes hero-phrase {
     0% {
-      visibility: hidden;
-      transform: translateX(-105%);
+      visibility: visible;
+      transform: translateX(-130%);
     }
-    2%,
-    23% {
+    1.333%,
+    32.667% {
       visibility: visible;
       transform: translateX(0);
     }
-    25%,
+    34% {
+      visibility: visible;
+      transform: translateX(-130%);
+    }
+    34.001%,
     100% {
       visibility: hidden;
-      transform: translateX(-105%);
+      transform: translateX(-130%);
     }
   }
 

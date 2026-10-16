@@ -118,6 +118,11 @@
         background-color: var(--surface-hover);
       }
 
+      &.ghost {
+        background-color: var(--surface-hover);
+        color: var(--action-hover);
+      }
+
       &:not(.icon-only) {
         :global(.button-icon) {
           transform: translateX(0.2ch);

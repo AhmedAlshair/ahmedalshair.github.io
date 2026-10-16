@@ -7,81 +7,41 @@ import WorkLayout, { type WorkSection } from '@/layouts/WorkLayout.astro';
 import CometWorkCover from '@assets/works/comet/work-cover-comet.jpg';
 import PharmaWorkCover from '@assets/works/pharma/work-cover-pharma.jpg';
 import FindHomeWorkCover from '@assets/works/work-cover-findhome.jpg';
-import MiniGridConceptLight from '@assets/works/comet/mini-grid-game-concept-light.jpg';
-import CometOffline1 from '@assets/works/comet/comet-offline-1.png';
-import CometOffline2 from '@assets/works/comet/comet-offline-2.png';
-import CometOffline3 from '@assets/works/comet/comet-offline-3.jpg';
-import CometOffline4 from '@assets/works/comet/comet-offline-4.png';
-import CometOfflineCarousel1 from '@assets/works/comet/comet-offline-carousel-1.jpg';
-import CometOfflineCarousel2 from '@assets/works/comet/comet-offline-carousel-2.jpg';
-import CometOfflineCarousel3 from '@assets/works/comet/comet-offline-carousel-3.jpg';
-import CometOfflineCarousel4 from '@assets/works/comet/comet-offline-carousel-4.jpg';
-import CometOfflineCarousel5 from '@assets/works/comet/comet-offline-carousel-5.jpg';
-import CometSaasCarousel1 from '@assets/works/comet/comet-saas-carousel-1.png';
-import CometSaasCarousel2 from '@assets/works/comet/comet-saas-carousel-2.png';
-import CometSaasCarousel3 from '@assets/works/comet/comet-saas-carousel-3.png';
-import CometSaasCarousel4 from '@assets/works/comet/comet-saas-carousel-4.png';
-import CometSaasCarousel5 from '@assets/works/comet/comet-saas-carousel-5.png';
-import CometSaasCarousel6 from '@assets/works/comet/comet-saas-carousel-6.png';
-import CometSaasCarousel7 from '@assets/works/comet/comet-saas-carousel-7.png';
-import CometSaasCarousel8 from '@assets/works/comet/comet-saas-carousel-8.png';
+import CometOperator from '@assets/works/comet/comet-saas-carousel-1.png';
+import CometParticipant from '@assets/works/comet/comet-saas-carousel-2.png';
+import CometDashboard from '@assets/works/comet/comet-saas-carousel-4.png';
+import CometWorkshop from '@assets/works/comet/comet-saas-carousel-5.png';
+import CometSetup from '@assets/works/comet/comet-saas-carousel-6.png';
+import CometReport from '@assets/works/comet/comet-saas-carousel-7.png';
+import CometReportAppliances from '@assets/works/comet/comet-saas-carousel-9.png';
+import CometOfflineInterfaces from '@assets/works/comet/comet-offline-2.png';
+import CometFieldWorkshop from '@assets/works/comet/comet-offline-3.jpg';
+import CometWorkshopCollage from '@assets/works/comet/comet-offline-carousel-5.jpg';
 import ASULogo from '@assets/works/comet/asu-logo-light.svg';
 import UNDPLogo from '@assets/works/comet/undp-logo-light.svg';
-import CometSaas1 from '@assets/works/comet/comet-saas-1.jpg';
 import Badge from '@/components/Badge.astro';
-import Icon from '@/components/Icon.svelte';
-import DensityGrid from '@/components/charts/DensityGrid.svelte';
-import BarChart from '@/components/charts/BarChart.svelte';
 import Link from '@/components/links/Link.astro';
 import ImageCarousel from '@/components/ImageCarousel.svelte';
+import ImageViewer from '@/components/ImageViewer.svelte';
 import ExploreMoreWorks from '@/components/page-sections/works/ExploreMoreWorks.astro';
+import Icon from '@/components/Icon.svelte';
 
-const title = `COMET: From Field Prototype to Living SaaS Platform | Works | ${SiteName}`;
-const description = `A six-year product case study of leading COMET from an offline field prototype to a resilient, collaborative SaaS simulation and reporting platform.`;
+const title = `COMET: Designing & Building an Energy-Planning SaaS | Works | ${SiteName}`;
+const description = `Leading COMET's UX/UI and frontend development: three years shaping a SaaS platform for collaborative energy planning, live simulation and reporting.`;
 
-let sections: WorkSection[] = [
-  { title: 'From Concept to Field Tool', id: 'offline-toolkit' },
-  { title: 'Designing for Field Reality', id: 'ux-challenge' },
-  { title: 'Building the Offline System', id: 'hands-on-solution' },
-  { title: 'Proven Impact & Recognition', id: 'redesign-impact' },
-  { title: 'Re-architecting for SaaS', id: 'saas-transition' },
-  { title: 'A Resilient Live Platform', id: 'hands-on' },
-  { title: 'From Simulation to Decisions', id: 'decision-system' },
-  { title: 'Stewardship & Road Ahead', id: 'outcome' },
+const sections: WorkSection[] = [
+  { title: 'The Field Foundation', id: 'offline-toolkit' },
+  { title: 'International Recognition', id: 'recognitions' },
+  { title: 'Designing for SaaS', id: 'saas-transition' },
+  { title: 'Frontend & System Design', id: 'hands-on' },
+  { title: 'Making Data Understandable', id: 'decision-system' },
+  { title: 'Outcomes & Growth', id: 'outcome' },
 ];
 
-const [
-  optimizedOfflineCarousel1,
-  optimizedOfflineCarousel2,
-  optimizedOfflineCarousel3,
-  optimizedOfflineCarousel4,
-  optimizedOfflineCarousel5,
-] = await optimizeImages([
-  CometOfflineCarousel1,
-  CometOfflineCarousel2,
-  CometOfflineCarousel3,
-  CometOfflineCarousel4,
-  CometOfflineCarousel5,
-]);
-
-const [
-  optimizedSaasCarousel1,
-  optimizedSaasCarousel2,
-  optimizedSaasCarousel3,
-  optimizedSaasCarousel4,
-  optimizedSaasCarousel5,
-  optimizedSaasCarousel6,
-  optimizedSaasCarousel7,
-  optimizedSaasCarousel8,
-] = await optimizeImages([
-  CometSaasCarousel1,
-  CometSaasCarousel2,
-  CometSaasCarousel3,
-  CometSaasCarousel4,
-  CometSaasCarousel5,
-  CometSaasCarousel6,
-  CometSaasCarousel7,
-  CometSaasCarousel8,
+const [dashboard, workshop, setup] = await optimizeImages([
+  CometDashboard,
+  CometWorkshop,
+  CometSetup,
 ]);
 ---
 
@@ -90,952 +50,474 @@ const [
     <Image
       slot='work-image'
       src={CometWorkCover}
-      alt={'Comet: Community Energy Toolkit'}
-      loading={'eager'}
+      alt='COMET: Community Energy Toolkit'
+      loading='eager'
     />
 
     <Fragment slot='summary'>
       <div class='summary-head flex-layout column'>
-        <span class='chapter-label'>
-          A continuing product story · 2020 - Present
-        </span>
-        <h2>From Field Experiment to Living Energy-Planning Platform</h2>
+        <span class='chapter-label'>COMET · 2020–Present</span>
+        <h1>Designing & Building an Energy-Planning SaaS</h1>
         <p class='subtitle'>
-          I have led COMET across product direction, UX/UI design and frontend
-          engineering as it evolved from a promising workshop concept into a
-          collaborative SaaS platform. The work has spanned field research,
-          interaction design, real-time simulation, product architecture,
-          reporting and the continuity needed to keep a complex product moving
-          through changing teams and requirements.
+          COMET helps energy professionals and communities explore how a
+          mini-grid could serve their needs. I led its UX/UI and frontend
+          evolution, with around three years dedicated to designing and building
+          the SaaS platform: a connected experience for project preparation,
+          live simulation and analysis.
         </p>
         <div class='badges flex-layout align-center justify-start wrap gap gap-sm'>
           <Badge text='Product Direction' />
           <Badge text='UX/UI Design' />
-          <Badge text='Frontend Engineering' />
-          <Badge text='Product Quality' />
+          <Badge text='Frontend Development' />
         </div>
       </div>
 
-      <div class='role-summary grid-layout two-cols'>
-        <div class='role'>
-          <span class='label'>Core ownership:</span>
-          <p>Product leadership, UX/UI design & frontend engineering</p>
+      <dl class='project-facts'>
+        <div class='fact'>
+          <dt>My role</dt>
+          <dd>
+            Primary UX/UI designer & frontend developer, shaping product
+            direction
+          </dd>
         </div>
-        <div class='date'>
-          <span class='label'>Timeline:</span>
-          <p>2020 - Present</p>
+        <div>
+          <dt>Focus of this case study</dt>
+          <dd>
+            ~3 years of SaaS design and development, built on an earlier field
+            toolkit
+          </dd>
         </div>
-        <div class='impact highlighted'>
-          <span class='label'>Field outcomes:</span>
-          <p>
-            <span class='emphasized'>23x more site coverage</span> per
-            deployment,
-            <span class='emphasized'> 267% more scenarios</span> explored per
-            workshop, and <span class='emphasized'>recognition by UNDP</span>.
-          </p>
+        <div>
+          <dt>Design to production</dt>
+          <dd>Research, interaction design, reusable UI, React & TypeScript</dd>
         </div>
-        <div class='core-value highlighted'>
-          <span class='label'>Continuing value:</span>
-          <p>
-            Preserving product logic and user trust while the platform, team and
-            technical foundations continue to evolve.
-          </p>
-        </div>
-      </div>
+      </dl>
 
-      <ol class='evolution-map' aria-label='COMET product evolution'>
-        <li>
-          <span class='phase-index'>01</span>
-          <div>
-            <a
-              class='inline-link phase-label'
-              href='#offline-toolkit'
-              aria-label='Field toolkit'
-            >
-              Field toolkit
-            </a>
-            <p>
-              Turn a raw idea into an inclusive, offline-first workshop tool.
-            </p>
-          </div>
-        </li>
-        <li>
-          <span class='phase-index'>02</span>
-          <div>
-            <a
-              class='inline-link phase-label'
-              href='#saas-transition'
-              aria-label='Cloud platform'
-            >
-              Cloud platform
-            </a>
-            <p>Remove the physical ceiling with secure, shared workflows.</p>
-          </div>
-        </li>
-        <li class='current'>
-          <span class='phase-index'>03</span>
-          <div>
-            <a
-              class='inline-link phase-label'
-              href='#decision-system'
-              aria-label='Decision system'
-            >
-              Decision system
-            </a>
-            <p>
-              Make every simulation durable, explainable and useful after the
-              workshop.
-            </p>
-          </div>
-        </li>
-      </ol>
+      <p class='credibility-note'>
+        <span class='label'>Recognition & partnerships</span>
+        <span class='note'>
+          ASU field partnership · Featured by UNDP Digital X
+        </span>
+        <a class='inline-link' href='#recognitions'>
+          Learn more
+        </a>
+      </p>
+
+      <nav class='reading-guide' aria-label='Case study highlights'>
+        <span>Explore the SaaS work</span>
+        <a class='inline-link' href='#saas-transition'>
+          Product & UI design
+        </a>
+        <a class='inline-link' href='#hands-on'>
+          Frontend architecture
+        </a>
+        <a class='inline-link' href='#decision-system'>
+          Reporting experience
+        </a>
+      </nav>
     </Fragment>
 
     <section
       id='offline-toolkit'
-      class='container padded grid-layout horizontal two-cols gap gap-xl align-center'
-    >
-      <div class='content-wrapper flex-layout column gap gap-lg justify-center'>
-        <span class='chapter-label'>Chapter 01 · The offline foundation</span>
-        <h3>Professionalizing the Vision</h3>
-
-        <p>
-          At this stage, the{' '}
-          <a
-            href='https://solve.mit.edu/solutions/7223'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            "Mini-grid Game" <Icon name='open_in_new' />
-          </a>{' '}
-          was an ambitious idea without the interaction model or technical
-          reliability needed for real mini-grid planning. My first goal was to
-          turn that concept into a{' '}
-          <span class='emphasized'>
-            credible, field-ready simulation toolkit
-          </span>
-          .
-        </p>
-        <p>
-          Additionally, the workshop and deployment process depending on that
-          concept were{' '}
-          <span class='emphasized'>time-consuming and error-prone</span>, often
-          requiring several days of manual setup and configuration. It also
-          relied heavily on manual data collection and handling, limiting how
-          many communities a project could reach.
-        </p>
-      </div>
-
-      <Image
-        src={MiniGridConceptLight}
-        alt='The Mini-grid Game Concept'
-        loading='lazy'
-      />
-    </section>
-
-    <section
-      id='evidence-based'
-      class='container padded flex-layout column gap'
-    >
-      <h3>Evidence-Based Architecture</h3>
-      <p>
-        Transforming a conceptual “game” into a professional tool meant first
-        understanding the decisions people needed to make. I used a structured,
-        multi-phase design process to connect field realities, engineering logic
-        and project goals before defining the interface.
-      </p>
-
-      <div
-        id='design-process'
-        class='content-wrapper padded grid-layout two-cols gap gap-xl align-center'
-      >
-        <div class='img-wrapper design-process'>
-          <Image
-            src={CometOffline1}
-            alt='Comet Design Process'
-            loading='lazy'
-          />
-        </div>
-
-        <div class='content-wrapper flex-layout column gap align-start'>
-          <p>
-            <span class='emphasized'>Domain discovery:</span> I conducted expert
-            interviews, stakeholder workshops and secondary research into
-            mini-grid planning to understand the decisions the simulation had to
-            support.
-          </p>
-          <p>
-            <span class='emphasized'>Inclusive information architecture:</span>{' '}
-            I mapped complex user flows for two distinct user groups (Operators
-            vs. Participants), ensuring technical depth for professionals while
-            maintaining clarity for community members.
-          </p>
-
-          <p>
-            <span class='emphasized'>Iterative prototyping:</span> Moving from
-            low-fidelity wireframes to interactive prototypes in{' '}
-            <data value='Adobe XD' class='meta-label code' title='Adobe XD'>
-              Adobe XD
-            </data>{' '}
-            and{' '}
-            <data value='Figma' class='meta-label code' title='Figma'>
-              Figma
-            </data>{' '}
-            let us test complex flows early and make the simulation tangible for
-            stakeholders.
-          </p>
-          <p>
-            <span class='emphasized'>Field-informed validation:</span> I led
-            usability testing sessions to identify friction points in the
-            simulation journey, directly informing the icon-heavy, color-coded
-            UI that became a hallmark of COMET's accessibility.
-          </p>
-        </div>
-      </div>
-
-      <div class='content-wrapper flex-layout column gap align-start'>
-        <p>
-          Learn more about the Design Process and the detailed breakdown of the
-          research methods and UI artifacts that built COMET Offline:
-        </p>
-        <Link
-          variant='secondary'
-          href='https://www.behance.net/gallery/136257167/COMET-Product-Design'
-          target='_blank'
-        >
-          View the full Design Process
-        </Link>
-      </div>
-    </section>
-
-    <section id='ux-challenge' class='full-bleed flex-layout column gap gap-xl'>
-      <div class='content-wrapper container padded flex-layout column gap'>
-        <span class='chapter-label'>
-          One simulation, two very different jobs
-        </span>
-        <h3>
-          The UX Challenge: Designing for Zero Internet and Different Users
-        </h3>
-        <p>
-          Software for off-grid contexts could not assume stable internet,
-          individual devices or uniform digital literacy. The experience had to
-          work as a local network ecosystem, keep a room of participants in sync
-          and remain understandable when the technology itself disappeared into
-          the background.
-        </p>
-      </div>
-
-      <div class='content-wrapper flex-layout column'>
-        <div class='grid-layout horizontal two-cols gap gap-xl align-center'>
-          <div class='container-padded content-wrapper flex-layout column gap'>
-            <h4>The Dual-Experience Logic</h4>
-            <p>
-              I designed two distinct but synchronized interfaces around the
-              decisions each person needed to make.{' '}
-              <span class='emphasized'>The Operator UI</span> coordinated the
-              workshop and exposed system-level information, while the{' '}
-              <span class='emphasized'>Participant UI</span> made household
-              choices immediate and comprehensible for people with different
-              levels of digital literacy.
-            </p>
-          </div>
-
-          <div class='img-wrapper dual-experience'>
-            <Image
-              src={CometOffline2}
-              alt='COMET UIs for Operators and Participants'
-              loading='lazy'
-            />
-          </div>
-        </div>
-
-        <div class='grid-layout horizontal two-cols gap gap-xl align-center'>
-          <Image
-            src={CometOffline3}
-            alt='A participant in a COMET workshop'
-            loading='lazy'
-          />
-          <div class='container-padded content-wrapper flex-layout column gap'>
-            <h4>Accessibility & Empathy</h4>
-            <p>
-              To ensure inclusivity for target users who mostly{' '}
-              <a
-                href='https://youtu.be/_JQu_1bGRDo?si=PQR5sXkgY2oeIx-7'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <span>live in remote villages and rural areas</span>
-                <Icon name='open_in_new' />
-              </a>
-              , I prioritized an icon-heavy, color-coded interface that allowed
-              non-technical users to understand and simulate their household
-              energy needs. Multiple interaction methods reduced dependence on
-              text and supported different levels of device familiarity.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section
-      id='hands-on-solution'
-      class='container padded flex-layout column gap'
-    >
-      <h3>Hands-on Craft: Building the Local Sync</h3>
-      <p>
-        The design could not stop at a prototype. As the primary frontend
-        builder, I translated the operator and participant journeys into a
-        working system and stayed close enough to the code to resolve the gap
-        between intended behavior and field reality.
-      </p>
-
-      <div class='grid-layout horizontal two-cols gap gap-xl align-center'>
-        <div class='content-wrapper flex-layout column gap gap-xl'>
-          <div class='content-wrapper flex-layout column gap'>
-            <h4>Design System Ownership</h4>
-            <p>
-              I created an evolving library of reusable components and styles in
-              <data value='Adobe XD' class='meta-label code' title='Adobe XD'>
-                Adobe XD
-              </data>{' '}
-              and{' '}
-              <data value='Figma' class='meta-label code' title='Figma'>
-                Figma
-              </data>{' '}
-              , from data-heavy charts to form inputs and interactive simulation
-              "Room Appliances", ensuring visual consistency and accessibility
-              across both the Operator and Participant platforms.
-            </p>
-            <p>
-              The design language used semantic tokens and stayed connected to
-              its frontend counterparts, reducing drift between design intent
-              and production behavior.
-            </p>
-          </div>
-
-          <div class='content-wrapper flex-layout column gap'>
-            <h4>Frontend Architecture & Optimization</h4>
-            <p>
-              After guiding the initial frontend development, I took full
-              ownership of the{' '}
-              <data value='React' class='meta-label code' title='React'>
-                React
-              </data>{' '}
-              codebase and steered it toward a dependable release. The priority
-              was not novelty: it was performance, synchronization, simulation
-              stability and error states people could understand in the middle
-              of a workshop.
-            </p>
-          </div>
-        </div>
-
-        <div class='img-wrapper design-system'>
-          <Image src={CometOffline4} alt='Comet Design System' loading='lazy' />
-        </div>
-      </div>
-    </section>
-
-    <ImageCarousel
-      client:load
-      objectFit='contain'
-      images={[
-        {
-          url: optimizedOfflineCarousel1.src,
-          alt: 'Simulation control UI for operators in COMET Offline',
-        },
-        {
-          url: optimizedOfflineCarousel2.src,
-          alt: 'Simulation UI for participants in COMET Offline',
-        },
-        {
-          url: optimizedOfflineCarousel4.src,
-          alt: 'Simulation billing UI for participants in COMET Offline',
-        },
-        {
-          url: optimizedOfflineCarousel3.src,
-          alt: 'Creating a Project in COMET Offline',
-        },
-        {
-          url: optimizedOfflineCarousel5.src,
-          alt: 'Photos from workshops in deployments using COMET',
-        },
-      ]}
-    />
-
-    <section
-      id='redesign-impact'
       class='container padded flex-layout column gap gap-lg'
     >
-      <h3>Results and Impact</h3>
+      <div class='section-intro'>
+        <span class='chapter-label'>The foundation</span>
+        <h2>Learning From the Field</h2>
+      </div>
       <p>
-        The redesign changed what the team could deliver in the field, not only
-        what the interface looked like. Following the product and technical
-        overhaul, COMET achieved:
+        COMET began as an offline workshop tool. Expert interviews, prototyping
+        and usability testing informed two synchronized interfaces: detailed
+        controls for operators and visual appliance interactions for community
+        participants with varying digital literacy. I designed these experiences
+        and took ownership of the React frontend.
       </p>
-      <ul class='impact-list grid-layout horizontal two-cols gap gap-xl'>
-        <li class='flex-layout column gap'>
-          <h5>23x Improvement in Efficiency</h5>
-          <p>
-            Average project coverage grew from 3 sites to more than 70, enabled
-            by a more flexible workshop model and a tool that could be reused
-            across locations.
-          </p>
-          <div class='chart-content'>
-            <DensityGrid before={3} after={70} columns={7} />
-          </div>
-        </li>
-        <li class='flex-layout column gap'>
-          <h5>267% Increase in Simulations</h5>
-          <p>
-            Communities could explore 8+ energy scenarios per workshop, up from
-            2–3, creating more room to compare trade-offs before committing to a
-            plan.
-          </p>
-          <div class='chart-content'>
-            <BarChart
-              data={[
-                { label: 'Before', value: 2 },
-                { label: 'After', value: 8 },
-              ]}
-              width={300}
-              gap={50}
+      <div class='interface-pair offline-visuals'>
+        <figure class='product-figure'>
+          <a
+            class='product-image-link offline-media workshop-photo link-wrapper'
+            href={CometWorkshopCollage.src}
+            data-image-viewer
+            data-image-viewer-src={CometWorkshopCollage.src}
+            data-image-viewer-alt='Photos of community members using COMET during energy-planning workshops'
+            aria-label='Enlarge photos from COMET community workshops'
+          >
+            <Image
+              src={CometFieldWorkshop}
+              alt='A participant using COMET on a tablet during a community energy workshop'
+              loading='lazy'
             />
-          </div>
-        </li>
-      </ul>
+          </a>
+          <figcaption>
+            <strong>Designing for participation</strong>
+            Familiar appliance imagery and direct interactions helped make
+            energy choices tangible for people with different levels of digital
+            experience.
+          </figcaption>
+        </figure>
+        <figure class='product-figure'>
+          <a
+            class='product-image-link offline-media with-background link-wrapper'
+            href={CometOfflineInterfaces.src}
+            data-image-viewer
+            data-image-viewer-src={CometOfflineInterfaces.src}
+            data-image-viewer-alt='COMET Offline interfaces: operator controls and load chart on a laptop, with visual participant appliance controls on a tablet'
+            aria-label='Enlarge the COMET Offline interfaces'
+          >
+            <Image
+              src={CometOfflineInterfaces}
+              alt='COMET Offline interfaces: operator controls and load chart on a laptop, with visual participant appliance controls on a tablet'
+              loading='lazy'
+            />
+          </a>
+          <figcaption>
+            <strong>Two roles, one shared experience</strong>
+            Operators managed the simulation and monitored demand; participants
+            explored household appliance choices and their effects.
+          </figcaption>
+        </figure>
+      </div>
+      <dl
+        class='field-outcomes'
+        aria-label='Outcomes of the offline product and workshop overhaul'
+      >
+        <div>
+          <dt>Sites per project</dt>
+          <dd>
+            3 <span aria-label='increased to'>→</span> 70+
+          </dd>
+        </div>
+        <div>
+          <dt>Scenarios per workshop</dt>
+          <dd>
+            2–3 <span aria-label='increased to'>→</span> 8+
+          </dd>
+        </div>
+      </dl>
+      <p class='supporting-copy'>
+        These outcomes followed the offline product and workshop overhaul. Local
+        hardware, network setup and data handling still limited collaboration.
+        That experience shaped the next challenge: bringing COMET into a shared
+        cloud workspace.
+      </p>
+      <a
+        class='inline-link align-self-start'
+        href='https://www.behance.net/gallery/136257167/COMET-Product-Design'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        Explore the earlier offline design process <Icon name={'open_in_new'} />
+      </a>
     </section>
 
     <section
       id='recognitions'
       class='container padded flex-layout column gap gap-lg'
     >
-      <h3>Recognitions</h3>
-      <p>
-        This phase proved that a participatory energy-planning tool could be
-        both technically useful to professionals and approachable to
-        communities. It also established the product credibility and partner
-        confidence needed for COMET's next stage.
-      </p>
-
-      <div class='content-wrapper grid-layout horizontal two-cols gap gap-xl wrap'>
-        <div class='content-wrapper flex-layout column gap'>
-          <p>
-            The work helped establish trust with partners such as{' '}
-            <a
-              href='https://news.asu.edu/20240814-environment-and-sustainability-asu-lab-brings-energy'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              Arizona State University <Icon name='open_in_new' />
-            </a>{' '}
-            and strengthened the case for the next leap: a cloud-based COMET.
-          </p>
-
-          <div class='partner-logo asu'>
+      <div class='section-intro'>
+        <span class='chapter-label'>International recognition & trust</span>
+        <h2>Product Value Recognized Beyond the Workshop</h2>
+      </div>
+      <div class='recognition-grid'>
+        <article class='recognition-card'>
+          <div class='partner-logo' aria-hidden='true'>
             <ASULogo />
           </div>
-        </div>
-
-        <div class='content-wrapper flex-layout column gap'>
+          <span class='detail-label'>Field partnership</span>
+          <h3>Arizona State University</h3>
           <p>
-            COMET was recognized by UNDP as an innovative solution and featured
-            on{' '}
-            <a
-              href='https://digitalx.undp.org/catalogs/community-energy-toolkit-comet.html'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              the UNDP Digital X platform <Icon name='open_in_new' />
-            </a>{' '}
-            and{' '}
-            <a
-              href='https://www.sdg-digital.org/sdg/affordable-and-clean-energy'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              the UN SDG Acceleration Agenda <Icon name='open_in_new' />
-            </a>
-            .
+            ASU's Laboratory for Energy And Power Solutions partnered with COMET
+            to help communities in Fiji understand mini-grid use. An evidence of
+            the product's value in real energy-access projects.
           </p>
-          <div class='partner-logo undp'>
+          <a
+            class='inline-link'
+            href='https://news.asu.edu/20240814-environment-and-sustainability-asu-lab-brings-energy'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Read the ASU feature <Icon name={'open_in_new'} />
+          </a>
+        </article>
+        <article class='recognition-card'>
+          <div class='partner-logo' aria-hidden='true'>
             <UNDPLogo />
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section id='pivot-point' class='pivot-point full-bleed'>
-      <div class='pivot-point-content container padded flex-layout gap gap-xl align-center'>
-        <h3 class='pivot-text'>
-          <span class='slash'></span>
-          <span>Pivot</span>
-          <span>Point</span>
-        </h3>
-
-        <div class='content-wrapper padded flex-layout column gap'>
+          <span class='detail-label'>International visibility</span>
+          <h3>UNDP Digital X</h3>
           <p>
-            While COMET Offline achieved global recognition and measurable
-            impact, our field evaluations revealed a growing barrier to scale.
-            The LAN-based model had reached a physical ceiling: every deployment
-            still carried local hardware, network setup, data-transfer risk and
-            limited opportunities for teams to collaborate beyond the room.
+            Featured in UNDP's Digital X catalogue, COMET is highlighted for its
+            role in supporting participatory energy planning and intuitive
+            experiences for communities with limited digital exposure.
           </p>
-          <div class='hurdles flex-layout gap'>
-            <span class='hurdle'>Hardware Dependencies</span>
-            <span class='hurdle'>Network Instability</span>
-            <span class='hurdle'>Local Data Loss</span>
-            <span class='hurdle'>Collaboration Barriers</span>
-          </div>
-          <p>
-            To ensure the product could truly scale to the global mini-grid
-            market, I helped lead the product decision and experience strategy
-            for <span class='emphasized'>COMET SaaS</span>,not a simple
-            migration, but a rethinking of how projects, workshops, live
-            simulations and results should work together.
-          </p>
-        </div>
+          <a
+            class='inline-link'
+            href='https://digitalx.undp.org/catalogs/community-energy-toolkit-comet.html'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Explore the UNDP feature <Icon name={'open_in_new'} />
+          </a>
+        </article>
       </div>
     </section>
-
-    <section id='saas-transition' class='flex-layout column gap gap-xl'>
-      <div class='container padded section-heading flex-layout column gap'>
-        <span class='chapter-label'>
-          Chapter 02 · Removing the physical ceiling
-        </span>
-        <h2>The SaaS Evolution</h2>
-        <p class='section-lede'>
-          The move to the cloud expanded COMET from a workshop application into
-          a product ecosystem. It introduced persistent project data, secure
-          access, remote preparation and a much larger responsibility: keeping
-          every stage of a live multi-user simulation coherent.
-        </p>
-      </div>
-
-      <div
-        id='strategic-move'
-        class='container padded content-wrapper flex-layout column gap'
-      >
-        <h3>Strategic Move: Solving for Scale</h3>
-        <p>
-          Research and a product/technical audit turned the field limitations
-          into three non-negotiable goals for the next generation of COMET:
-        </p>
-
-        <ul class='grid-layout horizontal three-cols gap gap-xl'>
-          <li class='flex-layout column gap'>
-            <h5 class='emphasized'>Make Work Durable</h5>
-            <p>
-              Move project and simulation data out of a single local machine so
-              teams could return to it, recover from interruptions and build on
-              previous work with confidence.
-            </p>
-          </li>
-          <li class='flex-layout column gap'>
-            <h5 class='emphasized'>Reduce Deployment Friction</h5>
-            <p>
-              Remove the need to configure dedicated local hardware and LANs,
-              using managed cloud services such as{' '}
-              <a
-                href='https://aws.amazon.com'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <span>AWS</span>
-                <Icon name='open_in_new' />
-              </a>{' '}
-              to make preparation and access more flexible.
-            </p>
-          </li>
-          <li class='flex-layout column gap'>
-            <h5 class='emphasized'>Design for Collaboration</h5>
-            <p>
-              Connect organizations, projects, designs, workshops and
-              participants in one workflow so preparation and learning could
-              continue before and after a live session.
-            </p>
-          </li>
-        </ul>
-      </div>
-
-      <div class='saas-hero full-bleed'>
-        <Image
-          src={CometSaas1}
-          alt='COMET SaaS embraces collaboration over the cloud'
-        />
-      </div>
-
-      <div
-        id='product-custodian'
-        class='container padded content-wrapper flex-layout column gap'
-      >
-        <h3>Maintaining Product Continuity</h3>
-        <p>
-          Rebuilding a domain-heavy product while the engineering team changed
-          repeatedly created a second challenge: preserving the reasoning behind
-          its behavior. Alongside my core product, design and frontend role, I
-          stepped into backend, infrastructure and QA gaps when needed to
-          protect delivery and keep the system understandable to each incoming
-          team.
-        </p>
-        <ul class='stewardship-grid grid-layout horizontal three-cols gap gap-xl'>
-          <li class='flex-layout column gap'>
-            <span class='responsibility-label'>Core ownership</span>
-            <h5 class='emphasized'>Product, UX & Frontend</h5>
-            <p>
-              I shaped product flows, translated domain rules into usable
-              interactions and owned the React frontend that operators and
-              participants depend on.
-            </p>
-          </li>
-          <li class='flex-layout column gap'>
-            <span class='responsibility-label'>Continuity system</span>
-            <h5 class='emphasized'>Logic, Documentation & QA</h5>
-            <p>
-              I maintained product logic documentation, the user knowledge base
-              and functional validation across releases, turning implicit
-              knowledge into something the team could inherit.
-            </p>
-          </li>
-          <li class='flex-layout column gap'>
-            <span class='responsibility-label'>Gap coverage</span>
-            <h5 class='emphasized'>Backend & Infrastructure Support</h5>
-            <p>
-              When product-critical gaps appeared, I traced cross-stack data,
-              fixed high-risk backend paths, supported deployment and CI work,
-              and gave stakeholders evidence-based options, not just status.
-            </p>
-          </li>
-        </ul>
-      </div>
-
-      <div
-        id='hands-on'
-        class='container padded content-wrapper flex-layout column gap'
-      >
-        <span class='chapter-label'>The hard part happens between screens</span>
-        <h3>Building a Resilient Live Platform</h3>
-        <p>
-          A live COMET session is a coordinated system: an operator controls a
-          sequence while many participants make energy choices, receive updates,
-          transition between simulations and complete billing. I designed and
-          built the frontend around the moments where distributed systems most
-          often become visible to users-latency, reconnection, stale state and
-          partial completion.
-        </p>
-
-        <ol class='simulation-flow' aria-label='Live simulation lifecycle'>
-          <li>
-            <span>01</span>
-            <strong>Prepare</strong>
-            <p>
-              Configure the design, participants, tariffs and simulation
-              sequence.
-            </p>
-          </li>
-          <li>
-            <span>02</span>
-            <strong>Join</strong>
-            <p>
-              Give each participant a clear, consent-aware path into the right
-              session.
-            </p>
-          </li>
-          <li>
-            <span>03</span>
-            <strong>Synchronize</strong>
-            <p>
-              Keep operator controls, participant actions and the shared clock
-              aligned.
-            </p>
-          </li>
-          <li>
-            <span>04</span>
-            <strong>Recover</strong>
-            <p>
-              Restore authoritative state after reconnects without replaying
-              stale actions.
-            </p>
-          </li>
-          <li>
-            <span>05</span>
-            <strong>Complete</strong>
-            <p>
-              Carry every joined participant through billing, teardown and saved
-              results.
-            </p>
-          </li>
-        </ol>
-
-        <ul id='saas-features' class='grid-layout two-cols'>
-          <li class='flex-layout column gap gap-sm'>
-            <Icon name='cloud_sync' className='icon' />
-            <h4>Real-time State That Recovers</h4>
-            <p>
-              WebSocket flows, authoritative reconnect snapshots and explicit
-              lifecycle states keep the active simulation usable when networks
-              drop, screens refresh or participants move to the next session.
-            </p>
-          </li>
-          <li class='flex-layout column gap gap-sm'>
-            <Icon name='receipt_long' className='icon' />
-            <h4>Billing That Includes Everyone</h4>
-            <p>
-              Billing and teardown flows preserve the complete joined cohort,
-              including people who disconnect before the operator closes a
-              simulation, so the final record reflects what actually happened.
-            </p>
-          </li>
-          <li class='flex-layout column gap gap-sm'>
-            <Icon name='passkey' className='icon' />
-            <h4>Secure, Project-Scoped Access</h4>
-            <p>
-              I integrated authentication with{' '}
-              <a
-                href='https://auth0.com'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <span>Auth0</span>
-                <Icon name='open_in_new' />
-              </a>
-              , license validation and project-aware authorization. Token
-              renewal and failure states are handled without unnecessarily
-              discarding a user's in-progress workspace.
-            </p>
-          </li>
-          <li class='flex-layout column gap gap-sm'>
-            <Icon name='sync' className='icon' />
-            <h4>Fast Without Becoming Stale</h4>
-            <p>
-              Cached data, optimistic updates and cross-tab invalidation make
-              repeated work feel immediate while preserving consistency across
-              open tabs, background refreshes and destructive actions.
-            </p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <ImageCarousel
-      client:load
-      objectFit='contain'
-      images={[
-        {
-          url: optimizedSaasCarousel1.src,
-          alt: 'Simulation control UI for operators in COMET SaaS',
-        },
-        {
-          url: optimizedSaasCarousel2.src,
-          alt: 'Simulation UI for participants in COMET SaaS',
-        },
-        {
-          url: optimizedSaasCarousel3.src,
-          alt: 'Simulation billing UI for participants in COMET SaaS',
-        },
-        {
-          url: optimizedSaasCarousel7.src,
-          alt: 'Simulation report UI in COMET SaaS',
-        },
-        {
-          url: optimizedSaasCarousel4.src,
-          alt: 'COMET SaaS operator dashboard home page',
-        },
-        {
-          url: optimizedSaasCarousel5.src,
-          alt: 'Simulations list in the workshop page in COMET SaaS',
-        },
-        {
-          url: optimizedSaasCarousel6.src,
-          alt: 'New simulation form in COMET SaaS',
-        },
-        {
-          url: optimizedSaasCarousel8.src,
-          alt: 'Project page in COMET SaaS',
-        },
-      ]}
-    />
 
     <section
-      id='decision-system'
-      class='decision-system full-bleed flex-layout column gap gap-xl'
+      id='saas-transition'
+      class='saas-section flex-layout column gap gap-xl'
     >
-      <div class='container padded flex-layout column gap'>
-        <span class='chapter-label'>
-          Chapter 03 · Extending the value of every run
-        </span>
-        <h2>From Simulation to Decisions</h2>
+      <div class='container padded flex-layout column gap gap-lg'>
+        <div class='section-intro'>
+          <span class='chapter-label'>01 · SaaS product & UI design</span>
+          <h2>Designing for a Larger Product</h2>
+        </div>
         <p class='section-lede'>
-          A simulation is only valuable if teams can understand what happened
-          and use it later. I led the continuing evolution of COMET Reports from
-          a result screen into a layered analysis experience: preserving the
-          underlying run, explaining the system, and making insights portable.
+          The SaaS stage became my most substantial design and engineering
+          undertaking. Over roughly three years, I expanded the workshop
+          experience into a platform where teams could prepare projects,
+          configure energy systems, run sessions and revisit their results.
         </p>
-      </div>
-
-      <div class='container padded report-layers grid-layout horizontal three-cols gap gap-lg'>
-        <article class='report-layer flex-layout column gap'>
-          <span class='layer-index'>01 · System</span>
-          <h3>Did the energy system work?</h3>
-          <p>
-            Load profiles, peak demand, reliability, unmet energy, time of use,
-            programmed demand and renewable generation reveal where the system
-            is resilient, and where it is constrained.
-          </p>
-        </article>
-        <article class='report-layer flex-layout column gap'>
-          <span class='layer-index'>02 · Community</span>
-          <h3>How did people use it?</h3>
-          <p>
-            Participant, household, enterprise and appliance views make
-            adoption, consumption and day/night behavior explorable without
-            losing the context of the whole simulation.
-          </p>
-        </article>
-        <article class='report-layer flex-layout column gap'>
-          <span class='layer-index'>03 · Viability</span>
-          <h3>Can the model sustain itself?</h3>
-          <p>
-            Billing, willingness-to-pay and tariff outcomes connect technical
-            performance with the commercial reality that ultimately shapes a
-            mini-grid plan.
-          </p>
-        </article>
-      </div>
-
-      <div class='container padded report-pipeline-wrapper flex-layout column gap gap-lg'>
-        <div class='content-wrapper flex-layout column gap'>
-          <h3>Designing the Data Journey</h3>
-          <p>
-            Making these views trustworthy required more than adding charts. I
-            traced and evolved the data contract from backend simulation history
-            through frontend normalization, analytics, responsive visualizations
-            and processed exports, while retaining compatibility with older
-            saved results.
-          </p>
+        <div class='decision-columns'>
+          <article>
+            <h3>Make the Structure Understandable</h3>
+            <p>
+              Projects, designs, workshops and simulations introduced layers of
+              context. I shaped the information architecture around those
+              relationships, using consistent navigation, contextual actions and
+              reusable forms to help users understand where they were and what
+              to do next.
+            </p>
+          </article>
+          <article>
+            <h3>Build a More Mature UI System</h3>
+            <p>
+              I refined typography, contrast, spacing and information hierarchy
+              across dense dashboards and simpler participant screens. Semantic
+              design tokens and reusable React components connected the visual
+              system to production, including form validation, keyboard
+              interactions and loading and error states.
+            </p>
+          </article>
         </div>
-
-        <ol class='report-pipeline' aria-label='Simulation report data journey'>
-          <li>
-            <span>01</span>
-            <strong>Record</strong>
-            <small>Simulation history</small>
-          </li>
-          <li>
-            <span>02</span>
-            <strong>Normalize</strong>
-            <small>One stable model</small>
-          </li>
-          <li>
-            <span>03</span>
-            <strong>Analyze</strong>
-            <small>Reusable metrics</small>
-          </li>
-          <li>
-            <span>04</span>
-            <strong>Explore</strong>
-            <small>Charts & tables</small>
-          </li>
-          <li>
-            <span>05</span>
-            <strong>Share</strong>
-            <small>Processed exports</small>
-          </li>
-        </ol>
       </div>
 
-      <div class='container padded report-details grid-layout two-cols gap gap-xl'>
-        <div class='content-wrapper flex-layout column gap'>
-          <h3>Detail Without Losing Context</h3>
+      <ImageCarousel
+        client:load
+        objectFit='contain'
+        images={[
+          {
+            url: dashboard.src,
+            alt: 'Project dashboard: shared projects and consistent navigation give COMET a clear starting point.',
+          },
+          {
+            url: workshop.src,
+            alt: 'Workshop: simulations in their workshop context, connecting preparation to live sessions and results.',
+          },
+          {
+            url: setup.src,
+            alt: 'Forms: grouped configuration and reusable form controls make a complex task easier to work through.',
+          },
+        ]}
+      />
+    </section>
+
+    <section
+      id='hands-on'
+      class='container padded flex-layout column gap gap-xl'
+    >
+      <div class='section-intro'>
+        <span class='chapter-label'>
+          02 · Frontend engineering & system design
+        </span>
+        <h2>Making a Shared Simulation Feel Coherent</h2>
+      </div>
+      <p>
+        SaaS deepened my understanding of the system behind the interface: which
+        data belongs to the server, which state belongs to the current screen,
+        and how updates reach different users. I owned the React and TypeScript
+        frontend and worked across API and real-time contracts to make those
+        boundaries reliable.
+      </p>
+
+      <div class='interface-pair'>
+        <figure class='product-figure'>
+          <a
+            class='product-image-link link-wrapper'
+            href={CometOperator.src}
+            data-image-viewer
+            data-image-viewer-src={CometOperator.src}
+            data-image-viewer-alt='COMET SaaS operator screen showing playback controls, participant connections, system status and a live load profile'
+            aria-label='Enlarge the COMET operator screenshot'
+          >
+            <Image
+              src={CometOperator}
+              alt='COMET SaaS operator screen showing playback controls, participant connections, system status and a live load profile'
+              loading='lazy'
+            />
+          </a>
+          <figcaption>
+            <strong>Operator: coordinate the room.</strong>
+            Playback, connection status and system health sit above the detailed
+            load profile so the session remains easy to monitor.
+          </figcaption>
+        </figure>
+        <figure class='product-figure'>
+          <a
+            class='product-image-link link-wrapper'
+            href={CometParticipant.src}
+            data-image-viewer
+            data-image-viewer-src={CometParticipant.src}
+            data-image-viewer-alt='COMET SaaS participant screen showing rooms, appliance controls, energy use and tariff information'
+            aria-label='Enlarge the COMET participant screenshot'
+          >
+            <Image
+              src={CometParticipant}
+              alt='COMET SaaS participant screen showing rooms, appliance controls, energy use and tariff information'
+              loading='lazy'
+            />
+          </a>
+          <figcaption>
+            <strong>Participant: make everyday choices.</strong>
+            Familiar appliances, visible on/off states and immediate energy
+            feedback turn technical rules into tangible interactions.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class='decision-columns'>
+        <article>
+          <h3>Design the Interaction and Its Recovery</h3>
           <p>
-            Users can move from community-wide demand to a participant and then
-            to individual appliances, switch between hourly and minute-level
-            views, compare on consistent chart scales and reset or zoom without
-            turning analysis into a specialist-only task.
+            A participant's appliance choices affect the shared simulation while
+            the operator controls its pace. I implemented synchronized updates,
+            explicit session states and reconnect handling so a refresh or
+            interrupted connection could restore the current session. Recovery
+            became part of the interaction design.
           </p>
+        </article>
+        <article>
+          <h3>Separate Responsibilities as the Product Grows</h3>
+          <p>
+            I separated reusable UI, live simulation state and server-data
+            fetching. WebSocket updates support the shared session; cached
+            queries support project workflows; report calculations sit outside
+            presentation components. These boundaries made it easier to extend
+            features and test behavior without duplicating logic across screens.
+          </p>
+        </article>
+      </div>
+
+      <aside class='engineering-note'>
+        <strong>Architecture translated into user experience</strong>
+        <p>
+          Clear state ownership keeps controls and charts aligned. Reusable
+          components keep interactions consistent. Coordinated caching keeps
+          repeated navigation responsive while updates remain visible.
+        </p>
+      </aside>
+    </section>
+
+    <section id='decision-system' class='report-section'>
+      <div class='container padded flex-layout column gap gap-xl'>
+        <div class='section-intro'>
+          <span class='chapter-label'>
+            03 · Data visualization & frontend craft
+          </span>
+          <h2>Turning Results Into an Explorable Story</h2>
         </div>
-        <div class='content-wrapper flex-layout column gap'>
-          <h3>Performance as Part of the Experience</h3>
-          <p>
-            Report data is normalized once, analytics are derived for reuse and
-            saved results are cached with explicit schema versioning. The result
-            is a deep report that stays responsive, avoids redundant requests
-            and refreshes safely when data changes elsewhere.
-          </p>
+        <p>
+          COMET Reports brought together the design and engineering skills I
+          developed through SaaS. The challenge was to make a dense simulation
+          understandable at a glance while retaining the detail professionals
+          need to investigate energy use, system performance and billing.
+        </p>
+        <div class='report-showcase'>
+          <figure class='product-figure'>
+            <a
+              class='product-image-link link-wrapper'
+              href={CometReportAppliances.src}
+              data-image-viewer
+              data-image-viewer-src={CometReportAppliances.src}
+              data-image-viewer-alt='COMET simulation report showing appliance adoption, participant load profiles, appliance tables and a usage heatmap'
+              aria-label='Enlarge the COMET report screenshot'
+            >
+              <Image
+                src={CometReport}
+                alt='COMET simulation report with summary metrics, analysis tabs, an interactive load profile and an events timeline'
+                loading='lazy'
+              />
+            </a>
+            <figcaption>
+              Overview first, then investigation. Open the screenshot to inspect
+              the report at full size.
+            </figcaption>
+          </figure>
+          <div class='report-decisions'>
+            <article>
+              <span class='detail-label'>Visual hierarchy</span>
+              <h3>Start With What Matters</h3>
+              <p>
+                I grouped energy, peak demand, reliability and unmet demand into
+                a clear overview. Tabs separate system, billing, participant and
+                appliance analysis, keeping the initial view focused.
+              </p>
+            </article>
+            <article>
+              <span class='detail-label'>Interaction design</span>
+              <h3>Let Users Follow a Question</h3>
+              <p>
+                Users can move from community demand to individual participants
+                and appliances, change time resolution and zoom into a period.
+                Consistent scales and metric explanations help comparisons
+                remain meaningful.
+              </p>
+            </article>
+            <article>
+              <span class='detail-label'>Frontend implementation</span>
+              <h3>Keep Detail Responsive and Consistent</h3>
+              <p>
+                I separated data normalization and reusable analytics from
+                rendering. Charts, tables and processed exports share the same
+                report model, with caching and compatibility handling supporting
+                repeat visits and older saved results.
+              </p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id='outcome' class='container padded flex-layout column gap'>
-      <span class='chapter-label'>What six years of ownership taught me</span>
-      <h2>Beyond the Launch: A Living Product</h2>
-      <p class='section-lede'>
-        COMET is not a finished redesign frozen in a portfolio. It is a living
-        platform that has had to survive field constraints, an architectural
-        transition, team turnover, real users and the edge cases that only
-        appear in production. My role has been to hold the product intent steady
-        while continually improving how that intent is expressed in design and
-        code.
-      </p>
-
-      <div
-        id='key-takeaways'
-        class='content-wrapper flex-layout column gap gap-xl'
-      >
-        <h3>Key Strategic Takeaways</h3>
-        <ul class='grid-layout two-cols gap gap-lg'>
-          <li>
-            <span class='takeaway-index'>01</span>
-            <h4>Continuity Is Product Infrastructure</h4>
-            <p>
-              Documentation, explicit contracts and careful onboarding are not
-              administrative extras. They protect the reasoning behind the
-              product when teams and technologies change.
-            </p>
-          </li>
-          <li>
-            <span class='takeaway-index'>02</span>
-            <h4>Reliability Is Part of the UX</h4>
-            <p>
-              Reconnection, cache invalidation, teardown and backward
-              compatibility are experienced by users as trust. Product quality
-              lives between layers, not only on the screen.
-            </p>
-          </li>
-          <li>
-            <span class='takeaway-index'>03</span>
-            <h4>Proximity Speeds Up Learning</h4>
-            <p>
-              Owning product direction, UX and frontend implementation shortened
-              the distance between a field insight, a design decision and
-              production feedback, without treating engineering as mere
-              delivery.
-            </p>
-          </li>
-          <li>
-            <span class='takeaway-index'>04</span>
-            <h4>Depth Creates Better Simplicity</h4>
-            <p>
-              The simplest participant interaction can sit on top of complex
-              energy, billing and synchronization rules. Understanding those
-              rules deeply is what makes it possible to hide the right
-              complexity.
-            </p>
-          </li>
-        </ul>
+    <section
+      id='outcome'
+      class='container padded flex-layout column gap gap-lg'
+    >
+      <div class='section-intro'>
+        <span class='chapter-label'>Outcomes & growth</span>
+        <h2>From Designing Screens to Shaping Systems</h2>
       </div>
-
-      <div id='road-ahead' class='content-wrapper flex-layout column gap'>
-        <h3>The Road Ahead</h3>
-        <p>
-          The current focus is to keep turning simulation history into clearer
-          planning evidence: richer participant and appliance analysis, stronger
-          comparisons, more explainable metrics and reporting that travels well
-          beyond a workshop. The product continues, and so does the work of
-          making it more useful, resilient and easier to trust.
-        </p>
+      <p>
+        The offline work established COMET's field value. SaaS expanded what I
+        could design and build: a coherent product structure, a reusable UI
+        system, synchronized experiences and an analytical frontend. Owning both
+        design and implementation let me carry decisions through to working
+        behavior and refine them against technical constraints.
+      </p>
+      <p>
+        My biggest growth was learning to reason across the whole experience,
+        from a participant's next action to the state and data that support it.
+        COMET continues to evolve, with reporting and interaction quality
+        remaining an active focus.
+      </p>
+      <div>
+        <Link variant='secondary' href='/contact#form'>
+          Let's work together
+        </Link>
       </div>
     </section>
   </WorkLayout>
+
+  <ImageViewer client:load />
+
   <ExploreMoreWorks
     works={[
       {
@@ -1055,461 +537,305 @@ const [
 </BaseLayout>
 
 <style>
+  .justify-self-start {
+    justify-self: start;
+  }
+
+  .align-self-start {
+    align-self: start;
+  }
+
   .chapter-label,
-  .responsibility-label,
-  .layer-index,
-  .takeaway-index {
-    width: fit-content;
+  .detail-label {
+    display: block;
     color: var(--text-muted);
     font-family: var(--font-mono);
     font-size: var(--font-size-h6);
-    font-weight: var(--font-weight-medium);
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
   }
 
-  .section-lede {
-    max-width: 78ch;
+  .section-intro {
+    display: grid;
+    gap: var(--space-sm);
   }
 
-  .evolution-map {
+  .project-facts {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+    padding-block-start: var(--space-lg);
     border-block-start: var(--stroke-width-thin) solid var(--border-color);
 
-    li {
-      position: relative;
-      min-width: 0;
-      padding: var(--space-lg) var(--space-lg) 0;
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-md);
-
-      + li {
-        border-inline-start: var(--stroke-width-thin) solid var(--border-color);
-      }
-
-      &:hover {
-        .phase-index {
-          background-color: var(--surface-2);
-        }
-      }
-    }
-
-    .phase-index {
+    dt {
       color: var(--text-muted);
-      font-family: var(--font-mono);
-      font-size: var(--font-size-h6);
-      line-height: 0.95lh;
+      font-size: 0.9em;
+      margin-block-end: var(--space-xs);
     }
 
-    .phase-label {
-      display: block;
-      justify-self: start;
-      margin-block-end: var(--space-sm);
-      color: var(--text-secondary);
-      font-family: var(--font-headings);
-      font-weight: var(--font-weight-bold);
-    }
-
-    p {
-      font-size: 0.95em;
-    }
-
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-
-      li + li {
-        border-block-start: var(--stroke-width-thin) solid var(--border-color);
-        border-inline-start: 0;
-      }
+    dd {
+      font-weight: var(--font-weight-semibold);
     }
   }
 
-  #ux-challenge {
-    padding-block-end: var(--space-2xl);
-  }
+  .reading-guide {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm) var(--space-lg);
 
-  .img-wrapper.design-system {
-    :global([data-theme='dark']) & {
-      background-color: var(--surface-2);
+    > span {
+      color: var(--text-muted);
+      font-size: 0.9em;
     }
   }
 
-  #redesign-impact {
-    padding-block-start: var(--space-2xl);
-    padding-block-end: var(--space-2xl);
+  .credibility-note {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-lg);
+    padding-inline-start: var(--space-md);
+    border-inline-start: var(--stroke-width-thick) solid var(--text-secondary);
 
-    h5 {
+    .label {
+      color: var(--text-muted);
+      font-size: 0.9em;
+      width: 100%;
+    }
+
+    .note {
       color: var(--text-secondary);
     }
+  }
 
-    .chart-content {
-      padding: var(--space-xl) var(--space-sm);
+  .offline-visuals {
+    align-items: stretch;
 
-      > * {
-        flex-shrink: 0;
-      }
+    .offline-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 5 / 3;
+      overflow: hidden;
+    }
 
-      @media (max-width: 768px) {
-        padding: var(--space-xl) var(--space-sm);
-        height: auto;
-      }
+    .offline-media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .workshop-photo img {
+      object-fit: cover;
+    }
+
+    .with-background img {
+      object-fit: contain;
+      background-color: var(--surface-3);
+      padding: var(--space-md);
     }
   }
 
   #recognitions {
-    padding-block-end: var(--space-2xl);
+    padding-block-start: 0;
+  }
 
-    .partner-logo {
-      padding: var(--space-lg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0 var(--space-md);
-      background-color: var(--surface-1);
-      height: 16rem;
+  .recognition-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-xl);
+  }
 
-      :global([data-theme='dark']) & {
-        background-color: var(--surface-2);
-      }
+  .recognition-card {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: var(--space-sm);
+    min-width: 0;
 
-      svg {
-        max-width: 85%;
-        min-height: 8rem;
-        object-fit: contain;
+    h3 {
+      font-size: var(--font-size-h4);
+      color: var(--text-secondary);
+    }
 
-        :global([data-theme='dark']) & {
-          path[fill='black'],
-          path[fill='#A30046'] {
-            fill: white;
-            opacity: 0.95;
-          }
-        }
-      }
+    > a {
+      margin-block-start: auto;
     }
   }
 
-  #pivot-point {
-    padding-block-start: var(--space-2xl);
-    padding-block-end: var(--space-2xl);
-    background-color: var(--surface-inverse);
-
-    @media (max-width: 768px) {
-      .pivot-point-content {
-        flex-wrap: wrap;
-      }
-    }
-
-    .slash {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0.8em;
-      color: var(--surface-3);
-      opacity: 0.35;
-      z-index: 0;
-    }
-
-    .pivot-text {
-      position: relative;
-      padding-inline-start: 1.2em;
-      display: flex;
-      flex-direction: column;
-      min-width: min(40vw, 22rem);
-      font-size: calc(var(--font-size-h1) + 2.25vw);
-      font-weight: 700;
-      line-height: 1;
-      z-index: 1;
-
-      > span:not(.slash) {
-        color: var(--text-inverse);
-        opacity: 0.8;
-      }
-
-      > span:last-child {
-        color: var(--text-inverse);
-        opacity: 0.6;
-      }
-
-      @media (max-width: 768px) {
-        font-size: var(--font-size-h1);
-        flex-direction: row;
-        gap: var(--space-xs);
-      }
-    }
-
-    p {
-      color: var(--text-inverse);
-      opacity: 0.9;
-
-      span.emphasized {
-        color: var(--text-inverse);
-      }
-    }
-
-    .hurdles {
-      flex-wrap: wrap;
-
-      .hurdle {
-        flex: 1 1 8rem;
-        padding: var(--space-sm) var(--space-md);
-        color: var(--text-inverse);
-        background-color: rgb(255, 255, 255, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: var(--font-weight-medium);
-        text-align: center;
-
-        :global([data-theme='dark']) & {
-          background-color: rgb(0, 0, 0, 0.08);
-        }
-      }
-    }
-  }
-
-  .saas-hero {
-    height: 32rem;
+  .partner-logo {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 9rem;
+    padding: var(--space-lg);
+    margin-block-end: var(--space-sm);
     background-color: var(--surface-1);
-    overflow: hidden;
+
+    :global(svg) {
+      width: 100%;
+      max-width: 20rem;
+      height: auto;
+    }
+
+    :global([data-theme='dark']) & {
+      background-color: var(--surface-2);
+
+      :global(path[fill='black']),
+      :global(path[fill='#A30046']) {
+        fill: white;
+      }
+    }
+  }
+
+  .field-outcomes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    background-color: var(--surface-1);
+
+    dt {
+      color: var(--text-muted);
+      margin-block-end: var(--space-xs);
+    }
+
+    dd {
+      font-family: var(--font-headings);
+      font-size: var(--font-size-h2);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-secondary);
+    }
+
+    dd span {
+      color: var(--text-muted);
+      font-weight: var(--font-weight-regular);
+    }
+  }
+
+  .supporting-copy,
+  figcaption {
+    color: var(--text-muted);
+    font-size: 0.9em;
+  }
+
+  .saas-section,
+  .report-section {
+    background-color: var(--surface-1);
+  }
+
+  .saas-section {
+    padding-block-end: 0;
+  }
+
+  .decision-columns,
+  .interface-pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .decision-columns article,
+  .report-decisions article {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    min-width: 0;
+
+    h3 {
+      font-size: var(--font-size-h4);
+      color: var(--text-secondary);
+    }
+  }
+
+  .product-figure {
+    min-width: 0;
+    margin: 0;
 
     img {
-      object-fit: cover;
-      min-height: 100%;
-      min-width: 100%;
-    }
-  }
-
-  #strategic-move,
-  #product-custodian {
-    ul {
-      margin-top: var(--space-md);
-
-      > li {
-        flex: 1 1 0;
-        padding: var(--space-md);
-        background-color: var(--surface-2);
-        justify-content: start;
-      }
-    }
-  }
-
-  #strategic-move {
-    padding-block-end: var(--space-2xl);
-  }
-
-  #hands-on,
-  #product-custodian {
-    padding-block-start: var(--space-2xl);
-  }
-
-  .responsibility-label {
-    padding: var(--space-2xs) var(--space-xs);
-    color: var(--text-secondary);
-    background-color: var(--surface-1);
-  }
-
-  .simulation-flow {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    margin-block: var(--space-lg) var(--space-xl);
-    border-block-start: var(--stroke-width-thin) solid var(--border-color);
-
-    li {
-      min-width: 0;
-      padding: var(--space-md) var(--space-md) var(--space-md) 0;
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-xs);
-
-      + li {
-        padding-inline-start: var(--space-md);
-        border-inline-start: var(--stroke-width-thin) solid var(--border-color);
-      }
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border: var(--stroke-width-thin) solid var(--border-color);
     }
 
-    span {
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-      font-size: var(--font-size-h6);
+    figcaption {
+      margin-block-start: var(--space-sm);
     }
 
     strong {
+      display: block;
       color: var(--text-secondary);
-      font-family: var(--font-headings);
-    }
-
-    p {
-      font-size: 0.9em;
-    }
-
-    @media (max-width: 900px) {
-      grid-template-columns: repeat(2, 1fr);
-
-      li {
-        border-block-end: var(--stroke-width-thin) solid var(--border-color);
-      }
-    }
-
-    @media (max-width: 520px) {
-      grid-template-columns: 1fr;
-
-      li + li {
-        padding-inline-start: 0;
-        border-inline-start: 0;
-      }
+      margin-block-end: var(--space-2xs);
     }
   }
 
-  #saas-features {
+  .engineering-note {
+    padding: var(--space-lg);
+    border-inline-start: var(--stroke-width-thick) solid var(--text-secondary);
     background-color: var(--surface-1);
 
-    li {
-      padding: var(--space-lg);
-
-      > .icon {
-        color: var(--text-secondary);
-        font-size: var(--font-size-h1);
-        opacity: 0.55;
-      }
-    }
-
-    h4 {
-      color: var(--text-secondary);
-    }
-
-    p {
+    strong {
+      display: block;
       margin-block-end: var(--space-xs);
-    }
-  }
-
-  #decision-system {
-    padding-block: var(--space-3xl);
-    background-color: var(--surface-1);
-
-    .report-layers {
-      align-items: stretch;
-    }
-
-    .report-layer {
-      min-width: 0;
-      padding: var(--space-lg);
-      justify-content: flex-start;
-      background-color: var(--surface-0);
-      border-block-start: var(--stroke-width-thick) solid var(--text-secondary);
-
-      h3 {
-        font-size: var(--font-size-h4);
-      }
-    }
-
-    .layer-index {
       color: var(--text-secondary);
     }
+  }
 
-    .report-pipeline-wrapper {
-      margin-block: var(--space-xl);
+  .report-showcase {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  .report-decisions {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .product-image-link {
+    display: block;
+    background-image: none;
+    cursor: zoom-in;
+  }
+
+  section[id] {
+    scroll-margin-block-start: calc(var(--header-height) + var(--space-lg));
+  }
+
+  @media (max-width: 900px) {
+    .report-showcase {
+      grid-template-columns: 1fr;
     }
 
-    .report-pipeline {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      background-color: var(--surface-inverse);
-
-      li {
-        position: relative;
-        min-width: 0;
-        min-height: 9rem;
-        padding: var(--space-md);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: var(--space-xs);
-
-        + li {
-          border-inline-start: var(--stroke-width-thin) solid
-            var(--border-color);
-        }
-      }
-
-      span,
-      small {
-        color: var(--text-inverse);
-        opacity: 0.66;
-      }
-
-      span {
-        font-family: var(--font-mono);
-        font-size: var(--font-size-h6);
-      }
-
-      strong {
-        color: var(--text-inverse);
-        font-family: var(--font-headings);
-        font-size: var(--font-size-h5);
-      }
-
-      @media (max-width: 768px) {
-        grid-template-columns: 1fr;
-
-        li {
-          min-height: auto;
-
-          + li {
-            border-block-start: var(--stroke-width-thin) solid
-              var(--border-color);
-            border-inline-start: 0;
-          }
-        }
-      }
-    }
-
-    .report-details {
-      > div {
-        padding-block-start: var(--space-lg);
-        border-block-start: var(--stroke-width-thin) solid var(--border-color);
-      }
-
-      h3 {
-        font-size: var(--font-size-h4);
-        color: var(--text-secondary);
-      }
+    .report-decisions {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 
-  #outcome {
-    .content-wrapper {
-      padding-block-start: var(--space-lg);
+  @media (max-width: 768px) {
+    .project-facts,
+    .decision-columns,
+    .interface-pair,
+    .recognition-grid,
+    .report-decisions {
+      grid-template-columns: 1fr;
     }
 
-    #key-takeaways {
-      ul.grid-layout {
-        column-gap: var(--space-xl);
+    .field-outcomes {
+      gap: var(--space-sm);
+      padding: var(--space-md);
+
+      dt {
+        font-size: 0.85em;
       }
 
-      li {
-        position: relative;
-        padding-block-start: var(--space-lg);
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-xs);
-        border-block-start: var(--stroke-width-thin) solid var(--border-color);
-
-        h4 {
-          color: var(--text-secondary);
-        }
+      dd {
+        font-size: var(--font-size-h3);
       }
-    }
-
-    #road-ahead {
-      margin-block-start: var(--space-xl);
-      padding: var(--space-lg);
-      background-color: var(--surface-1);
-      border-inline-start: var(--stroke-width-thick) solid var(--text-secondary);
     }
   }
 </style>

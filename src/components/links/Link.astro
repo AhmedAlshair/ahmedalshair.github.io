@@ -88,6 +88,11 @@ let isIconOnly = !Astro.slots.has('default') && icon && icon !== null;
         background-color: var(--surface-hover);
       }
 
+      &.ghost {
+        background-color: var(--surface-hover);
+        color: var(--action-hover);
+      }
+
       &:not(.icon-only) {
         .link-icon {
           transform: translateX(0.2ch);
