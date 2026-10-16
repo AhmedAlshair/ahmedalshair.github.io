@@ -15,23 +15,18 @@ let { sections, className } = Astro.props;
 let hasSummary = Astro.slots.summary !== undefined;
 ---
 
-<div
-  id='work-layout'
-  class:list={['work-layout flex-layout column', className]}
->
+<div id='work-layout' class:list={['work-layout flex-layout column', className]}>
   <WorkNav client:only='svelte' {sections} />
 
   <div class='work-image flex-layout align-center justify-center'>
     <slot name='work-image' />
   </div>
 
-  {
-    hasSummary && (
-      <section id='summary' class='container padded flex-layout column'>
-        <slot name='summary' />
-      </section>
-    )
-  }
+  {hasSummary && (
+    <section id='summary' class='container padded flex-layout column'>
+      <slot name='summary' />
+    </section>
+  )}
 
   <div class='work-content flex-layout column'>
     <slot />
@@ -51,8 +46,7 @@ let hasSummary = Astro.slots.summary !== undefined;
     }
 
     &:not(:has(> img)) {
-      padding: calc(var(--container-padding) / 2)
-        calc(var(--container-padding) / 2) 10lvh;
+      padding: calc(var(--container-padding) / 2) calc(var(--container-padding) / 2) 10lvh;
       height: calc(10lvh + var(--container-padding) * 1.5);
     }
 

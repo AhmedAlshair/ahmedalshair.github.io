@@ -6,8 +6,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "typecheck": "astro check",
-    "format": "prettier --write .",
-    "lint": "astro check && prettier --check .",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "lint": "astro check && npm run format:check",
     "astro": "astro",
     "prepare": "husky"
   },
@@ -19,14 +20,13 @@
     "svelte": "^5.57.2"
   },
   "devDependencies": {
+    "@astrojs/compiler-rs": "^0.5.2",
     "husky": "^9.1.7",
     "lint-staged": "^17.6.0",
-    "prettier": "^3.9.10",
-    "prettier-plugin-astro": "^1.1.1",
-    "prettier-plugin-svelte": "^4.1.1",
+    "oxfmt": "0.73.0",
     "typescript": "~6.0.0"
   },
   "lint-staged": {
-    "*.{js,ts,astro,svelte,json,md,css}": "prettier --write"
+    "*": "oxfmt --no-error-on-unmatched-pattern"
   }
 }

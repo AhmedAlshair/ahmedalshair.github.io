@@ -8,9 +8,7 @@ interface Props {
 let { className } = Astro.props;
 ---
 
-<section
-  class:list={['featured-works container padded flex-layout column', className]}
->
+<section class:list={['featured-works container padded flex-layout column', className]}>
   <h2>Work Highlights</h2>
 
   <slot />
@@ -19,9 +17,9 @@ let { className } = Astro.props;
     <p>Want to see more? Take a look at my other projects and case studies:</p>
 
     <div class='actions flex-layout gap wrap'>
-      <Link variant='secondary' href='/works' class='case-studies-link'
-        >More Case Studies</Link
-      >
+      <Link variant='secondary' href='/works' class='case-studies-link'>
+        More Case Studies
+      </Link>
 
       <slot name='actions' />
     </div>

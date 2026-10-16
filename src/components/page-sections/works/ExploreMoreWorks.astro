@@ -17,9 +17,7 @@ interface Props {
 let { works, className } = Astro.props;
 ---
 
-<div
-  class:list={['explore-more-works flex-layout column gap gap-lg', className]}
->
+<div class:list={['explore-more-works flex-layout column gap gap-lg', className]}>
   <div class='section-head container padded flex-layout gap align-center'>
     <h4 class='flex-layout gap gap-sm align-center justify-start'>
       <span class='slash'></span>
@@ -32,16 +30,14 @@ let { works, className } = Astro.props;
     </a>
   </div>
   <div class='container padded grid-layout two-cols gap gap-xl'>
-    {
-      works.map((work: Work) => (
-        <div class='work-card'>
-          <a href={work.linkUrl} target={work.linkTarget ?? '_self'}>
-            <Image src={work.image} alt={work.title} />
-            <h5>{work.title}</h5>
-          </a>
-        </div>
-      ))
-    }
+    {works.map((work: Work) => (
+      <div class='work-card'>
+        <a href={work.linkUrl} target={work.linkTarget ?? '_self'}>
+          <Image src={work.image} alt={work.title} />
+          <h5>{work.title}</h5>
+        </a>
+      </div>
+    ))}
   </div>
 </div>
 

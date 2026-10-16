@@ -20,8 +20,9 @@ import HeroMotionToggle from '@/components/HeroMotionToggle.svelte';
 
 const title = `${SiteName} | ${JobTitle}`;
 
-const [optimizedEssamAvatar, optimizedIhtashamAvatar, optimizedRafaelAvatar] =
-  await optimizeImages([EssamAvatar, IhtashamAvatar, RafaelAvatar]);
+const [optimizedEssamAvatar, optimizedIhtashamAvatar, optimizedRafaelAvatar] = await optimizeImages(
+  [EssamAvatar, IhtashamAvatar, RafaelAvatar],
+);
 
 const TestimonialsData = [
   {
@@ -52,11 +53,7 @@ const TestimonialsData = [
 ---
 
 <BaseLayout title={title} description={MetaDescription}>
-  <section
-    id='hero'
-    class='hero container padded'
-    aria-labelledby='hero-heading'
-  >
+  <section id='hero' class='hero container padded' aria-labelledby='hero-heading'>
     <div class='hero-intro'>
       <div id='hero-process' class='hero-process'>
         <p class='sr-only'>Product Lead. UX Designer. Frontend Development.</p>
@@ -69,11 +66,7 @@ const TestimonialsData = [
           </div>
         </div>
 
-        <HeroMotionToggle
-          client:load
-          targetId='hero-process'
-          hideButton={true}
-        />
+        <HeroMotionToggle client:load targetId='hero-process' hideButton={true} />
       </div>
 
       <h1 id='hero-heading'>
@@ -81,13 +74,14 @@ const TestimonialsData = [
       </h1>
 
       <p class='hero-description'>
-        For 10+ years, I’ve led work from opportunity discovery and product
-        direction through UX design and hands-on frontend engineering.
+        For 10+ years, I’ve led work from opportunity discovery and product direction through UX
+        design and hands-on frontend engineering.
       </p>
 
       <div class='hero-actions'>
         <Link href='/contact#form' variant='primary'>
-          Let’s talk
+          {' '}
+          Let’s talk{' '}
         </Link>
         <Link href='#selected-works' variant='ghost' icon={null}>
           Explore my work
@@ -102,11 +96,7 @@ const TestimonialsData = [
         </div>
         <span class='hero-project-category'>Energy &amp; Impact</span>
       </div>
-      <a
-        class='hero-project-image'
-        href='/works/comet'
-        aria-label='Explore the COMET case study'
-      >
+      <a class='hero-project-image' href='/works/comet' aria-label='Explore the COMET case study'>
         <Image
           src={CometDashboard}
           alt='COMET simulation report showing energy insights and participant outcomes'
@@ -117,13 +107,8 @@ const TestimonialsData = [
         />
       </a>
       <div class='hero-project-story'>
-        <h4 id='hero-project-title'>
-          Designing and building a collaborative energy-planning SaaS
-        </h4>
-        <ul
-          class='hero-project-impact'
-          aria-label='COMET case study highlights'
-        >
+        <h4 id='hero-project-title'>Designing and building a collaborative energy-planning SaaS</h4>
+        <ul class='hero-project-impact' aria-label='COMET case study highlights'>
           <li>
             <strong>2020 - Present</strong>
             <span>Product direction, UX/UI &amp; frontend</span>
@@ -154,8 +139,8 @@ const TestimonialsData = [
         <h3>Product Leadership</h3>
       </div>
       <p>
-        Defining vision, mapping business goals to technical scoped tasks, and
-        aligning cross-functional teams to deliver results.
+        Defining vision, mapping business goals to technical scoped tasks, and aligning
+        cross-functional teams to deliver results.
       </p>
     </div>
 
@@ -165,8 +150,8 @@ const TestimonialsData = [
         <h3>User Experience</h3>
       </div>
       <p>
-        Solving complex business problems through research-driven UIs,
-        prototyping, user testing and design systems.
+        Solving complex business problems through research-driven UIs, prototyping, user testing and
+        design systems.
       </p>
     </div>
 
@@ -177,8 +162,7 @@ const TestimonialsData = [
       </div>
       <p>
         Building performant web apps and services using modern frameworks like{' '}
-        <span class='meta-label code'>Astro</span>,{' '}
-        <span class='meta-label code'>Svelte</span> and{' '}
+        <span class='meta-label code'>Astro</span>, <span class='meta-label code'>Svelte</span> and{' '}
         <span class='meta-label code'>React</span> among others.
       </p>
     </div>
@@ -211,7 +195,8 @@ const TestimonialsData = [
     <ProfessionalTimeline client:load concise={true} />
     <div class='timeline-learn-more'>
       <Link variant='secondary' href='/about'>
-        Learn more about me
+        {' '}
+        Learn more about me{' '}
       </Link>
     </div>
   </section>
@@ -337,6 +322,10 @@ const TestimonialsData = [
     min-width: 0;
     border: var(--stroke-width-thin) solid var(--border-color);
     background-color: var(--surface-1);
+
+    h4 {
+      text-wrap: pretty;
+    }
   }
 
   .hero-project-label {
@@ -399,13 +388,12 @@ const TestimonialsData = [
       li {
         display: flex;
         flex-direction: column;
-        gap: var(--space-3xs);
+        gap: var(--space-2xs);
         min-width: 0;
         padding: var(--space-sm) var(--space-sm) var(--space-sm) 0;
 
         & + li {
-          border-inline-start: var(--stroke-width-thin) solid
-            var(--border-color);
+          border-inline-start: var(--stroke-width-thin) solid var(--border-color);
           padding-inline-start: var(--space-md);
         }
       }
@@ -419,7 +407,7 @@ const TestimonialsData = [
 
       span {
         color: var(--text-muted);
-        font-size: 0.6875rem;
+        font-size: 0.75rem;
         line-height: var(--lh-tight);
       }
     }
@@ -444,10 +432,6 @@ const TestimonialsData = [
       gap: var(--space-xl);
     }
 
-    .hero h1 {
-      max-width: 17ch;
-    }
-
     .hero-project {
       width: 100%;
       max-width: 42rem;
@@ -462,10 +446,6 @@ const TestimonialsData = [
 
     .hero-intro {
       gap: var(--space-md);
-    }
-
-    .hero h1 {
-      font-size: clamp(2.25rem, 9vw, 3.25rem);
     }
 
     .hero-description {

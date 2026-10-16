@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "sortPackageJson": false,
+  "svelte": {},
+  "astro": {},
+  "associations": [
+    {
+      "files": ["*.astro"],
+      "language": "astro"
+    },
+    {
+      "files": ["*.svelte"],
+      "language": "svelte"
+    }
+  ],
+  "ignorePatterns": ["dist", "build", "coverage", ".vscode"]
+}

@@ -1,51 +1,37 @@
 ---
 import ContactMeForm from '@/components/page-sections/ContactMeForm.svelte';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import {
-  FormspreeId,
-  SiteName,
-  SocialLinks,
-  type SocialLink,
-} from '@/utils/Constants.astro';
+import { FormspreeId, SiteName, SocialLinks, type SocialLink } from '@/utils/Constants.astro';
 
 const title = `Contact Me | ${SiteName}`;
 const description = `Get in touch with me for any inquiries or collaborations.`;
 ---
 
 <BaseLayout title={title} description={description}>
-  <section
-    id='social'
-    class='on-social container padded flex-layout column gap gap-lg'
-  >
+  <section id='social' class='on-social container padded flex-layout column gap gap-lg'>
     <h3>Find me on:</h3>
 
     <ul class='grid-layout three-cols gap'>
-      {
-        Object.values(SocialLinks).map((link: SocialLink) => (
-          <li>
-            <a
-              class='social-link'
-              href={link.url}
-              target='_blank'
-              rel='noopener noreferrer'
-              aria-label={link.label}
-            >
-              {<link.icon />}
-              <span>{link.label}</span>
-            </a>
-          </li>
-        ))
-      }
+      {Object.values(SocialLinks).map((link: SocialLink) => (
+        <li>
+          <a
+            class='social-link'
+            href={link.url}
+            target='_blank'
+            rel='noopener noreferrer'
+            aria-label={link.label}
+          >
+            {<link.icon />}
+            <span>{link.label}</span>
+          </a>
+        </li>
+      ))}
     </ul>
   </section>
 
   <section id='form' class='contact-form flex-layout column gap gap-lg'>
     <h3 class='container padded'>Send me a message:</h3>
-    <ContactMeForm
-      formId={FormspreeId}
-      client:load
-      className='container padded'
-    />
+    <ContactMeForm formId={FormspreeId} client:load className='container padded' />
   </section>
 </BaseLayout>
 

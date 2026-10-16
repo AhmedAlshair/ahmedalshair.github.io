@@ -40,7 +40,9 @@ let sections: WorkSection[] = [
     <Image
       slot='work-image'
       src={PharmaWorkCover}
-      alt={'Customized Digital Experiences for Pharma Leaders like Pfizer, Merck, Abbvie, Takeda and Abbott'}
+      alt={
+        'Customized Digital Experiences for Pharma Leaders like Pfizer, Merck, Abbvie, Takeda and Abbott'
+      }
       loading={'eager'}
     />
 
@@ -48,13 +50,11 @@ let sections: WorkSection[] = [
       <div class='summary-head flex-layout column'>
         <h2>Customized Experiences for Pharma & Healthcare Leaders</h2>
         <p class='subtitle'>
-          Delivering healthcare-focused digital solutions, from interactive CLM
-          experiences, campaign websites and mobile apps, handling complex data
-          visualization and strict compliance workflows.
+          Delivering healthcare-focused digital solutions, from interactive CLM experiences,
+          campaign websites and mobile apps, handling complex data visualization and strict
+          compliance workflows.
         </p>
-        <div
-          class='badges flex-layout align-center justify-start wrap gap gap-sm'
-        >
+        <div class='badges flex-layout align-center justify-start wrap gap gap-sm'>
           <Badge text='UX/UI Design' />
           <Badge text='Frontend Development' />
           <Badge text='Data Visualization' />
@@ -75,75 +75,60 @@ let sections: WorkSection[] = [
         <div class='impact highlighted'>
           <span class='label'>Key Outcomes:</span>
           <p>
-            over <span class='emphasized'
-              >40 digital e-detailing presentations</span
-            >,
-            <span class='emphasized'
-              >Veeva certification for 3 consecutive years</span
-            > and globally launched campaigns for Pfizer, Abbvie, Abbott and Takeda.
+            over <span class='emphasized'>40 digital e-detailing presentations</span>,
+            <span class='emphasized'>Veeva certification for 3 consecutive years</span> and globally
+            launched campaigns for Pfizer, Abbvie, Abbott and Takeda.
           </p>
         </div>
         <div class='core-value highlighted'>
           <span class='label'>Core Values:</span>
           <p>
-            Handling complex data and strict compliance while delivering
-            hands-on interactive digital experiences and liaising with
-            multi-disciplinary teams.
+            Handling complex data and strict compliance while delivering hands-on interactive
+            digital experiences and liaising with multi-disciplinary teams.
           </p>
         </div>
       </div>
     </Fragment>
 
-    <section
-      id='clm'
-      class='container padded grid-layout two-cols gap gap-xl align-center'
-    >
+    <section id='clm' class='container padded grid-layout two-cols gap gap-xl align-center'>
       <div class='content-wrapper flex-layout column gap gap-lg justify-center'>
         <h2>CLM & e-Detailing</h2>
 
         <p>
-          I led the creation of over 40 digital e-detailing presentations and
-          web apps, primarily focusing on Closed Loop Marketing (CLM) to improve
-          Healthcare Professional (HCP) engagement and patient education.
+          I led the creation of over 40 digital e-detailing presentations and web apps, primarily
+          focusing on Closed Loop Marketing (CLM) to improve Healthcare Professional (HCP)
+          engagement and patient education.
         </p>
         <p>
-          Managed the end-to-end process from initial stakeholder discovery
-          workshops to cross-platform deployment on <a
-            href='https://veeva.com'
-            target='_blank'
-            rel='noopener noreferrer'>Veeva</a
-          >, <a
-            href='https://salesforce.com'
-            target='_blank'
-            rel='noopener noreferrer'>Salesforce</a
-          >, <a
-            href='https://cegedim.com'
-            target='_blank'
-            rel='noopener noreferrer'>Cegedim</a
-          > and <a
-            href='https://agnitio.com'
-            target='_blank'
-            rel='noopener noreferrer'>Agnitio (now Bigtincan)</a
-          > among others.
+          Managed the end-to-end process from initial stakeholder discovery workshops to
+          cross-platform deployment on{' '}
+          <a href='https://veeva.com' target='_blank' rel='noopener noreferrer'>
+            Veeva
+          </a>
+          ,{' '}
+          <a href='https://salesforce.com' target='_blank' rel='noopener noreferrer'>
+            Salesforce
+          </a>
+          ,{' '}
+          <a href='https://cegedim.com' target='_blank' rel='noopener noreferrer'>
+            Cegedim
+          </a>{' '}
+          and{' '}
+          <a href='https://agnitio.com' target='_blank' rel='noopener noreferrer'>
+            Agnitio (now Bigtincan)
+          </a>{' '}
+          among others.
         </p>
       </div>
 
       <div class='img-wrapper'>
-        <Image
-          src={ClmAppsImage}
-          alt='CLM Apps and Presentations'
-          loading='lazy'
-        />
+        <Image src={ClmAppsImage} alt='CLM Apps and Presentations' loading='lazy' />
       </div>
 
-      <div
-        id='showcasing'
-        class='content-wrapper flex-layout column gap span-2'
-      >
+      <div id='showcasing' class='content-wrapper flex-layout column gap span-2'>
         <p>
-          Here is a curated selection of CLM presentations and web apps,
-          showcasing the integration of complex data into interactive, animated
-          and fluid digital narratives for HCPs:
+          Here is a curated selection of CLM presentations and web apps, showcasing the integration
+          of complex data into interactive, animated and fluid digital narratives for HCPs:
         </p>
         <div class='youtube-embed-wrapper flex-layout'>
           <iframe
@@ -152,7 +137,8 @@ let sections: WorkSection[] = [
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
             referrerpolicy='strict-origin-when-cross-origin'
             allowfullscreen
-            loading='lazy'></iframe>
+            loading='lazy'
+          ></iframe>
         </div>
       </div>
     </section>
@@ -160,45 +146,52 @@ let sections: WorkSection[] = [
     <section id='brands' class='flex-layout column gap gap-sm'>
       <h4 class='container padded'>Brands I Designed for:</h4>
       <div class='brands-grid'>
-        <div class='brand'><BrandAbbott /></div>
-        <div class='brand'><BrandPfizer /></div>
-        <div class='brand'><BrandAbbvie /></div>
-        <div class='brand'><BrandMerck /></div>
-        <div class='brand'><BrandTakeda /></div>
-        <div class='brand'><BrandBayer /></div>
+        <div class='brand'>
+          <BrandAbbott />
+        </div>
+        <div class='brand'>
+          <BrandPfizer />
+        </div>
+        <div class='brand'>
+          <BrandAbbvie />
+        </div>
+        <div class='brand'>
+          <BrandMerck />
+        </div>
+        <div class='brand'>
+          <BrandTakeda />
+        </div>
+        <div class='brand'>
+          <BrandBayer />
+        </div>
       </div>
     </section>
 
     <section id='veeva-certified'>
-      <div
-        class='container padded grid-layout two-cols gap gap-xl align-center'
-      >
-        <div
-          class='veeva-logo img-wrapper flex-layout align-center justify-center'
-        >
+      <div class='container padded grid-layout two-cols gap gap-xl align-center'>
+        <div class='veeva-logo img-wrapper flex-layout align-center justify-center'>
           <VeevaLogo aria-label='Veeva Logo' />
         </div>
 
         <div class='content-wrapper flex-layout column gap'>
           <h4>Veeva Certified for 3 Consecutive Years</h4>
           <p>
-            To meet rigorous technical and compliance high standards, I have
-            maintained <a
+            To meet rigorous technical and compliance high standards, I have maintained{' '}
+            <a
               href='https://www.veeva.com/meet-veeva/partners/agencies-certification/'
               target='_blank'
               rel='noopener noreferrer'
-              ><span>Veeva certification</span> <Icon name='open_in_new' /></a
-            > for 3 years in a row for CLM, Approved Emails and Engage business and
-            technical products.
+            >
+              <span>Veeva certification</span> <Icon name='open_in_new' />
+            </a>{' '}
+            for 3 years in a row for CLM, Approved Emails and Engage business and technical
+            products.
           </p>
         </div>
       </div>
     </section>
 
-    <section
-      id='featured'
-      class='container padded flex-layout column gap gap-2xl'
-    >
+    <section id='featured' class='container padded flex-layout column gap gap-2xl'>
       <h2>Featured Projects</h2>
 
       <FeaturedWork
@@ -263,8 +256,7 @@ let sections: WorkSection[] = [
       {
         title: 'Alrevhair: Website Design for Hair Transplant Center',
         image: AlrevhairWorkCover,
-        linkUrl:
-          'https://www.behance.net/gallery/99695209/AlrevHair-Website-Design',
+        linkUrl: 'https://www.behance.net/gallery/99695209/AlrevHair-Website-Design',
         linkTarget: '_blank',
       },
     ]}

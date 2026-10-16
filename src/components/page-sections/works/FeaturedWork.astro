@@ -31,10 +31,7 @@ let {
 } = Astro.props;
 ---
 
-<div
-  id={id}
-  class:list={['featured-work flex-layout', type, { reverse }, className]}
->
+<div id={id} class:list={['featured-work flex-layout', type, { reverse }, className]}>
   <div class='work-info flex-layout column gap'>
     <div class='work-title flex-layout align-center justify-start'>
       {type === 'primary' && <span class='slash mask-before' />}
@@ -43,18 +40,11 @@ let {
 
     {description && <p class='description'>{description}</p>}
 
-    {
-      linkUrl && linkText && (
-        <Link
-          href={linkUrl}
-          variant={type}
-          target={linkTarget}
-          class='work-link'
-        >
-          {linkText}
-        </Link>
-      )
-    }
+    {linkUrl && linkText && (
+      <Link href={linkUrl} variant={type} target={linkTarget} class='work-link'>
+        {linkText}
+      </Link>
+    )}
   </div>
 
   <div class='work-image flex-layout align-end justify-end'>
