@@ -8,10 +8,7 @@
   let { name, className, ...props }: Props = $props();
 </script>
 
-<span
-  class={['material-symbols-rounded icon', className && className]}
-  {...props}
->
+<span class={['material-symbols-rounded icon', className && className]} {...props}>
   {name}
 </span>
 

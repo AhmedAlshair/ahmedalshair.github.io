@@ -34,9 +34,7 @@
       } else {
         const data = await response.json();
         status = 'error';
-        error =
-          data.errors?.map((e: any) => e.message).join(', ') ||
-          'Submission failed.';
+        error = data.errors?.map((e: any) => e.message).join(', ') || 'Submission failed.';
       }
     } catch (err) {
       status = 'error';
@@ -102,10 +100,7 @@
 
 {#if ['success', 'error'].includes(status)}
   <div
-    class={[
-      'form-status initial flex-layout column gap gap-xs justify-center',
-      className,
-    ]}
+    class={['form-status initial flex-layout column gap gap-xs justify-center', className]}
     class:success={status === 'success'}
     class:failure={status !== 'success'}
   >

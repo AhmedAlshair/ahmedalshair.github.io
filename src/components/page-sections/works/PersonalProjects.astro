@@ -4,41 +4,27 @@ import PureAthkarPreview from '@assets/works/personal-projects/pure-athkar-previ
 import { Image } from 'astro:assets';
 ---
 
-<section
-  id='personal-projects'
-  class='container padded flex-layout column gap justify-center'
->
+<section id='personal-projects' class='container padded flex-layout column gap justify-center'>
   <h3>Personal Projects</h3>
   <p>A selection of side projects I've enjoyed building:</p>
 
   <div class='projects-layout'>
     <ul class='links-grid'>
       <li class='personal-project'>
-        <a
-          href='https://ahmedalshair.net/pure-athkar'
-          target='_blank'
-          class='project-link'
-        >
+        <a href='https://ahmedalshair.net/pure-athkar' target='_blank' class='project-link'>
           <div class='flex-layout gap'>
             <div class='project-logo'>
               <PureAthkarLogo />
             </div>
             <div class='project-info'>
               <h4>Pure Athkar</h4>
-              <p>
-                A simple and elegant web app for daily Islamic Athkar and
-                supplications.
-              </p>
+              <p>A simple and elegant web app for daily Islamic Athkar and supplications.</p>
             </div>
           </div>
         </a>
 
         <div class='preview-img flex-layout align-center justify-center'>
-          <Image
-            src={PureAthkarPreview}
-            alt='Pure Athkar web app preview'
-            loading='lazy'
-          />
+          <Image src={PureAthkarPreview} alt='Pure Athkar web app preview' loading='lazy' />
         </div>
       </li>
     </ul>

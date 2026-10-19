@@ -49,12 +49,7 @@
   {#if hasData}
     <svg width={size} height={size} viewBox="0 0 {size} {size}">
       {#each segments as segment}
-        <path
-          d={segment.path}
-          fill={segment.color}
-          stroke="white"
-          stroke-width="1"
-        />
+        <path d={segment.path} fill={segment.color} stroke="white" stroke-width="1" />
       {/each}
     </svg>
   {:else}

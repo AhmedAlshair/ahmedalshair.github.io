@@ -19,13 +19,10 @@
   let { testimonials = [], className }: Props = $props();
   let currentIndex = $derived(testimonials.length > 2 ? 1 : 0);
 
-  const getItemId = (name: string) =>
-    `testimonial-${name.replaceAll(' ', '-').toLowerCase()}`;
+  const getItemId = (name: string) => `testimonial-${name.replaceAll(' ', '-').toLowerCase()}`;
 
   const itemIds = $derived(testimonials.map((t) => getItemId(t.name)));
-  const prevIndex = $derived(
-    (currentIndex - 1 + testimonials.length) % testimonials.length,
-  );
+  const prevIndex = $derived((currentIndex - 1 + testimonials.length) % testimonials.length);
   const nextIndex = $derived((currentIndex + 1) % testimonials.length);
 
   const scrollToCard = (index: number) => {
@@ -38,8 +35,7 @@
   };
 
   const navigate = (direction: 1 | -1) => {
-    currentIndex =
-      (currentIndex + direction + testimonials.length) % testimonials.length;
+    currentIndex = (currentIndex + direction + testimonials.length) % testimonials.length;
     scrollToCard(currentIndex);
   };
 
@@ -49,17 +45,10 @@
 <div class="testimonials flex-layout column gap align-center">
   <div class="cards flex-layout">
     {#each testimonials as item}
-      <div
-        id={getItemId(item.name)}
-        class="testimonial-card flex-layout column gap gap-lg"
-      >
+      <div id={getItemId(item.name)} class="testimonial-card flex-layout column gap gap-lg">
         <p class="quote">"{item.text}"</p>
         <div class="author flex-layout align-center justify-start gap">
-          <img
-            src={item.avatar.src}
-            alt={item.avatar.alt || item.name}
-            loading="lazy"
-          />
+          <img src={item.avatar.src} alt={item.avatar.alt || item.name} loading="lazy" />
           <div class="author-info flex-layout column">
             <strong>{item.name}</strong>
             <span>{item.role}</span>

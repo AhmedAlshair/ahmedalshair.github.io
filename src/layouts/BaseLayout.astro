@@ -77,11 +77,7 @@ const personSchema = {
     <meta property='og:image:alt' content=`${SiteName} | ${JobTitle}` />
 
     <meta property='twitter:card' content='summary_large_image' />
-    <meta property='twitter:url' content={Astro.url} />
-    <meta property='twitter:title' content={title} />
-    <meta property='twitter:description' content={description} />
-    <meta property='twitter:image' content={ogImageURL} />
-    <meta property='twitter:image:alt' content=`${SiteName} | ${JobTitle}` />
+    <meta property='twitter:site' content='@ahmedalshair' />
 
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='theme-color' content={defaultThemeColor} />
@@ -112,9 +108,7 @@ const personSchema = {
 
       const theme =
         savedTheme ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches
-          ? 'dark'
-          : 'light');
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', theme);
     </script>
   </head>
@@ -141,8 +135,4 @@ const personSchema = {
   }
 </style>
 
-<script
-  is:inline
-  type='application/ld+json'
-  set:html={JSON.stringify(personSchema)}
-/>
+<script is:inline type='application/ld+json' set:html={JSON.stringify(personSchema)} />

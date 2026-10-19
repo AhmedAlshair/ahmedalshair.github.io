@@ -9,12 +9,7 @@
     open?: boolean;
   }
 
-  let {
-    src,
-    alt,
-    showCaption = true,
-    open = $bindable(false),
-  }: Props = $props();
+  let { src, alt, showCaption = true, open = $bindable(false) }: Props = $props();
 
   let dialog: HTMLDialogElement;
   let content: HTMLDivElement;

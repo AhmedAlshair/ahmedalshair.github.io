@@ -115,12 +115,7 @@
       {#if concise}
         <span class="dot"></span>
       {:else}
-        <a
-          href={item.link}
-          class="link-wrapper"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={item.link} class="link-wrapper" target="_blank" rel="noopener noreferrer">
           {@html item.icon}
         </a>
       {/if}
@@ -141,19 +136,13 @@
 
       {#if concise}
         <div class="company emphasized">
-          <a href={item.link} target="_blank" rel="noopener noreferrer"
-            >{item.company}</a
-          >
+          <a href={item.link} target="_blank" rel="noopener noreferrer">{item.company}</a>
         </div>
         <p class="concise">{item.conciseText}</p>
       {/if}
 
       {#if !concise}
-        <details
-          name={item.item}
-          class="item-details"
-          open={item.item === 'comet'}
-        >
+        <details name={item.item} class="item-details" open={item.item === 'comet'}>
           <summary class={['flex-layout align-center', concise && 'disabled']}>
             <span>{item.company}</span>
             <Icon name="keyboard_arrow_down" className="icon" />
@@ -174,11 +163,7 @@
 
 <div
   {id}
-  class={[
-    'professional-timeline flex-layout column justify-center',
-    orientation,
-    className,
-  ]}
+  class={['professional-timeline flex-layout column justify-center', orientation, className]}
 >
   <h2>Professional Timeline</h2>
 
@@ -400,8 +385,7 @@
         list-style: none;
         justify-items: start;
         align-self: start;
-        padding: var(--space-2xs) var(--space-xs) var(--space-2xs)
-          var(--space-sm);
+        padding: var(--space-2xs) var(--space-xs) var(--space-2xs) var(--space-sm);
         gap: var(--space-2xs);
         background-color: var(--surface-2);
         font-weight: var(--font-weight-medium);

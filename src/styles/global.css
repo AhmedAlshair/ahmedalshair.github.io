@@ -31,11 +31,7 @@
   --surface-1: var(--bg-secondary);
   --surface-2: color-mix(in srgb, var(--bg-secondary), var(--brand-navy) 5%);
   --surface-3: color-mix(in srgb, var(--bg-secondary), var(--brand-navy) 12%);
-  --surface-inverse: color-mix(
-    in srgb,
-    var(--bg-primary),
-    var(--brand-navy) 90%
-  );
+  --surface-inverse: color-mix(in srgb, var(--bg-primary), var(--brand-navy) 90%);
   --surface-success: hsl(from var(--status-success) h calc(s - 12) 92 / 100%);
   --surface-error: hsl(from var(--status-error) h calc(s - 10) 94 / 100%);
   --surface-warning: hsl(from var(--status-warning) h calc(s - 12) 94 / 100%);
@@ -60,35 +56,17 @@
     color-scheme: dark;
 
     /* --- Status Colors --- */
-    --status-error: hsl(
-      from var(--status-error-base) h calc(s - 6) calc(l + 12)
-    );
-    --status-success: hsl(
-      from var(--status-success-base) h calc(s - 4) calc(l + 16)
-    );
-    --status-warning: hsl(
-      from var(--status-warning-base) h calc(s - 6) calc(l + 5)
-    );
+    --status-error: hsl(from var(--status-error-base) h calc(s - 6) calc(l + 12));
+    --status-success: hsl(from var(--status-success-base) h calc(s - 4) calc(l + 16));
+    --status-warning: hsl(from var(--status-warning-base) h calc(s - 6) calc(l + 5));
 
     /* --- Semantic Colors --- */
     --bg-primary: var(--brand-onyx);
-    --bg-secondary: color-mix(
-      in srgb,
-      var(--bg-primary),
-      var(--brand-navy) 30%
-    );
+    --bg-secondary: color-mix(in srgb, var(--bg-primary), var(--brand-navy) 30%);
     --text-primary: var(--brand-silver);
-    --text-secondary: color-mix(
-      in srgb,
-      var(--brand-navy),
-      var(--brand-silver) 84%
-    );
+    --text-secondary: color-mix(in srgb, var(--brand-navy), var(--brand-silver) 84%);
     --text-inverse: var(--brand-onyx);
-    --text-muted: color-mix(
-      in srgb,
-      var(--brand-onyx),
-      var(--brand-silver) 76%
-    );
+    --text-muted: color-mix(in srgb, var(--brand-onyx), var(--brand-silver) 76%);
     --accent: hsl(from var(--brand-accent) h calc(s + 8) calc(l + 44));
     --border-color: rgb(from var(--accent) r g b / 0.28);
 
@@ -96,16 +74,8 @@
     --surface-0: var(--bg-primary);
     --surface-1: var(--bg-secondary);
     --surface-2: color-mix(in srgb, var(--bg-primary), var(--brand-silver) 7%);
-    --surface-3: color-mix(
-      in srgb,
-      var(--bg-secondary),
-      var(--brand-silver) 14%
-    );
-    --surface-inverse: color-mix(
-      in srgb,
-      var(--bg-primary),
-      var(--brand-silver) 90%
-    );
+    --surface-3: color-mix(in srgb, var(--bg-secondary), var(--brand-silver) 14%);
+    --surface-inverse: color-mix(in srgb, var(--bg-primary), var(--brand-silver) 90%);
     --surface-success: rgb(from var(--status-success) r g b / 0.12);
     --surface-error: rgb(from var(--status-error) r g b / 0.12);
     --surface-warning: rgb(from var(--status-warning) r g b / 0.12);
@@ -196,9 +166,7 @@
   --header-height: 4.5rem;
   --max-width: 1200px;
   --container-padding: var(--space-lg);
-  --full-bleed-padding: calc(
-    ((100vw - var(--max-width)) / 2) + var(--container-padding)
-  );
+  --full-bleed-padding: calc(((100vw - var(--max-width)) / 2) + var(--container-padding));
   --z-sticky: 100;
   --z-header: 200;
   --z-modal: 1000;

@@ -18,10 +18,7 @@
   };
 </script>
 
-<nav
-  class={['header-nav flex-layout gap', className]}
-  aria-roledescription="main navigation"
->
+<nav class={['header-nav flex-layout gap', className]} aria-roledescription="main navigation">
   <button
     class="menu-button"
     onclick={toggleMenu}
@@ -30,16 +27,9 @@
     aria-controls="main-menu"
     aria-expanded={menuOpen}
   >
-    <Icon
-      name={menuOpen ? 'top_panel_close' : 'menu'}
-      className="icon"
-      tabindex="-1"
-    />
+    <Icon name={menuOpen ? 'top_panel_close' : 'menu'} className="icon" tabindex="-1" />
   </button>
-  <div
-    id="main-menu"
-    class={['menu flex-layout gap gap-xs', menuOpen && 'open']}
-  >
+  <div id="main-menu" class={['menu flex-layout gap gap-xs', menuOpen && 'open']}>
     {#each links as link, index}
       {@const normalizedPath = normalizeUrlPath(link)}
       <a

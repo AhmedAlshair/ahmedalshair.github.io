@@ -125,8 +125,7 @@ $(function () {
     enlargeViewer.html('');
     let path = $(this).attr('href'),
       newVid = $('<video autoplay controls>').attr('src', path),
-      closeBtn =
-        "<button class='close-btn'><img src='img/close-24px.svg' alt='Close'></button>";
+      closeBtn = "<button class='close-btn'><img src='img/close-24px.svg' alt='Close'></button>";
     enlargeViewer.html(newVid).fadeIn(function () {
       $(this).find('video').fadeIn('fast').delay(20).css('display', 'block');
       enlargeViewer.append(closeBtn);

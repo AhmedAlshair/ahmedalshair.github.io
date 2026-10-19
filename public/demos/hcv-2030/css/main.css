@@ -18,21 +18,9 @@
   --abbv-white: #ffffff;
   --abbv-gray: #c9f3f5;
   --bg-light: #dcefec;
-  --abbv-grad-dark: linear-gradient(
-    to bottom,
-    var(--abbv-darkblue),
-    var(--abbv-purple)
-  );
-  --abbv-grad-dark-inv: linear-gradient(
-    to top,
-    var(--abbv-darkblue),
-    var(--abbv-purple)
-  );
-  --abbv-grad-light: linear-gradient(
-    to bottom,
-    var(--abbv-teal),
-    var(--bg-light)
-  );
+  --abbv-grad-dark: linear-gradient(to bottom, var(--abbv-darkblue), var(--abbv-purple));
+  --abbv-grad-dark-inv: linear-gradient(to top, var(--abbv-darkblue), var(--abbv-purple));
+  --abbv-grad-light: linear-gradient(to bottom, var(--abbv-teal), var(--bg-light));
   --shadow-far: 0 6px 24px rgba(0, 0, 0, 0.1);
   --shadow-near: 0 2px 8px rgba(0, 0, 0, 0.12);
   --spacing-page: 80px;
@@ -362,8 +350,7 @@ header .logo img {
 }
 
 @supports (
-  (-webkit-filter: drop-shadow(var(--shadow-near))) or
-    (filter: drop-shadow(var(--shadow-near)))
+  (-webkit-filter: drop-shadow(var(--shadow-near))) or (filter: drop-shadow(var(--shadow-near)))
 ) {
   header .logo img {
     -webkit-filter: drop-shadow(var(--shadow-near));
@@ -796,8 +783,7 @@ main {
 }
 
 @supports (
-  (-webkit-filter: drop-shadow(var(--shadow-near))) or
-    (filter: drop-shadow(var(--shadow-near)))
+  (-webkit-filter: drop-shadow(var(--shadow-near))) or (filter: drop-shadow(var(--shadow-near)))
 ) {
   .vision-sec img {
     -webkit-filter: drop-shadow(var(--shadow-near));
@@ -1444,8 +1430,7 @@ footer {
 }
 
 .resource-links h1 {
-  margin: 0 var(--spacing-cont-med) var(--spacing-cont-small)
-    var(--spacing-cont-med);
+  margin: 0 var(--spacing-cont-med) var(--spacing-cont-small) var(--spacing-cont-med);
   padding-left: var(--spacing-cont-small);
   color: var(--abbv-teal);
   text-align: left;
@@ -1473,8 +1458,7 @@ footer {
 
 .resource-link {
   position: relative;
-  padding: calc(var(--spacing-cont-small) / 3)
-    calc(var(--spacing-cont-small) / 2);
+  padding: calc(var(--spacing-cont-small) / 3) calc(var(--spacing-cont-small) / 2);
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;

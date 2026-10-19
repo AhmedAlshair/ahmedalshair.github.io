@@ -16,12 +16,7 @@
     className?: string;
   }
 
-  let {
-    images = [],
-    objectFit = 'cover',
-    showCaption = true,
-    className,
-  }: Props = $props();
+  let { images = [], objectFit = 'cover', showCaption = true, className }: Props = $props();
 
   let currentIndex = $state(0);
   let prevIndex = $derived((currentIndex - 1 + images.length) % images.length);
@@ -59,11 +54,7 @@
           <img
             src={img.url}
             alt={img.alt}
-            class={[
-              'carousel-img',
-              i === prevIndex && 'prev',
-              i === nextIndex && 'next',
-            ]}
+            class={['carousel-img', i === prevIndex && 'prev', i === nextIndex && 'next']}
             class:active={i === currentIndex}
             loading="lazy"
           />
@@ -78,10 +69,7 @@
         <span class="slash"></span>
 
         {#key currentIndex}
-          <span
-            class="caption-text"
-            in:fade={{ duration: 300, easing: sineOut }}
-          >
+          <span class="caption-text" in:fade={{ duration: 300, easing: sineOut }}>
             {images[currentIndex].alt}
           </span>
         {/key}

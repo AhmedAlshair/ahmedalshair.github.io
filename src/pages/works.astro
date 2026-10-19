@@ -58,19 +58,14 @@ const description = `My latest projects and case studies showcasing my expertise
 
   <PersonalProjects />
 
-  <section
-    id='more-works'
-    class='container padded flex-layout column gap justify-center'
-  >
+  <section id='more-works' class='container padded flex-layout column gap justify-center'>
     <h3>Find out more!</h3>
     <p>For more projects and case studies, check out my portfolios on:</p>
 
     <ul class='links-grid grid-layout two-cols gap'>
       {Object.entries(SocialLinks).map(
         ([key, link]) =>
-          ['behance', 'dribbble', 'youtubeUX', 'youtubeMotion'].includes(
-            key,
-          ) && (
+          ['behance', 'dribbble', 'youtubeUX', 'youtubeMotion'].includes(key) && (
             <li>
               <a
                 class='social-link'

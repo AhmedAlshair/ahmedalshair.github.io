@@ -51,35 +51,15 @@
   const width = $derived(columns * (size + gap));
 </script>
 
-<div
-  class={[
-    'chart density-grid flex-layout gap align-center',
-    !colors && 'no-fill',
-    className,
-  ]}
->
+<div class={['chart density-grid flex-layout gap align-center', !colors && 'no-fill', className]}>
   <div class="group">
     <span class="label">Before: {before} sites</span>
     <svg {width} {height} viewBox="0 0 {width} {height}">
       {#each afterDots as dot}
-        <rect
-          class="pale"
-          x={dot.x}
-          y={dot.y}
-          width={size}
-          height={size}
-          fill={'none'}
-        />
+        <rect class="pale" x={dot.x} y={dot.y} width={size} height={size} fill={'none'} />
       {/each}
       {#each beforeDots as dot}
-        <rect
-          class="before"
-          x={dot.x}
-          y={dot.y}
-          width={size}
-          height={size}
-          fill={colors?.[1]}
-        />
+        <rect class="before" x={dot.x} y={dot.y} width={size} height={size} fill={colors?.[1]} />
       {/each}
     </svg>
   </div>
@@ -92,24 +72,10 @@
     <span class="label highlight">After: {after} sites</span>
     <svg {width} {height} viewBox="0 0 {width} {height}">
       {#each afterDots as dot}
-        <rect
-          class="after"
-          x={dot.x}
-          y={dot.y}
-          width={size}
-          height={size}
-          fill={colors?.[1]}
-        />
+        <rect class="after" x={dot.x} y={dot.y} width={size} height={size} fill={colors?.[1]} />
       {/each}
       {#each beforeDots as dot}
-        <rect
-          class="before"
-          x={dot.x}
-          y={dot.y}
-          width={size}
-          height={size}
-          fill={colors?.[0]}
-        />
+        <rect class="before" x={dot.x} y={dot.y} width={size} height={size} fill={colors?.[0]} />
       {/each}
     </svg>
   </div>

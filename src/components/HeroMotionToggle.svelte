@@ -2,8 +2,7 @@
   import { onMount } from 'svelte';
   import Button from '@/components/buttons/Button.svelte';
 
-  let { targetId, hideButton }: { targetId: string; hideButton?: boolean } =
-    $props();
+  let { targetId, hideButton }: { targetId: string; hideButton?: boolean } = $props();
   let animationContainer: HTMLElement | null = null;
   let ready = $state(false);
   let paused = $state(false);

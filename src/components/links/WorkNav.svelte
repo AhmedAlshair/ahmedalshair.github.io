@@ -14,10 +14,7 @@
   let { sections }: Props = $props();
 
   let isOpen = $state(false);
-  let workSections = $derived([
-    { id: 'summary', title: 'Summary' },
-    ...sections,
-  ]);
+  let workSections = $derived([{ id: 'summary', title: 'Summary' }, ...sections]);
   let activeSection = $state('');
 
   $effect(() => {
@@ -63,9 +60,7 @@
   class={['work-nav flex-layout column', isOpen ? 'menu-open' : 'menu-closed']}
   aria-roledescription="work navigation"
 >
-  <div
-    class="toggle-button flex-layout gap gap-xl align-center justify-space-between"
-  >
+  <div class="toggle-button flex-layout gap gap-xl align-center justify-space-between">
     <Button
       variant="primary"
       size="small"
@@ -83,10 +78,7 @@
   <ul class="section-list flex-layout column gap gap-xs">
     {#each workSections as section}
       <li class="section-item" class:active={activeSection === section.id}>
-        <a
-          href={`#${section.id}`}
-          class="nav-link flex-layout gap gap-sm align-center"
-        >
+        <a href={`#${section.id}`} class="nav-link flex-layout gap gap-sm align-center">
           <span>{section.title}</span>
           <span class="slash"></span>
         </a>

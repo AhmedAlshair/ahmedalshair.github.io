@@ -8,18 +8,9 @@
     className?: string;
   }
 
-  let {
-    data = [],
-    width = 400,
-    height = 240,
-    gap = 10,
-    colors,
-    className,
-  }: Props = $props();
+  let { data = [], width = 400, height = 240, gap = 10, colors, className }: Props = $props();
 
-  const maxVal = $derived(
-    data.length ? Math.max(...data.map((d) => d.value)) : 0,
-  );
+  const maxVal = $derived(data.length ? Math.max(...data.map((d) => d.value)) : 0);
   const hasData = $derived(data.length > 0 && maxVal > 0);
 
   // const bars = $derived(
@@ -48,10 +39,7 @@
       const h = (d.value / maxVal) * height;
 
       return {
-        x:
-          offsetX +
-          i * barWidth +
-          (i === data.length - 1 || i === 0 ? 0 : gap / 2),
+        x: offsetX + i * barWidth + (i === data.length - 1 || i === 0 ? 0 : gap / 2),
         y: height - h,
         width: barWidth - gap,
         height: h,

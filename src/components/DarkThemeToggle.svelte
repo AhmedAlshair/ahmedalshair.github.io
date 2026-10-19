@@ -7,17 +7,12 @@
   let theme: Theme | null = $state(null);
   let followsSystemTheme = true;
   const isDark = $derived(theme === 'dark');
-  const icon = $derived(
-    theme ? (theme === 'dark' ? 'light_mode' : 'dark_mode') : null,
-  );
+  const icon = $derived(theme ? (theme === 'dark' ? 'light_mode' : 'dark_mode') : null);
   const label = $derived(
-    theme
-      ? `Switch to ${isDark ? 'light' : 'dark'} theme`
-      : 'Theme preference is loading',
+    theme ? `Switch to ${isDark ? 'light' : 'dark'} theme` : 'Theme preference is loading',
   );
 
-  const isTheme = (value: string | null): value is Theme =>
-    value === 'light' || value === 'dark';
+  const isTheme = (value: string | null): value is Theme => value === 'light' || value === 'dark';
 
   function applyTheme(nextTheme: Theme) {
     theme = nextTheme;
@@ -37,13 +32,7 @@
     followsSystemTheme = !isTheme(savedTheme);
 
     const documentTheme = document.documentElement.getAttribute('data-theme');
-    applyTheme(
-      isTheme(documentTheme)
-        ? documentTheme
-        : systemTheme.matches
-          ? 'dark'
-          : 'light',
-    );
+    applyTheme(isTheme(documentTheme) ? documentTheme : systemTheme.matches ? 'dark' : 'light');
 
     const handleSystemThemeChange = (event: MediaQueryListEvent) => {
       if (followsSystemTheme) {

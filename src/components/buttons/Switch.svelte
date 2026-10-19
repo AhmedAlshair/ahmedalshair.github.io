@@ -11,8 +11,7 @@
     [key: string]: any;
   }
 
-  let { onclick, checked, icon, loading, id, className, ...props }: Props =
-    $props();
+  let { onclick, checked, icon, loading, id, className, ...props }: Props = $props();
 </script>
 
 <button

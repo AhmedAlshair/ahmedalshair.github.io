@@ -23,12 +23,7 @@ if (activePage.startsWith('/')) {
       <span>Alshair</span>
     </a>
 
-    <Nav
-      client:load
-      className='main-nav'
-      links={navLinks}
-      currentPage={activePage}
-    />
+    <Nav client:load className='main-nav' links={navLinks} currentPage={activePage} />
 
     <div class='wrapper toggle-wrapper'>
       <DarkThemeToggle client:only='svelte' />
